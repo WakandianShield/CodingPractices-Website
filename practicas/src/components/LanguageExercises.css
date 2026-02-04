@@ -1,0 +1,163 @@
+.language-exercises {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.language-header {
+  background: linear-gradient(135deg, var(--accent-color) 0%, color-mix(in srgb, var(--accent-color) 70%, #000) 100%);
+  padding: 40px;
+  border-radius: 20px;
+  color: white;
+  margin-bottom: 30px;
+}
+
+.back-link {
+  color: white;
+  text-decoration: none;
+  opacity: 0.8;
+  font-size: 0.95rem;
+  transition: opacity 0.3s;
+}
+
+.back-link:hover {
+  opacity: 1;
+}
+
+.language-title {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 20px 0 10px;
+}
+
+.lang-icon {
+  font-size: 3.5rem;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lang-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.language-title h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+.language-header p {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 1.1rem;
+}
+
+.exercises-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.exercise-card {
+  display: flex;
+  align-items: center;
+  padding: 25px;
+  background: var(--bg-secondary);
+  border-radius: 16px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.exercise-card:hover {
+  transform: translateX(10px);
+  border-color: var(--accent-color);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.exercise-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-right: 25px;
+  min-width: 50px;
+}
+
+.exercise-content {
+  flex: 1;
+}
+
+.exercise-content h3 {
+  font-size: 1.3rem;
+  margin: 0 0 8px;
+  color: var(--text-primary);
+}
+
+.exercise-content p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.exercise-difficulty {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.exercise-difficulty.easy {
+  background: #d4edda;
+  color: #155724;
+}
+
+.exercise-difficulty.medium {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.exercise-difficulty.hard {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.not-found {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.not-found h1 {
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+.not-found a {
+  color: #667eea;
+  text-decoration: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .exercise-card {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .exercise-number {
+    min-width: auto;
+    margin-right: 15px;
+  }
+  
+  .exercise-difficulty {
+    width: 100%;
+    text-align: center;
+  }
+}

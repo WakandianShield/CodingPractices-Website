@@ -7,10 +7,10 @@ import mainLogo from './assets/images/main-logo.png';
 import './App.css';
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [lightMode, setLightMode] = useState(false);
 
   return (
-    <div className={`app ${darkMode ? 'dark' : ''}`}>
+    <div className={`app ${lightMode ? 'light' : ''}`}>
       <Router>
         <header className="app-header">
           <a href="/" className="logo">
@@ -20,10 +20,10 @@ function App() {
             <a href="/">Inicio</a>
             <button 
               className="theme-toggle"
-              onClick={() => setDarkMode(!darkMode)}
+              onClick={() => setLightMode(!lightMode)}
               aria-label="Toggle theme"
             >
-              {darkMode ? '☀️' : '🌙'}
+              {lightMode ? '🌙' : '☀️'}
             </button>
           </nav>
         </header>

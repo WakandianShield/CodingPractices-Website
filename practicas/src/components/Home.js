@@ -1,91 +1,126 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { getAllLanguages } from '../data/exercises';
+import heroBg from '../assets/images/hero-bg.png';
 import './Home.css';
 
 function Home() {
-  const languages = getAllLanguages();
+    const languages = getAllLanguages();
 
-  return (
-    <div className="home">
-      <section className="hero">
-        <h1>Practica para tus Entrevistas Técnicas</h1>
-        <p>
-          Ejercicios de programación en múltiples lenguajes con soluciones explicadas 
-          y un editor integrado para practicar en tiempo real.
-        </p>
-        <div className="hero-stats">
-          <div className="stat">
-            <span className="stat-number">{languages.length}</span>
-            <span className="stat-label">Lenguajes</span>
-          </div>
-          <div className="stat">
-            <span className="stat-number">
-              {languages.reduce((acc, lang) => acc + lang.exercises.length, 0)}
-            </span>
-            <span className="stat-label">Ejercicios</span>
-          </div>
-          <div className="stat">
-            <span className="stat-number">∞</span>
-            <span className="stat-label">Práctica</span>
-          </div>
-        </div>
-      </section>
+    return (
+        <div className="home">
+            {/* ========= HERO SECTION ========= */}
+            <section className="hero pro-hero" style={{ backgroundImage: `url(${heroBg})` }}>
+                <div className="hero-overlay" />
+                <div className="hero-content pro-hero-content">
+                    <span className="kicker">START YOUR JOURNEY</span>
+                    <h1>
+                        <span className="hero-main">DISCOVER THE AMAZING<span className="highlight-text"> WORLD OF CODING</span></span>
+                        
+                    </h1>
+                    <p className="hero-subtitle">
+                        Master programming through real interview challenges.<br />
+                        Practice, learn, and level up your skills.
+                    </p>
+                    <a href="#languages" className="btn-primary large">
+                        GET STARTED
+                    </a>
+                </div>
+            </section>
 
-      <section className="languages-section">
-        <h2>Selecciona un Lenguaje</h2>
-        <div className="languages-grid">
-          {languages.map((lang) => (
-            <Link 
-              to={`/language/${lang.id}`} 
-              key={lang.id}
-              className="language-card"
-              style={{ '--accent-color': lang.color }}
-            >
-              <div className="language-icon">
-                {typeof lang.icon === 'string' && lang.icon.length <= 2 ? (
-                  lang.icon
-                ) : (
-                  <img src={lang.icon} alt={lang.name} />
-                )}
-              </div>
-              <div className="language-info">
-                <h3>{lang.name}</h3>
-                <p>{lang.exercises.length} ejercicios</p>
-              </div>
-              <div className="language-arrow">→</div>
-            </Link>
-          ))}
-        </div>
-      </section>
+            {/* ========= LANGUAGES SECTION ========= */}
+            <section className="languages-section" id="languages">
+                <div className="section-header">
+                    <span className="section-kicker">TECHNOLOGIES</span>
+                    <h2>EXPLORE <span className="highlight-number">+{languages.length}</span> LANGUAGES</h2>
+                    <p className="section-subtitle">Choose your favorite programming language and start practicing</p>
+                </div>
+                <div className="languages-grid">
+                    {languages.map((lang) => (
+                        <Link
+                            to={`/language/${lang.id}`}
+                            key={lang.id}
+                            className="language-card"
+                        >
+                            <div className="language-icon">
+                                {typeof lang.icon === 'string' && lang.icon.length <= 2 ? (
+                                    lang.icon
+                                ) : (
+                                    <img src={lang.icon} alt={lang.name} />
+                                )}
+                            </div>
+                            <h3>{lang.name}</h3>
+                            <span className="exercise-badge">{lang.exercises.length} exercises</span>
+                        </Link>
+                    ))}
+                </div>
+            </section>
 
-      <section className="features-section">
-        <h2>Características</h2>
-        <div className="features-grid">
-          <div className="feature-card">
-            <div className="feature-icon">📝</div>
-            <h3>Ejercicios Reales</h3>
-            <p>Problemas típicos de entrevistas en las mejores empresas tech.</p>
-          </div>
-          <div className="feature-card">
-            <div className="feature-icon">💡</div>
-            <h3>Pistas y Soluciones</h3>
-            <p>Cada ejercicio incluye pistas y la solución completa explicada.</p>
-          </div>
-          <div className="feature-card">
-            <div className="feature-icon">⚡</div>
-            <h3>Ejecuta tu Código</h3>
-            <p>Editor integrado con compilación en línea para probar tus soluciones.</p>
-          </div>
-          <div className="feature-card">
-            <div className="feature-icon">📊</div>
-            <h3>Niveles de Dificultad</h3>
-            <p>Desde principiante hasta avanzado, progresa a tu ritmo.</p>
-          </div>
+            {/* ========= HOW IT WORKS SECTION ========= */}
+            <section className="process-section">
+                <div className="section-header">
+                    <span className="section-kicker">HOW IT WORKS</span>
+                    <h2>YOUR PATH TO <span className="highlight-text">SUCCESS</span></h2>
+                    <p className="section-subtitle">Simple steps to improve your coding skills</p>
+                </div>
+
+                <div className="process-steps">
+                    {/* Step 1 */}
+                    <div className="process-step">
+                        <div className="step-image">
+                            <div className="step-icon-box">
+                                <span className="step-number">01</span>
+                                <span className="step-emoji">🎯</span>
+                            </div>
+                        </div>
+                        <div className="step-content">
+                            <h3>Choose a Challenge</h3>
+                            <p>Browse through our collection of real interview problems. Filter by language and difficulty level to find the perfect challenge for you.</p>
+                        </div>
+                    </div>
+
+                    {/* Step 2 */}
+                    <div className="process-step reverse">
+                        <div className="step-image">
+                            <div className="step-icon-box">
+                                <span className="step-number">02</span>
+                                <span className="step-emoji">💻</span>
+                            </div>
+                        </div>
+                        <div className="step-content">
+                            <h3>Write Your Code</h3>
+                            <p>Use our built-in code editor with syntax highlighting. Write, test, and debug your solution in real-time without leaving the browser.</p>
+                        </div>
+                    </div>
+
+                    {/* Step 3 */}
+                    <div className="process-step">
+                        <div className="step-image">
+                            <div className="step-icon-box">
+                                <span className="step-number">03</span>
+                                <span className="step-emoji">🚀</span>
+                            </div>
+                        </div>
+                        <div className="step-content">
+                            <h3>Learn & Improve</h3>
+                            <p>Check the hints if you're stuck, compare your solution with ours, and understand different approaches to solve the same problem.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* ========= CTA SECTION ========= */}
+            <section className="cta-section">
+                <div className="cta-content">
+                    <h2>Ready to Start Coding?</h2>
+                    <p>Join thousands of developers preparing for their dream job</p>
+                    <a href="#languages" className="btn-primary large">
+                        Start Practicing Now
+                    </a>
+                </div>
+            </section>
         </div>
-      </section>
-    </div>
-  );
+    );
 }
 
 export default Home;

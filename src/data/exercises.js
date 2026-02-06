@@ -1,5 +1,5 @@
 // Importar imágenes de logos
-import pythonLogo from '../assets/images/python-logo.png';
+import pythonLogo from '../assets/images/python-logo.webp';
 import jsLogo from '../assets/images/js-logo.webp';
 import javaLogo from '../assets/images/java-logo.webp';
 import csharpLogo from '../assets/images/csharp-logo.webp';

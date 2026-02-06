@@ -1,18 +1,21 @@
 .language-exercises {
-  max-width: 900px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 25px;
+  padding: 60px 20px 40px 20px;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0d1a24 100%);
+  border-radius: 32px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
 }
 
 /* Header - Estilo Codedex */
 .language-header {
-  background: var(--bg-secondary);
-  padding: 40px;
-  border: 2px solid var(--accent-cyan);
-  border-radius: var(--radius-xl);
-  margin-bottom: 30px;
+  background: linear-gradient(135deg, rgba(30, 30, 30, 0.8), rgba(20, 20, 20, 0.9));
+  padding: 40px 32px;
+  border: 1px solid rgba(100, 255, 218, 0.1);
+  border-radius: 24px;
+  margin-bottom: 40px;
   position: relative;
-  box-shadow: var(--glow-blue);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
 }
 
 .back-link {
@@ -83,14 +86,15 @@
 .exercise-card {
   display: flex;
   align-items: center;
-  padding: 20px 25px;
-  background: var(--bg-card);
-  border: 2px solid var(--border-color);
-  border-radius: var(--radius-lg);
+  padding: 32px 32px;
+  background: linear-gradient(135deg, rgba(30, 30, 30, 0.7), rgba(20, 20, 20, 0.9));
+  border: 1px solid rgba(100, 255, 218, 0.1);
+  border-radius: 24px;
   text-decoration: none;
-  transition: all 0.25s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.03);
 }
 
 .exercise-card::before {
@@ -106,14 +110,10 @@
 }
 
 .exercise-card:hover {
-  border-color: var(--accent-green);
   transform: translateY(-3px);
   box-shadow: var(--glow-green);
 }
 
-.exercise-card:hover::before {
-  background: var(--accent-green);
-}
 
 .exercise-number {
   font-family: 'Press Start 2P', cursive;

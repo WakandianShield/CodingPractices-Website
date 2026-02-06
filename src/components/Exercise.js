@@ -53,7 +53,7 @@ function Exercise() {
 
     // Para HTML/CSS, usar iframe
     if (languageId === 'html' || languageId === 'css') {
-      setOutput('Vista previa disponible abajo ⬇️');
+      setOutput('Vista previa disponible abajo');
       setIsRunning(false);
       return;
     }
@@ -61,7 +61,7 @@ function Exercise() {
     const pistonConfig = pistonLanguageMap[languageId];
     
     if (!pistonConfig) {
-      setOutput('⚠️ Este lenguaje no soporta ejecución directa.\nPuedes copiar el código y probarlo en tu IDE local.');
+      setOutput('Este lenguaje no soporta ejecución directa.\nPuedes copiar el código y probarlo en tu IDE local.');
       setIsRunning(false);
       return;
     }
@@ -192,7 +192,7 @@ function Exercise() {
               className="hints-toggle"
               onClick={() => setShowHints(!showHints)}
             >
-              💡 {showHints ? 'Ocultar' : 'Mostrar'} Pistas ({exercise.hints?.length || 0})
+               {showHints ? 'Ocultar' : 'Mostrar'} Pistas ({exercise.hints?.length || 0})
             </button>
             {showHints && (
               <ul className="hints-list">
@@ -211,36 +211,36 @@ function Exercise() {
                 className={`tab ${activeTab === 'code' ? 'active' : ''}`}
                 onClick={() => setActiveTab('code')}
               >
-                📝 Código
+                Código
               </button>
               <button 
                 className={`tab ${activeTab === 'output' ? 'active' : ''}`}
                 onClick={() => setActiveTab('output')}
               >
-                📤 Salida
+                Salida
               </button>
               {(languageId === 'html' || languageId === 'css') && (
                 <button 
                   className={`tab ${activeTab === 'preview' ? 'active' : ''}`}
                   onClick={() => setActiveTab('preview')}
                 >
-                  👁️ Vista Previa
+                  Vista Previa
                 </button>
               )}
             </div>
             <div className="toolbar-actions">
               <button onClick={resetCode} className="action-btn reset">
-                🔄 Reiniciar
+                Reiniciar
               </button>
               <button onClick={loadSolution} className="action-btn solution">
-                {showSolution ? '✓ Solución Cargada' : '👁️ Ver Solución'}
+                {showSolution ? '✓ Solución Cargada' : 'Ver Solución'}
               </button>
               <button 
                 onClick={runCode} 
                 disabled={isRunning}
                 className="action-btn run"
               >
-                {isRunning ? '⏳ Ejecutando...' : '▶️ Ejecutar'}
+                {isRunning ? 'Ejecutando...' : '▶Ejecutar'}
               </button>
             </div>
           </div>

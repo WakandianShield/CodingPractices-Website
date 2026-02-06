@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { getAllLanguages } from '../data/exercises';
-import heroBg from '../assets/images/hero-bg.png';
+import heroBg from '../assets/images/hero-bg.webp';
 import './Home.css';
 
 function Home() {
@@ -10,13 +10,24 @@ function Home() {
     return (
         <div className="home">
             {/* ========= HERO SECTION ========= */}
-            <section className="hero pro-hero" style={{ backgroundImage: `url(${heroBg})` }}>
-                <div className="hero-overlay" />
-                <div className="hero-content pro-hero-content">
+            <section className="hero">
+                <img
+                    className="hero-bg-video"
+                    src={heroBg}
+                    alt="Hero background"
+                    style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        zIndex: 0,
+                    }}
+                />
+                <div className="hero-content">
                     <span className="kicker">START YOUR JOURNEY</span>
                     <h1>
                         <span className="hero-main">DISCOVER THE AMAZING<span className="highlight-text"> WORLD OF CODING</span></span>
-                        
                     </h1>
                     <p className="hero-subtitle">
                         Master programming through real interview challenges.<br />
@@ -70,7 +81,7 @@ function Home() {
                         <div className="step-image">
                             <div className="step-icon-box">
                                 <span className="step-number">01</span>
-                                <span className="step-emoji">🎯</span>
+                                <img className="step-img" src={require('../assets/images/choose.png')} alt="Choose" />
                             </div>
                         </div>
                         <div className="step-content">
@@ -84,7 +95,7 @@ function Home() {
                         <div className="step-image">
                             <div className="step-icon-box">
                                 <span className="step-number">02</span>
-                                <span className="step-emoji">💻</span>
+                                <img className="step-img" src={require('../assets/images/write.png')} alt="Write" />
                             </div>
                         </div>
                         <div className="step-content">
@@ -98,7 +109,7 @@ function Home() {
                         <div className="step-image">
                             <div className="step-icon-box">
                                 <span className="step-number">03</span>
-                                <span className="step-emoji">🚀</span>
+                                <img className="step-img" src={require('../assets/images/learn.png')} alt="Learn" />
                             </div>
                         </div>
                         <div className="step-content">

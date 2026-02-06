@@ -3,6 +3,7 @@
 
 /* ========= Variables CSS - Estilo Codedex/Videojuego ========= */
 :root {
+    scroll-behavior: smooth;
   /* Tema retro pixel art */
   --bg-primary: #181818;
   --bg-secondary: #232323;
@@ -55,6 +56,8 @@ body {
   image-rendering: pixelated;
 }
 
+
+
 /* ========= App Layout ========= */
 .app {
   min-height: 100vh;
@@ -74,11 +77,11 @@ body {
   align-items: center;
   padding: 15px 30px;
   background: var(--bg-secondary);
-  border-bottom: 4px solid var(--accent-color);
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 100;
-  box-shadow: 0 4px 0 var(--accent-color);
   image-rendering: pixelated;
 }
 
@@ -100,7 +103,6 @@ body {
   height: 48px;
   object-fit: contain;
   image-rendering: pixelated;
-  border: 2px solid var(--accent-color);
   background: var(--bg-card);
 }
 
@@ -120,41 +122,32 @@ body {
 .header-nav a {
   font-family: 'Press Start 2P', cursive;
   font-size: 0.7rem;
-  color: var(--accent-color);
+  color: white;
   text-decoration: none;
   padding: 10px 18px;
-  border: 2px solid var(--accent-color);
-  border-radius: 0px;
+  border-radius: 20px;
   background: var(--bg-card);
   transition: all 0.25s;
-  margin-right: 8px;
-  box-shadow: 0 2px 0 var(--accent-color);
 }
 
 .header-nav a:hover {
-  color: #fff;
-  border-color: var(--accent-cyan);
-  background: var(--accent-cyan);
-  box-shadow: 0 4px 0 var(--accent-cyan);
+  color: var(--accent-cyan);
   transform: scale(1.05);
 }
 
 .theme-toggle {
-  background: var(--bg-tertiary);
-  border: 2px solid var(--accent-color);
+  background: var(--bg-secondary);
+  border: none;
   padding: 10px 12px;
   font-size: 1.2rem;
   cursor: pointer;
   transition: all 0.25s;
-  border-radius: 0px;
+  border-radius: 30px;
   color: var(--accent-color);
-  box-shadow: 0 2px 0 var(--accent-color);
 }
 
 .theme-toggle:hover {
-  border-color: var(--accent-yellow);
-  box-shadow: 0 4px 0 var(--accent-yellow);
-  transform: scale(1.08);
+  transform: scale(1.5);
   color: var(--accent-yellow);
 }
 
@@ -162,7 +155,8 @@ body {
 .app-main {
   flex: 1;
   background: var(--bg-primary);
-  padding: 24px 0;
+  padding:  0 0 0 0;
+  margin: 0;
   image-rendering: pixelated;
 }
 
@@ -171,10 +165,8 @@ body {
   text-align: center;
   padding: 25px;
   background: var(--bg-secondary);
-  border-top: 4px solid var(--accent-color);
   color: var(--accent-color);
   font-size: 0.8rem;
-  box-shadow: 0 -4px 0 var(--accent-color);
   image-rendering: pixelated;
 }
 
@@ -193,20 +185,18 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-tertiary);
+  background: var(--bg-primary);
   border-radius: 0px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--accent-color);
+  background: transparent;
   border-radius: 0px;
-  border: 2px solid var(--bg-tertiary);
-  box-shadow: 0 2px 0 var(--accent-color);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-cyan);
-  box-shadow: 0 4px 0 var(--accent-cyan);
+  background: var(--bg-secondary);
+  box-shadow: 0 0 10px var(--bg-primary);
 }
 
 /* ========= Animations ========= */

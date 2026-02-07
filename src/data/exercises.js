@@ -9,320 +9,1555 @@ import htmlLogo from '../assets/images/html-logo.webp';
 import cssLogo from '../assets/images/css-logo.webp';
 
 export const exercises = {
-  python: {
-    name: "Python",
-    icon: pythonLogo,
-    color: "#3776ab",
-    exercises: [
-      {
-        id: 1,
-        title: "FizzBuzz",
-        difficulty: "Fácil",
-        description: "Escribe un programa que imprima los números del 1 al 100. Para múltiplos de 3, imprime 'Fizz'. Para múltiplos de 5, imprime 'Buzz'. Para múltiplos de ambos, imprime 'FizzBuzz'.",
-        starterCode: `# Escribe tu solución aquí
-def fizzbuzz():
-    for i in range(1, 101):
-        # Tu código aquí
-        pass
+python: {
+  name: "Python",
+  icon: pythonLogo,
+  color: "#3776ab",
+  exercises: [
 
-fizzbuzz()`,
-        solution: `def fizzbuzz():
-    for i in range(1, 101):
-        if i % 3 == 0 and i % 5 == 0:
-            print("FizzBuzz")
-        elif i % 3 == 0:
-            print("Fizz")
-        elif i % 5 == 0:
-            print("Buzz")
-        else:
-            print(i)
+    // =========================
+    // 🟢 EASY
+    // =========================
 
-fizzbuzz()`,
-        hints: ["Usa el operador módulo (%)", "El orden de las condiciones importa"]
-      },
-      {
-        id: 2,
-        title: "Palíndromo",
-        difficulty: "Fácil",
-        description: "Escribe una función que determine si una cadena es un palíndromo (se lee igual de izquierda a derecha que de derecha a izquierda).",
-        starterCode: `def es_palindromo(texto):
-    # Tu código aquí
-    pass
+    {
+      id: 1,
+      title: "FizzBuzz",
+      difficulty: "Easy",
+      description: "Print numbers from 1 to 100. For multiples of 3, print 'Fizz'. For multiples of 5, print 'Buzz'. For multiples of both, print 'FizzBuzz'.",
+      starterCode: ``,
+      solution: `# Solution: Check conditions in correct order (most restrictive first)
+for i in range(1, 101):
+    if i % 3 == 0 and i % 5 == 0:
+        print("FizzBuzz")
+    elif i % 3 == 0:
+        print("Fizz")
+    elif i % 5 == 0:
+        print("Buzz")
+    else:
+        print(i)`,
+      hints: ["Use modulo operator %", "Check FizzBuzz condition first", "Loop from 1 to 100"]
+    },
 
-# Pruebas
-print(es_palindromo("radar"))  # True
-print(es_palindromo("python")) # False
-print(es_palindromo("anilina")) # True`,
-        solution: `def es_palindromo(texto):
-    texto = texto.lower().replace(" ", "")
-    return texto == texto[::-1]
+    {
+      id: 2,
+      title: "Reverse String",
+      difficulty: "Easy",
+      description: "Reverse a given string.",
+      starterCode: ``,
+      solution: `# Solution: Python slicing provides the simplest solution
+text = "hello world"
+reversed_text = text[::-1]
+print(reversed_text)  # dlrow olleh`,
+      hints: ["String slicing", "Use [::-1]", "Alternative: reversed() function"]
+    },
 
-# Pruebas
-print(es_palindromo("radar"))  # True
-print(es_palindromo("python")) # False
-print(es_palindromo("anilina")) # True`,
-        hints: ["Puedes invertir un string con [::-1]", "Considera convertir a minúsculas"]
-      },
-      {
-        id: 3,
-        title: "Fibonacci",
-        difficulty: "Medio",
-        description: "Escribe una función que devuelva los primeros n números de la secuencia de Fibonacci.",
-        starterCode: `def fibonacci(n):
-    # Tu código aquí
-    pass
+    {
+      id: 3,
+      title: "Palindrome Check",
+      difficulty: "Easy",
+      description: "Check if a string is a palindrome (reads the same forwards and backwards).",
+      starterCode: ``,
+      solution: `# Solution: Normalize string and compare with its reverse
+text = "A man a plan a canal Panama"
+normalized = ''.join(c.lower() for c in text if c.isalnum())
+print(normalized == normalized[::-1])  # True`,
+      hints: ["Remove non-alphanumeric characters", "Convert to lowercase", "Compare with reverse"]
+    },
 
-print(fibonacci(10))  # [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]`,
-        solution: `def fibonacci(n):
-    if n <= 0:
-        return []
-    if n == 1:
-        return [0]
-    
+    {
+      id: 4,
+      title: "Count Vowels",
+      difficulty: "Easy",
+      description: "Count the number of vowels in a string.",
+      starterCode: ``,
+      solution: `# Solution: Iterate through characters and count vowels
+text = "Hello World"
+vowels = "aeiou"
+count = sum(1 for char in text.lower() if char in vowels)
+print(count)  # 3`,
+      hints: ["Define vowel set", "Convert to lowercase", "Use sum with generator"]
+    },
+
+    {
+      id: 5,
+      title: "Find Maximum",
+      difficulty: "Easy",
+      description: "Find the maximum number in a list without using built-in functions.",
+      starterCode: ``,
+      solution: `# Solution: Iterate through list and track maximum
+numbers = [3, 7, 2, 9, 4]
+max_num = numbers[0]
+for num in numbers:
+    if num > max_num:
+        max_num = num
+print(max_num)  # 9`,
+      hints: ["Initialize with first element", "Loop through list", "Update max when finding larger"]
+    },
+
+    {
+      id: 6,
+      title: "Sum List",
+      difficulty: "Easy",
+      description: "Calculate the sum of all elements in a list.",
+      starterCode: ``,
+      solution: `# Solution: Use built-in sum or manual iteration
+numbers = [1, 2, 3, 4, 5]
+total = sum(numbers)
+print(total)  # 15`,
+      hints: ["sum() function", "Manual: initialize total, loop and add"]
+    },
+
+    {
+      id: 7,
+      title: "Factorial",
+      difficulty: "Easy",
+      description: "Calculate the factorial of a non-negative integer.",
+      starterCode: ``,
+      solution: `# Solution: Multiply numbers from 1 to n
+n = 5
+result = 1
+for i in range(1, n + 1):
+    result *= i
+print(result)  # 120`,
+      hints: ["Start result at 1", "Loop from 1 to n", "Multiply each number"]
+    },
+
+    {
+      id: 8,
+      title: "Check Even or Odd",
+      difficulty: "Easy",
+      description: "Check if a number is even or odd.",
+      starterCode: ``,
+      solution: `# Solution: Use modulo operator to check remainder
+number = 7
+if number % 2 == 0:
+    print("Even")
+else:
+    print("Odd")`,
+      hints: ["Use modulo operator %", "Even: remainder 0 when divided by 2"]
+    },
+
+    {
+      id: 9,
+      title: "Remove Duplicates",
+      difficulty: "Easy",
+      description: "Remove duplicates from a list while preserving order.",
+      starterCode: ``,
+      solution: `# Solution: Use dict.fromkeys() to preserve order
+numbers = [1, 2, 2, 3, 4, 4, 5]
+unique = list(dict.fromkeys(numbers))
+print(unique)  # [1, 2, 3, 4, 5]`,
+      hints: ["dict.fromkeys() preserves order", "Alternative: use set (order not guaranteed)"]
+    },
+
+    {
+      id: 10,
+      title: "Find Minimum",
+      difficulty: "Easy",
+      description: "Find the minimum number in a list without using built-in functions.",
+      starterCode: ``,
+      solution: `# Solution: Iterate through list and track minimum
+numbers = [5, 2, 8, 1, 9]
+min_num = numbers[0]
+for num in numbers:
+    if num < min_num:
+        min_num = num
+print(min_num)  # 1`,
+      hints: ["Initialize with first element", "Loop through list", "Update min when finding smaller"]
+    },
+
+    // =========================
+    // 🟡 MEDIUM
+    // =========================
+
+    {
+      id: 11,
+      title: "Two Sum",
+      difficulty: "Medium",
+      description: "Given an array of integers and a target, find two numbers that sum to the target and return their indices.",
+      starterCode: ``,
+      solution: `# Solution: Use hash map for O(n) time complexity
+nums = [2, 7, 11, 15]
+target = 9
+seen = {}
+for i, num in enumerate(nums):
+    complement = target - num
+    if complement in seen:
+        print([seen[complement], i])  # [0, 1]
+        break
+    seen[num] = i`,
+      hints: ["Use dictionary to store visited numbers", "Calculate complement", "One-pass solution"]
+    },
+
+    {
+      id: 12,
+      title: "Anagram Check",
+      difficulty: "Medium",
+      description: "Check if two strings are anagrams of each other.",
+      starterCode: ``,
+      solution: `# Solution: Sort both strings or use character count
+str1 = "listen"
+str2 = "silent"
+print(sorted(str1) == sorted(str2))  # True
+
+# Alternative using Counter
+from collections import Counter
+print(Counter(str1) == Counter(str2))  # True`,
+      hints: ["Anagrams have same characters in different order", "Sort both strings", "Use Counter for character count"]
+    },
+
+    {
+      id: 13,
+      title: "Valid Parentheses",
+      difficulty: "Medium",
+      description: "Check if a string of parentheses is valid (properly opened and closed).",
+      starterCode: ``,
+      solution: `# Solution: Use stack to track opening parentheses
+s = "({[]})"
+stack = []
+mapping = {')': '(', '}': '{', ']': '['}
+
+for char in s:
+    if char in mapping.values():  # Opening bracket
+        stack.append(char)
+    elif char in mapping.keys():  # Closing bracket
+        if not stack or mapping[char] != stack.pop():
+            print(False)
+            break
+else:
+    print(not stack)  # True if stack is empty`,
+      hints: ["Use stack data structure", "Map closing to opening brackets", "Check stack empty at end"]
+    },
+
+    {
+      id: 14,
+      title: "Fibonacci Sequence",
+      difficulty: "Medium",
+      description: "Generate the first n numbers of the Fibonacci sequence.",
+      starterCode: ``,
+      solution: `# Solution: Iterative approach is efficient
+n = 10
+if n <= 0:
+    fib = []
+elif n == 1:
+    fib = [0]
+else:
     fib = [0, 1]
     for i in range(2, n):
-        fib.append(fib[i-1] + fib[i-2])
-    return fib
+        fib.append(fib[-1] + fib[-2])
+print(fib)  # [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]`,
+      hints: ["Start with [0, 1]", "Each number is sum of previous two", "Iterative is better than recursive"]
+    },
 
-print(fibonacci(10))  # [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]`,
-        hints: ["Empieza con [0, 1]", "Cada número es la suma de los dos anteriores"]
-      },
-      {
-        id: 4,
-        title: "Dos Sumas",
-        difficulty: "Medio",
-        description: "Dado un array de enteros y un objetivo, devuelve los índices de los dos números que suman el objetivo.",
-        starterCode: `def two_sum(nums, target):
-    # Tu código aquí
-    pass
+    {
+      id: 15,
+      title: "First Unique Character",
+      difficulty: "Medium",
+      description: "Find the first non-repeating character in a string and return its index.",
+      starterCode: ``,
+      solution: `# Solution: Two-pass approach using dictionary
+s = "leetcode"
+char_count = {}
+for char in s:
+    char_count[char] = char_count.get(char, 0) + 1
 
-print(two_sum([2, 7, 11, 15], 9))  # [0, 1]
-print(two_sum([3, 2, 4], 6))       # [1, 2]`,
-        solution: `def two_sum(nums, target):
-    seen = {}
-    for i, num in enumerate(nums):
-        complement = target - num
-        if complement in seen:
-            return [seen[complement], i]
-        seen[num] = i
-    return []
+for i, char in enumerate(s):
+    if char_count[char] == 1:
+        print(i)  # 0 (l is first unique)
+        break
+else:
+    print(-1)  # No unique character`,
+      hints: ["First pass: count characters", "Second pass: find first with count 1", "Use dictionary for O(1) lookups"]
+    },
 
-print(two_sum([2, 7, 11, 15], 9))  # [0, 1]
-print(two_sum([3, 2, 4], 6))       # [1, 2]`,
-        hints: ["Usa un diccionario para guardar valores vistos", "El complemento es target - num actual"]
-      },
-      {
-        id: 5,
-        title: "Anagramas",
-        difficulty: "Medio",
-        description: "Escribe una función que determine si dos cadenas son anagramas (contienen las mismas letras).",
-        starterCode: `def son_anagramas(str1, str2):
-    # Tu código aquí
-    pass
+    {
+      id: 16,
+      title: "Merge Two Sorted Lists",
+      difficulty: "Medium",
+      description: "Merge two sorted lists into one sorted list.",
+      starterCode: ``,
+      solution: `# Solution: Two-pointer approach
+list1 = [1, 3, 5]
+list2 = [2, 4, 6]
+merged = []
+i = j = 0
 
-print(son_anagramas("listen", "silent"))  # True
-print(son_anagramas("hello", "world"))    # False`,
-        solution: `def son_anagramas(str1, str2):
-    str1 = str1.lower().replace(" ", "")
-    str2 = str2.lower().replace(" ", "")
-    return sorted(str1) == sorted(str2)
+while i < len(list1) and j < len(list2):
+    if list1[i] < list2[j]:
+        merged.append(list1[i])
+        i += 1
+    else:
+        merged.append(list2[j])
+        j += 1
 
-print(son_anagramas("listen", "silent"))  # True
-print(son_anagramas("hello", "world"))    # False`,
-        hints: ["sorted() ordena los caracteres", "Compara las versiones ordenadas"]
-      }
-    ]
-  },
-  javascript: {
-    name: "JavaScript",
-    icon: jsLogo,
-    color: "#f7df1e",
-    exercises: [
-      {
-        id: 1,
-        title: "Aplanar Array",
-        difficulty: "Medio",
-        description: "Escribe una función que aplane un array anidado de cualquier profundidad.",
-        starterCode: `function flatten(arr) {
-  // Tu código aquí
+merged.extend(list1[i:])
+merged.extend(list2[j:])
+print(merged)  # [1, 2, 3, 4, 5, 6]`,
+      hints: ["Use two pointers", "Compare elements from both lists", "Append remaining elements"]
+    },
+
+    {
+      id: 17,
+      title: "Maximum Subarray",
+      difficulty: "Medium",
+      description: "Find the contiguous subarray with the largest sum.",
+      starterCode: ``,
+      solution: `# Solution: Kadane's algorithm (dynamic programming)
+nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+max_current = max_global = nums[0]
+
+for num in nums[1:]:
+    max_current = max(num, max_current + num)
+    max_global = max(max_global, max_current)
+
+print(max_global)  # 6 (subarray [4, -1, 2, 1])`,
+      hints: ["Kadane's algorithm", "Track current and global maximum", "O(n) time complexity"]
+    },
+
+    {
+      id: 18,
+      title: "Group Anagrams",
+      difficulty: "Medium",
+      description: "Group anagrams together from a list of strings.",
+      starterCode: ``,
+      solution: `# Solution: Use sorted string as key in dictionary
+strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
+anagrams = {}
+for s in strs:
+    key = ''.join(sorted(s))
+    if key not in anagrams:
+        anagrams[key] = []
+    anagrams[key].append(s)
+
+print(list(anagrams.values()))  # [['eat', 'tea', 'ate'], ['tan', 'nat'], ['bat']]`,
+      hints: ["Sorted string as key", "Dictionary to group", "Alternative: use character count tuple as key"]
+    },
+
+    {
+      id: 19,
+      title: "Rotate Array",
+      difficulty: "Medium",
+      description: "Rotate an array to the right by k steps.",
+      starterCode: ``,
+      solution: `# Solution: Three-reversal method
+nums = [1, 2, 3, 4, 5, 6, 7]
+k = 3
+k = k % len(nums)  # Handle k larger than array size
+
+def reverse(arr, start, end):
+    while start < end:
+        arr[start], arr[end] = arr[end], arr[start]
+        start += 1
+        end -= 1
+
+reverse(nums, 0, len(nums)-1)
+reverse(nums, 0, k-1)
+reverse(nums, k, len(nums)-1)
+
+print(nums)  # [5, 6, 7, 1, 2, 3, 4]`,
+      hints: ["Use three reversals", "Reverse entire array", "Reverse first k elements", "Reverse remaining"]
+    },
+
+    {
+      id: 20,
+      title: "Longest Common Prefix",
+      difficulty: "Medium",
+      description: "Find the longest common prefix string amongst an array of strings.",
+      starterCode: ``,
+      solution: `# Solution: Vertical scanning approach
+strs = ["flower", "flow", "flight"]
+if not strs:
+    print("")
+    
+prefix = strs[0]
+for string in strs[1:]:
+    while not string.startswith(prefix):
+        prefix = prefix[:-1]
+        if not prefix:
+            print("")
+            break
+    else:
+        continue
+    break
+
+print(prefix)  # "fl"`,
+      hints: ["Vertical scanning", "Start with first string", "Gradually shorten prefix", "Check startswith()"]
+    },
+
+    // =========================
+    // 🔴 HARD
+    // =========================
+
+    {
+      id: 21,
+      title: "Trapping Rain Water",
+      difficulty: "Hard",
+      description: "Compute how much water can be trapped between bars of different heights.",
+      starterCode: ``,
+      solution: `# Solution: Two-pointer approach
+height = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
+if not height:
+    print(0)
+    
+left, right = 0, len(height) - 1
+left_max = right_max = 0
+water = 0
+
+while left < right:
+    if height[left] < height[right]:
+        left_max = max(left_max, height[left])
+        water += left_max - height[left]
+        left += 1
+    else:
+        right_max = max(right_max, height[right])
+        water += right_max - height[right]
+        right -= 1
+
+print(water)  # 6`,
+      hints: ["Two-pointer approach", "Track left and right maximums", "Water trapped = min(max_left, max_right) - current_height"]
+    },
+
+    {
+      id: 22,
+      title: "Merge k Sorted Lists",
+      difficulty: "Hard",
+      description: "Merge k sorted linked lists into one sorted list.",
+      starterCode: ``,
+      solution: `# Solution: Use heap to efficiently merge multiple lists
+import heapq
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+def merge_k_lists(lists):
+    dummy = ListNode()
+    current = dummy
+    heap = []
+    
+    # Initialize heap with first node from each list
+    for i, lst in enumerate(lists):
+        if lst:
+            heapq.heappush(heap, (lst.val, i, lst))
+    
+    while heap:
+        val, i, node = heapq.heappop(heap)
+        current.next = node
+        current = current.next
+        
+        if node.next:
+            heapq.heappush(heap, (node.next.val, i, node.next))
+    
+    return dummy.next`,
+      hints: ["Use min-heap (priority queue)", "Push first element from each list", "Always push next element after popping"]
+    },
+
+    {
+      id: 23,
+      title: "Median of Two Sorted Arrays",
+      difficulty: "Hard",
+      description: "Find the median of two sorted arrays.",
+      starterCode: ``,
+      solution: `# Solution: Binary search on the smaller array
+def find_median_sorted_arrays(nums1, nums2):
+    # Ensure nums1 is the smaller array
+    if len(nums1) > len(nums2):
+        nums1, nums2 = nums2, nums1
+    
+    m, n = len(nums1), len(nums2)
+    low, high = 0, m
+    
+    while low <= high:
+        partition1 = (low + high) // 2
+        partition2 = (m + n + 1) // 2 - partition1
+        
+        max_left1 = float('-inf') if partition1 == 0 else nums1[partition1 - 1]
+        min_right1 = float('inf') if partition1 == m else nums1[partition1]
+        
+        max_left2 = float('-inf') if partition2 == 0 else nums2[partition2 - 1]
+        min_right2 = float('inf') if partition2 == n else nums2[partition2]
+        
+        if max_left1 <= min_right2 and max_left2 <= min_right1:
+            if (m + n) % 2 == 0:
+                return (max(max_left1, max_left2) + min(min_right1, min_right2)) / 2
+            else:
+                return max(max_left1, max_left2)
+        elif max_left1 > min_right2:
+            high = partition1 - 1
+        else:
+            low = partition1 + 1
+    
+    raise ValueError("Input arrays are not sorted")
+
+# Example usage
+nums1 = [1, 3]
+nums2 = [2]
+print(find_median_sorted_arrays(nums1, nums2))  # 2.0`,
+      hints: ["Binary search on smaller array", "Partition both arrays", "Check max_left <= min_right", "Handle even/odd total length"]
+    },
+
+    {
+      id: 24,
+      title: "LRU Cache",
+      difficulty: "Hard",
+      description: "Design and implement an LRU (Least Recently Used) cache.",
+      starterCode: ``,
+      solution: `# Solution: Use OrderedDict for O(1) operations
+from collections import OrderedDict
+
+class LRUCache:
+    def __init__(self, capacity):
+        self.cache = OrderedDict()
+        self.capacity = capacity
+    
+    def get(self, key):
+        if key not in self.cache:
+            return -1
+        # Move to end (most recently used)
+        self.cache.move_to_end(key)
+        return self.cache[key]
+    
+    def put(self, key, value):
+        if key in self.cache:
+            self.cache.move_to_end(key)
+        self.cache[key] = value
+        if len(self.cache) > self.capacity:
+            # Remove first item (least recently used)
+            self.cache.popitem(last=False)
+
+# Example usage
+cache = LRUCache(2)
+cache.put(1, 1)
+cache.put(2, 2)
+print(cache.get(1))  # 1
+cache.put(3, 3)      # Evicts key 2
+print(cache.get(2))  # -1`,
+      hints: ["Use OrderedDict", "move_to_end() for recently used", "popitem(last=False) for eviction", "O(1) for get and put"]
+    },
+
+    {
+      id: 25,
+      title: "Word Search II",
+      difficulty: "Hard",
+      description: "Given a board of characters and a list of words, find all words in the board.",
+      starterCode: ``,
+      solution: `# Solution: Trie + Backtracking
+class TrieNode:
+    def __init__(self):
+        self.children = {}
+        self.is_word = False
+        self.word = ""
+
+class Solution:
+    def findWords(self, board, words):
+        # Build trie
+        root = TrieNode()
+        for word in words:
+            node = root
+            for char in word:
+                if char not in node.children:
+                    node.children[char] = TrieNode()
+                node = node.children[char]
+            node.is_word = True
+            node.word = word
+        
+        result = []
+        rows, cols = len(board), len(board[0])
+        
+        def dfs(r, c, node):
+            if node.is_word:
+                result.append(node.word)
+                node.is_word = False  # Avoid duplicates
+            
+            if r < 0 or r >= rows or c < 0 or c >= cols:
+                return
+            
+            char = board[r][c]
+            if char not in node.children:
+                return
+            
+            board[r][c] = '#'  # Mark visited
+            for dr, dc in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
+                dfs(r + dr, c + dc, node.children[char])
+            board[r][c] = char  # Restore
+        
+        for r in range(rows):
+            for c in range(cols):
+                dfs(r, c, root)
+        
+        return result
+
+# Example usage
+board = [["o","a","a","n"],["e","t","a","e"],["i","h","k","r"],["i","f","l","v"]]
+words = ["oath","pea","eat","rain"]
+solution = Solution()
+print(solution.findWords(board, words))  # ["eat","oath"]`,
+      hints: ["Build trie from words", "DFS with backtracking", "Mark visited cells", "Check all four directions"]
+    }
+
+  ]
+},
+
+
+
+
+javascript: {
+  name: "JavaScript",
+  icon: jsLogo,
+  color: "#f7df1e",
+  exercises: [
+
+    // =========================
+    // 🟢 EASY
+    // =========================
+
+    {
+      id: 1,
+      title: "FizzBuzz",
+      difficulty: "Easy",
+      description: "Print numbers from 1 to 100. For multiples of 3, print 'Fizz'. For multiples of 5, print 'Buzz'. For multiples of both, print 'FizzBuzz'.",
+      starterCode: ``,
+      solution: `// Check conditions in correct order (most restrictive first)
+for (let i = 1; i <= 100; i++) {
+  if (i % 3 === 0 && i % 5 === 0) {
+    console.log("FizzBuzz");
+  } else if (i % 3 === 0) {
+    console.log("Fizz");
+  } else if (i % 5 === 0) {
+    console.log("Buzz");
+  } else {
+    console.log(i);
+  }
+}`,
+      hints: ["Use modulo operator %", "Check FizzBuzz condition first", "Loop from 1 to 100"]
+    },
+
+    {
+      id: 2,
+      title: "Reverse a String",
+      difficulty: "Easy",
+      description: "Reverse a given string.",
+      starterCode: ``,
+      solution: `// Multiple solutions for reversing a string
+const str = "hello";
+
+// Solution 1: Using split, reverse, join (most common)
+const reversed1 = str.split('').reverse().join('');
+console.log(reversed1); // "olleh"
+
+// Solution 2: Using a for loop
+let reversed2 = '';
+for (let i = str.length - 1; i >= 0; i--) {
+  reversed2 += str[i];
+}
+console.log(reversed2); // "olleh"
+
+// Solution 3: Using reduce
+const reversed3 = str.split('').reduce((acc, char) => char + acc, '');
+console.log(reversed3); // "olleh"`,
+      hints: ["String methods: split, reverse, join", "Loop backwards through the string", "Consider multiple approaches"]
+    },
+
+    {
+      id: 3,
+      title: "Find Max/Min in Array",
+      difficulty: "Easy",
+      description: "Find the maximum and minimum values in an array without using Math.max or Math.min.",
+      starterCode: ``,
+      solution: `// Manual implementation without built-in methods
+const numbers = [3, 7, 2, 9, 4, 1];
+
+let max = numbers[0];
+let min = numbers[0];
+
+for (let i = 1; i < numbers.length; i++) {
+  if (numbers[i] > max) {
+    max = numbers[i];
+  }
+  if (numbers[i] < min) {
+    min = numbers[i];
+  }
 }
 
-console.log(flatten([1, [2, [3, [4]], 5]])); // [1, 2, 3, 4, 5]`,
-        solution: `function flatten(arr) {
-  return arr.reduce((flat, item) => {
-    return flat.concat(Array.isArray(item) ? flatten(item) : item);
+console.log("Max:", max); // 9
+console.log("Min:", min); // 1
+
+// Alternative with built-in methods (for comparison)
+console.log("Built-in Max:", Math.max(...numbers)); // 9
+console.log("Built-in Min:", Math.min(...numbers)); // 1`,
+      hints: ["Initialize with first element", "Loop through array", "Compare and update values"]
+    },
+
+    {
+      id: 4,
+      title: "Palindrome Check",
+      difficulty: "Easy",
+      description: "Check if a string is a palindrome (reads the same forwards and backwards).",
+      starterCode: ``,
+      solution: `// Check palindrome by comparing with reversed string
+const isPalindrome = (str) => {
+  // Clean the string: remove non-alphanumeric and lowercase
+  const cleaned = str.replace(/[^A-Za-z0-9]/g, '').toLowerCase();
+  const reversed = cleaned.split('').reverse().join('');
+  return cleaned === reversed;
+};
+
+// Test cases
+console.log(isPalindrome("A man, a plan, a canal: Panama")); // true
+console.log(isPalindrome("race a car")); // false
+console.log(isPalindrome("racecar")); // true`,
+      hints: ["Remove non-alphanumeric characters", "Convert to lowercase", "Compare original with reversed"]
+    },
+
+    {
+      id: 5,
+      title: "Count Vowels",
+      difficulty: "Easy",
+      description: "Count the number of vowels in a string.",
+      starterCode: ``,
+      solution: `// Count vowels using regex or loop
+const countVowels = (str) => {
+  // Solution 1: Using regex
+  const matches = str.match(/[aeiou]/gi);
+  return matches ? matches.length : 0;
+  
+  // Solution 2: Using loop
+  // const vowels = 'aeiouAEIOU';
+  // let count = 0;
+  // for (let char of str) {
+  //   if (vowels.includes(char)) {
+  //     count++;
+  //   }
+  // }
+  // return count;
+};
+
+console.log(countVowels("Hello World")); // 3
+console.log(countVowels("JavaScript")); // 3`,
+      hints: ["Define vowel characters", "Case insensitive matching", "Use regex or includes() method"]
+    },
+
+    {
+      id: 6,
+      title: "Factorial",
+      difficulty: "Easy",
+      description: "Calculate the factorial of a non-negative integer.",
+      starterCode: ``,
+      solution: `// Calculate factorial using loop (iterative approach)
+const factorial = (n) => {
+  if (n < 0) return "Undefined";
+  if (n === 0 || n === 1) return 1;
+  
+  let result = 1;
+  for (let i = 2; i <= n; i++) {
+    result *= i;
+  }
+  return result;
+};
+
+// Recursive approach (also common in interviews)
+const factorialRecursive = (n) => {
+  if (n < 0) return "Undefined";
+  if (n === 0 || n === 1) return 1;
+  return n * factorialRecursive(n - 1);
+};
+
+console.log(factorial(5)); // 120
+console.log(factorialRecursive(5)); // 120`,
+      hints: ["Handle edge cases (0, 1, negative)", "Loop from 2 to n", "Consider recursive solution"]
+    },
+
+    {
+      id: 7,
+      title: "Remove Duplicates from Array",
+      difficulty: "Easy",
+      description: "Remove duplicates from an array.",
+      starterCode: ``,
+      solution: `// Multiple ways to remove duplicates
+const array = [1, 2, 2, 3, 4, 4, 5];
+
+// Solution 1: Using Set (most modern)
+const unique1 = [...new Set(array)];
+console.log(unique1); // [1, 2, 3, 4, 5]
+
+// Solution 2: Using filter
+const unique2 = array.filter((value, index, self) => {
+  return self.indexOf(value) === index;
+});
+console.log(unique2); // [1, 2, 3, 4, 5]
+
+// Solution 3: Using reduce
+const unique3 = array.reduce((acc, current) => {
+  if (!acc.includes(current)) {
+    acc.push(current);
+  }
+  return acc;
+}, []);
+console.log(unique3); // [1, 2, 3, 4, 5]`,
+      hints: ["Set automatically removes duplicates", "filter with indexOf", "reduce to accumulate unique values"]
+    },
+
+    {
+      id: 8,
+      title: "Sum of Array Elements",
+      difficulty: "Easy",
+      description: "Calculate the sum of all elements in an array.",
+      starterCode: ``,
+      solution: `// Sum array elements using reduce or loop
+const numbers = [1, 2, 3, 4, 5];
+
+// Solution 1: Using reduce (functional approach)
+const sum1 = numbers.reduce((acc, current) => acc + current, 0);
+console.log(sum1); // 15
+
+// Solution 2: Using for loop (imperative approach)
+let sum2 = 0;
+for (let i = 0; i < numbers.length; i++) {
+  sum2 += numbers[i];
+}
+console.log(sum2); // 15
+
+// Solution 3: Using for...of loop
+let sum3 = 0;
+for (let num of numbers) {
+  sum3 += num;
+}
+console.log(sum3); // 15`,
+      hints: ["reduce method with initial value 0", "Initialize sum variable to 0", "Different loop types"]
+    },
+
+    {
+      id: 9,
+      title: "Check Prime Number",
+      difficulty: "Easy",
+      description: "Check if a number is prime.",
+      starterCode: ``,
+      solution: `// Check if a number is prime
+const isPrime = (num) => {
+  if (num <= 1) return false;
+  if (num <= 3) return true;
+  
+  // Check divisibility from 2 to sqrt(num)
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
+  return true;
+};
+
+console.log(isPrime(7)); // true
+console.log(isPrime(10)); // false
+console.log(isPrime(2)); // true
+console.log(isPrime(1)); // false`,
+      hints: ["Numbers <= 1 are not prime", "Only check up to sqrt(num)", "Check for divisibility"]
+    },
+
+    {
+      id: 10,
+      title: "Flatten Array",
+      difficulty: "Easy",
+      description: "Flatten a nested array (one level deep).",
+      starterCode: ``,
+      solution: `// Flatten nested array
+const nestedArray = [1, [2, 3], [4, [5, 6]]];
+
+// Solution 1: Using flat() method (ES2019)
+const flat1 = nestedArray.flat();
+console.log(flat1); // [1, 2, 3, 4, [5, 6]]
+
+// Solution 2: Using reduce and concat
+const flat2 = nestedArray.reduce((acc, current) => {
+  return acc.concat(current);
+}, []);
+console.log(flat2); // [1, 2, 3, 4, [5, 6]]
+
+// Solution 3: Deep flatten (for multiple levels)
+const deepFlatten = (arr) => {
+  return arr.reduce((acc, val) => {
+    return acc.concat(Array.isArray(val) ? deepFlatten(val) : val);
   }, []);
-}
+};
+console.log(deepFlatten(nestedArray)); // [1, 2, 3, 4, 5, 6]`,
+      hints: ["flat() method for shallow flatten", "reduce with concat", "Recursive function for deep flatten"]
+    },
 
-// Alternativa con flat()
-// const flatten = arr => arr.flat(Infinity);
+    // =========================
+    // 🟡 MEDIUM
+    // =========================
 
-console.log(flatten([1, [2, [3, [4]], 5]])); // [1, 2, 3, 4, 5]`,
-        hints: ["Usa recursión", "reduce() es muy útil aquí"]
-      },
-      {
-        id: 2,
-        title: "Debounce",
-        difficulty: "Medio",
-        description: "Implementa una función debounce que limite la frecuencia de ejecución de una función.",
-        starterCode: `function debounce(func, delay) {
-  // Tu código aquí
-}
+    {
+      id: 11,
+      title: "Two Sum",
+      difficulty: "Medium",
+      description: "Given an array of integers and a target, find two numbers that sum to the target and return their indices.",
+      starterCode: ``,
+      solution: `// Classic Two Sum problem
+const twoSum = (nums, target) => {
+  const map = new Map();
+  
+  for (let i = 0; i < nums.length; i++) {
+    const complement = target - nums[i];
+    
+    if (map.has(complement)) {
+      return [map.get(complement), i];
+    }
+    
+    map.set(nums[i], i);
+  }
+  
+  return [];
+};
 
-// Ejemplo de uso
-const log = debounce(() => console.log('Ejecutado!'), 1000);
-log(); log(); log(); // Solo se ejecuta una vez después de 1 segundo`,
-        solution: `function debounce(func, delay) {
+const nums = [2, 7, 11, 15];
+const target = 9;
+console.log(twoSum(nums, target)); // [0, 1]`,
+      hints: ["Use hash map (Map or object)", "Store number and index", "Look for complement in map"]
+    },
+
+    {
+      id: 12,
+      title: "Anagram Check",
+      difficulty: "Medium",
+      description: "Check if two strings are anagrams of each other.",
+      starterCode: ``,
+      solution: `// Check if two strings are anagrams
+const isAnagram = (str1, str2) => {
+  // Clean and sort strings
+  const cleanStr1 = str1.replace(/[^a-z]/gi, '').toLowerCase();
+  const cleanStr2 = str2.replace(/[^a-z]/gi, '').toLowerCase();
+  
+  // Sort characters and compare
+  return cleanStr1.split('').sort().join('') === cleanStr2.split('').sort().join('');
+};
+
+// Alternative: Character count method
+const isAnagram2 = (str1, str2) => {
+  const cleanStr1 = str1.replace(/[^a-z]/gi, '').toLowerCase();
+  const cleanStr2 = str2.replace(/[^a-z]/gi, '').toLowerCase();
+  
+  if (cleanStr1.length !== cleanStr2.length) return false;
+  
+  const charCount = {};
+  
+  for (let char of cleanStr1) {
+    charCount[char] = (charCount[char] || 0) + 1;
+  }
+  
+  for (let char of cleanStr2) {
+    if (!charCount[char]) return false;
+    charCount[char]--;
+  }
+  
+  return true;
+};
+
+console.log(isAnagram("listen", "silent")); // true
+console.log(isAnagram("hello", "world")); // false`,
+      hints: ["Remove non-letters and lowercase", "Sort characters or count them", "Compare lengths first"]
+    },
+
+    {
+      id: 13,
+      title: "Find Missing Number",
+      difficulty: "Medium",
+      description: "Find the missing number in an array of 1 to n.",
+      starterCode: ``,
+      solution: `// Find missing number using mathematical formula
+const findMissingNumber = (nums, n) => {
+  // Calculate expected sum of 1 to n
+  const expectedSum = (n * (n + 1)) / 2;
+  
+  // Calculate actual sum
+  const actualSum = nums.reduce((acc, num) => acc + num, 0);
+  
+  // Missing number is the difference
+  return expectedSum - actualSum;
+};
+
+// Test with array containing numbers 1 to n except one
+const nums = [1, 2, 4, 5]; // Missing 3
+console.log(findMissingNumber(nums, 5)); // 3`,
+      hints: ["Use formula for sum of 1 to n", "Calculate expected vs actual sum", "Difference is missing number"]
+    },
+
+    {
+      id: 14,
+      title: "Merge Two Sorted Arrays",
+      difficulty: "Medium",
+      description: "Merge two sorted arrays into one sorted array.",
+      starterCode: ``,
+      solution: `// Merge two sorted arrays
+const mergeSortedArrays = (arr1, arr2) => {
+  const merged = [];
+  let i = 0, j = 0;
+  
+  while (i < arr1.length && j < arr2.length) {
+    if (arr1[i] < arr2[j]) {
+      merged.push(arr1[i]);
+      i++;
+    } else {
+      merged.push(arr2[j]);
+      j++;
+    }
+  }
+  
+  // Add remaining elements
+  while (i < arr1.length) {
+    merged.push(arr1[i]);
+    i++;
+  }
+  
+  while (j < arr2.length) {
+    merged.push(arr2[j]);
+    j++;
+  }
+  
+  return merged;
+};
+
+const arr1 = [1, 3, 5];
+const arr2 = [2, 4, 6];
+console.log(mergeSortedArrays(arr1, arr2)); // [1, 2, 3, 4, 5, 6]`,
+      hints: ["Use two pointers", "Compare elements from both arrays", "Handle remaining elements"]
+    },
+
+    {
+      id: 15,
+      title: "Find First Non-Repeating Character",
+      difficulty: "Medium",
+      description: "Find the first non-repeating character in a string.",
+      starterCode: ``,
+      solution: `// Find first non-repeating character
+const firstNonRepeating = (str) => {
+  const charCount = {};
+  
+  // First pass: count characters
+  for (let char of str) {
+    charCount[char] = (charCount[char] || 0) + 1;
+  }
+  
+  // Second pass: find first with count 1
+  for (let char of str) {
+    if (charCount[char] === 1) {
+      return char;
+    }
+  }
+  
+  return null;
+};
+
+console.log(firstNonRepeating("swiss")); // "w"
+console.log(firstNonRepeating("hello")); // "h"
+console.log(firstNonRepeating("aabb")); // null`,
+      hints: ["Two-pass approach", "Count characters first", "Return first character with count 1"]
+    },
+
+    {
+      id: 16,
+      title: "Valid Parentheses",
+      difficulty: "Medium",
+      description: "Check if a string of parentheses is valid (properly opened and closed).",
+      starterCode: ``,
+      solution: `// Valid parentheses using stack
+const isValidParentheses = (s) => {
+  const stack = [];
+  const pairs = {
+    '(': ')',
+    '[': ']',
+    '{': '}'
+  };
+  
+  for (let char of s) {
+    // If it's an opening bracket, push to stack
+    if (pairs[char]) {
+      stack.push(char);
+    } 
+    // If it's a closing bracket
+    else {
+      const last = stack.pop();
+      if (pairs[last] !== char) {
+        return false;
+      }
+    }
+  }
+  
+  // Stack should be empty if all brackets matched
+  return stack.length === 0;
+};
+
+console.log(isValidParentheses("()[]{}")); // true
+console.log(isValidParentheses("([)]")); // false
+console.log(isValidParentheses("{[]}")); // true`,
+      hints: ["Use stack data structure", "Map opening to closing brackets", "Check stack empty at end"]
+    },
+
+    {
+      id: 17,
+      title: "Fibonacci Sequence (Memoization)",
+      difficulty: "Medium",
+      description: "Generate Fibonacci numbers with memoization to optimize performance.",
+      starterCode: ``,
+      solution: `// Fibonacci with memoization (dynamic programming)
+const fibonacciMemo = (n, memo = {}) => {
+  if (n <= 1) return n;
+  if (memo[n]) return memo[n];
+  
+  memo[n] = fibonacciMemo(n - 1, memo) + fibonacciMemo(n - 2, memo);
+  return memo[n];
+};
+
+// Iterative approach (more efficient)
+const fibonacciIterative = (n) => {
+  if (n <= 1) return n;
+  
+  let prev = 0;
+  let current = 1;
+  
+  for (let i = 2; i <= n; i++) {
+    const next = prev + current;
+    prev = current;
+    current = next;
+  }
+  
+  return current;
+};
+
+console.log(fibonacciMemo(10)); // 55
+console.log(fibonacciIterative(10)); // 55`,
+      hints: ["Memoization stores computed values", "Iterative approach avoids recursion limits", "Handle base cases (0, 1)"]
+    },
+
+    {
+      id: 18,
+      title: "Array Chunking",
+      difficulty: "Medium",
+      description: "Split an array into chunks of specified size.",
+      starterCode: ``,
+      solution: `// Split array into chunks
+const chunkArray = (arr, size) => {
+  const chunks = [];
+  
+  for (let i = 0; i < arr.length; i += size) {
+    chunks.push(arr.slice(i, i + size));
+  }
+  
+  return chunks;
+};
+
+// Alternative using while loop
+const chunkArray2 = (arr, size) => {
+  const chunks = [];
+  let index = 0;
+  
+  while (index < arr.length) {
+    chunks.push(arr.slice(index, index + size));
+    index += size;
+  }
+  
+  return chunks;
+};
+
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8];
+console.log(chunkArray(numbers, 3)); // [[1,2,3], [4,5,6], [7,8]]`,
+      hints: ["Use slice method", "Increment index by chunk size", "Handle last chunk that might be smaller"]
+    },
+
+    {
+      id: 19,
+      title: "Find Longest Word",
+      difficulty: "Medium",
+      description: "Find the longest word in a sentence.",
+      starterCode: ``,
+      solution: `// Find longest word in sentence
+const findLongestWord = (sentence) => {
+  // Split into words and remove punctuation
+  const words = sentence.split(' ').map(word => 
+    word.replace(/[^a-zA-Z]/g, '')
+  );
+  
+  let longestWord = '';
+  let maxLength = 0;
+  
+  for (let word of words) {
+    if (word.length > maxLength) {
+      maxLength = word.length;
+      longestWord = word;
+    }
+  }
+  
+  return { word: longestWord, length: maxLength };
+};
+
+// Using reduce for functional approach
+const findLongestWord2 = (sentence) => {
+  const words = sentence.split(' ').map(word => 
+    word.replace(/[^a-zA-Z]/g, '')
+  );
+  
+  return words.reduce((longest, current) => {
+    return current.length > longest.length ? current : longest;
+  }, '');
+};
+
+const sentence = "The quick brown fox jumps over the lazy dog";
+console.log(findLongestWord(sentence)); // { word: 'quick', length: 5 }`,
+      hints: ["Split sentence into words", "Remove punctuation", "Track longest word and length"]
+    },
+
+    {
+      id: 20,
+      title: "Array Rotation",
+      difficulty: "Medium",
+      description: "Rotate an array to the right by k positions.",
+      starterCode: ``,
+      solution: `// Rotate array by k positions
+const rotateArray = (arr, k) => {
+  // Handle k larger than array length
+  k = k % arr.length;
+  
+  // Solution 1: Using splice and spread
+  const rotated = [
+    ...arr.slice(-k), // Last k elements
+    ...arr.slice(0, -k) // All except last k elements
+  ];
+  
+  return rotated;
+};
+
+// Alternative: Manual rotation
+const rotateArrayManual = (arr, k) => {
+  k = k % arr.length;
+  const rotated = [];
+  
+  for (let i = 0; i < arr.length; i++) {
+    // Calculate new position
+    const newIndex = (i + k) % arr.length;
+    rotated[newIndex] = arr[i];
+  }
+  
+  return rotated;
+};
+
+const numbers = [1, 2, 3, 4, 5];
+console.log(rotateArray(numbers, 2)); // [4, 5, 1, 2, 3]`,
+      hints: ["Handle k > array length", "Use slice method", "Calculate new positions with modulo"]
+    },
+
+    // =========================
+    // 🔴 HARD
+    // =========================
+
+    {
+      id: 21,
+      title: "Debounce Function",
+      difficulty: "Hard",
+      description: "Implement a debounce function that delays execution until after wait time has elapsed.",
+      starterCode: ``,
+      solution: `// Debounce implementation
+const debounce = (func, wait) => {
   let timeoutId;
+  
   return function(...args) {
+    // Clear previous timeout
     clearTimeout(timeoutId);
+    
+    // Set new timeout
     timeoutId = setTimeout(() => {
       func.apply(this, args);
-    }, timeoutId);
+    }, wait);
   };
-}
+};
 
-// Ejemplo de uso
-const log = debounce(() => console.log('Ejecutado!'), 1000);
-log(); log(); log(); // Solo se ejecuta una vez después de 1 segundo`,
-        hints: ["Usa setTimeout y clearTimeout", "Retorna una nueva función"]
-      },
-      {
-        id: 3,
-        title: "Promesas en Serie",
-        difficulty: "Difícil",
-        description: "Ejecuta un array de funciones que retornan promesas en serie (una después de otra).",
-        starterCode: `function runInSeries(promiseFunctions) {
-  // Tu código aquí
-}
+// Throttle implementation (often asked together)
+const throttle = (func, limit) => {
+  let inThrottle;
+  
+  return function(...args) {
+    if (!inThrottle) {
+      func.apply(this, args);
+      inThrottle = true;
+      setTimeout(() => inThrottle = false, limit);
+    }
+  };
+};
 
-const funcs = [
-  () => new Promise(r => setTimeout(() => { console.log(1); r(1); }, 100)),
-  () => new Promise(r => setTimeout(() => { console.log(2); r(2); }, 100)),
-  () => new Promise(r => setTimeout(() => { console.log(3); r(3); }, 100))
-];
+// Example usage
+const handleResize = () => {
+  console.log('Window resized');
+};
 
-runInSeries(funcs).then(results => console.log('Resultados:', results));`,
-        solution: `async function runInSeries(promiseFunctions) {
-  const results = [];
-  for (const fn of promiseFunctions) {
-    const result = await fn();
-    results.push(result);
-  }
-  return results;
-}
+const debouncedResize = debounce(handleResize, 300);
+window.addEventListener('resize', debouncedResize);`,
+      hints: ["Use setTimeout", "Clear previous timeout", "Return function with closure", "Use apply for context"]
+    },
 
-// Alternativa con reduce
-function runInSeriesReduce(promiseFunctions) {
-  return promiseFunctions.reduce(
-    (promise, fn) => promise.then(results => fn().then(r => [...results, r])),
-    Promise.resolve([])
-  );
-}
-
-const funcs = [
-  () => new Promise(r => setTimeout(() => { console.log(1); r(1); }, 100)),
-  () => new Promise(r => setTimeout(() => { console.log(2); r(2); }, 100)),
-  () => new Promise(r => setTimeout(() => { console.log(3); r(3); }, 100))
-];
-
-runInSeries(funcs).then(results => console.log('Resultados:', results));`,
-        hints: ["async/await simplifica esto", "Itera con for...of"]
-      },
-      {
-        id: 4,
-        title: "Deep Clone",
-        difficulty: "Medio",
-        description: "Implementa una función que haga una copia profunda de un objeto.",
-        starterCode: `function deepClone(obj) {
-  // Tu código aquí
-}
-
-const original = { a: 1, b: { c: 2, d: [3, 4] } };
-const copia = deepClone(original);
-copia.b.c = 999;
-console.log(original.b.c); // Debería ser 2
-console.log(copia.b.c);    // Debería ser 999`,
-        solution: `function deepClone(obj) {
+    {
+      id: 22,
+      title: "Deep Clone Object",
+      difficulty: "Hard",
+      description: "Create a deep clone of an object (nested objects and arrays).",
+      starterCode: ``,
+      solution: `// Deep clone implementation
+const deepClone = (obj) => {
+  // Handle primitive types and null
   if (obj === null || typeof obj !== 'object') {
     return obj;
   }
   
+  // Handle arrays
   if (Array.isArray(obj)) {
     return obj.map(item => deepClone(item));
   }
   
-  const cloned = {};
-  for (const key in obj) {
+  // Handle dates
+  if (obj instanceof Date) {
+    return new Date(obj.getTime());
+  }
+  
+  // Handle regular objects
+  const clonedObj = {};
+  
+  for (let key in obj) {
     if (obj.hasOwnProperty(key)) {
-      cloned[key] = deepClone(obj[key]);
+      clonedObj[key] = deepClone(obj[key]);
     }
   }
-  return cloned;
-}
+  
+  return clonedObj;
+};
 
-const original = { a: 1, b: { c: 2, d: [3, 4] } };
-const copia = deepClone(original);
-copia.b.c = 999;
-console.log(original.b.c); // 2
-console.log(copia.b.c);    // 999`,
-        hints: ["Usa recursión", "Maneja arrays y objetos por separado"]
-      },
-      {
-        id: 5,
-        title: "Memoización",
-        difficulty: "Medio",
-        description: "Implementa una función memoize que cachee los resultados de llamadas anteriores.",
-        starterCode: `function memoize(fn) {
-  // Tu código aquí
-}
+// Using JSON methods (simpler but has limitations)
+const deepCloneJSON = (obj) => {
+  return JSON.parse(JSON.stringify(obj));
+};
 
-const factorial = memoize(n => {
-  console.log('Calculando factorial de', n);
-  if (n <= 1) return 1;
-  return n * factorial(n - 1);
-});
-
-console.log(factorial(5)); // Calcula
-console.log(factorial(5)); // Usa cache`,
-        solution: `function memoize(fn) {
-  const cache = new Map();
-  return function(...args) {
-    const key = JSON.stringify(args);
-    if (cache.has(key)) {
-      return cache.get(key);
-    }
-    const result = fn.apply(this, args);
-    cache.set(key, result);
-    return result;
-  };
-}
-
-const factorial = memoize(n => {
-  console.log('Calculando factorial de', n);
-  if (n <= 1) return 1;
-  return n * factorial(n - 1);
-});
-
-console.log(factorial(5)); // Calcula
-console.log(factorial(5)); // Usa cache`,
-        hints: ["Usa un Map o objeto como cache", "JSON.stringify convierte args a string"]
-      }
-    ]
+// Example usage
+const original = {
+  name: "John",
+  age: 30,
+  address: {
+    city: "New York",
+    country: "USA"
   },
-  java: {
-    name: "Java",
-    icon: javaLogo,
-    color: "#007396",
-    exercises: [
-      {
-        id: 1,
-        title: "Invertir String",
-        difficulty: "Fácil",
-        description: "Escribe un método que invierta una cadena sin usar StringBuilder.reverse().",
-        starterCode: `public class Main {
+  hobbies: ["reading", "coding"]
+};
+
+const cloned = deepClone(original);
+console.log(cloned);
+console.log(original !== cloned); // true (different references)
+console.log(original.address !== cloned.address); // true (nested also cloned)`,
+      hints: ["Handle different data types", "Recursive approach for nested objects", "Check for own properties"]
+    },
+
+    {
+      id: 23,
+      title: "Promise Implementation",
+      difficulty: "Hard",
+      description: "Implement a simple Promise class from scratch.",
+      starterCode: ``,
+      solution: `// Simple Promise implementation
+class MyPromise {
+  constructor(executor) {
+    this.state = 'pending';
+    this.value = undefined;
+    this.reason = undefined;
+    this.onFulfilledCallbacks = [];
+    this.onRejectedCallbacks = [];
+    
+    const resolve = (value) => {
+      if (this.state === 'pending') {
+        this.state = 'fulfilled';
+        this.value = value;
+        this.onFulfilledCallbacks.forEach(callback => callback(value));
+      }
+    };
+    
+    const reject = (reason) => {
+      if (this.state === 'pending') {
+        this.state = 'rejected';
+        this.reason = reason;
+        this.onRejectedCallbacks.forEach(callback => callback(reason));
+      }
+    };
+    
+    try {
+      executor(resolve, reject);
+    } catch (error) {
+      reject(error);
+    }
+  }
+  
+  then(onFulfilled, onRejected) {
+    if (this.state === 'fulfilled') {
+      onFulfilled(this.value);
+    } else if (this.state === 'rejected') {
+      onRejected(this.reason);
+    } else {
+      this.onFulfilledCallbacks.push(onFulfilled);
+      this.onRejectedCallbacks.push(onRejected);
+    }
+    
+    return this; // For chaining (simplified)
+  }
+  
+  catch(onRejected) {
+    return this.then(null, onRejected);
+  }
+}
+
+// Example usage
+const promise = new MyPromise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('Success!');
+  }, 1000);
+});
+
+promise.then(result => {
+  console.log(result); // "Success!" after 1 second
+});`,
+      hints: ["Three states: pending, fulfilled, rejected", "Store callbacks in arrays", "Executor runs immediately"]
+    },
+
+    {
+      id: 24,
+      title: "Currying Function",
+      difficulty: "Hard",
+      description: "Implement a curry function that transforms a function into a curried version.",
+      starterCode: ``,
+      solution: `// Currying implementation
+const curry = (fn, arity = fn.length) => {
+  return function curried(...args) {
+    if (args.length >= arity) {
+      return fn.apply(this, args);
+    } else {
+      return function(...moreArgs) {
+        return curried.apply(this, args.concat(moreArgs));
+      };
+    }
+  };
+};
+
+// Example usage
+const add = (a, b, c) => a + b + c;
+const curriedAdd = curry(add);
+
+console.log(curriedAdd(1)(2)(3)); // 6
+console.log(curriedAdd(1, 2)(3)); // 6
+console.log(curriedAdd(1, 2, 3)); // 6
+
+// Partial application (related concept)
+const partial = (fn, ...fixedArgs) => {
+  return function(...remainingArgs) {
+    return fn.apply(this, [...fixedArgs, ...remainingArgs]);
+  };
+};
+
+const add5 = partial(add, 5);
+console.log(add5(2, 3)); // 10 (5 + 2 + 3)`,
+      hints: ["Track arity (number of parameters)", "Return function until all arguments collected", "Use apply for context"]
+    },
+
+    {
+      id: 25,
+      title: "Event Emitter",
+      difficulty: "Hard",
+      description: "Implement an EventEmitter class with on, emit, and off methods.",
+      starterCode: ``,
+      solution: `// EventEmitter implementation
+class EventEmitter {
+  constructor() {
+    this.events = {};
+  }
+  
+  // Subscribe to event
+  on(event, listener) {
+    if (!this.events[event]) {
+      this.events[event] = [];
+    }
+    this.events[event].push(listener);
+    
+    // Return unsubscribe function
+    return () => this.off(event, listener);
+  }
+  
+  // Emit event with data
+  emit(event, ...args) {
+    if (this.events[event]) {
+      this.events[event].forEach(listener => {
+        listener(...args);
+      });
+    }
+  }
+  
+  // Remove listener
+  off(event, listenerToRemove) {
+    if (this.events[event]) {
+      this.events[event] = this.events[event].filter(
+        listener => listener !== listenerToRemove
+      );
+    }
+  }
+  
+  // Subscribe once
+  once(event, listener) {
+    const onceListener = (...args) => {
+      listener(...args);
+      this.off(event, onceListener);
+    };
+    this.on(event, onceListener);
+  }
+}
+
+// Example usage
+const emitter = new EventEmitter();
+
+// Subscribe
+const unsubscribe = emitter.on('data', (data) => {
+  console.log('Received:', data);
+});
+
+// Emit
+emitter.emit('data', 'Hello World'); // Logs: Received: Hello World
+
+// Unsubscribe
+unsubscribe();
+emitter.emit('data', 'This wont be received');
+
+// Once
+emitter.once('greeting', (name) => {
+  console.log('Hello', name);
+});
+
+emitter.emit('greeting', 'John'); // Logs: Hello John
+emitter.emit('greeting', 'Jane'); // No output (only once)`,
+      hints: ["Store events in object", "Array of listeners per event", "Return unsubscribe function", "Filter to remove listener"]
+    }
+
+  ]
+},
+
+
+
+java: {
+  name: "Java",
+  icon: javaLogo,
+  color: "#007396",
+  exercises: [
+
+    // =========================
+    // 🟢 EASY
+    // =========================
+
+    {
+      id: 1,
+      title: "Reverse String",
+      difficulty: "Easy",
+      description: "Reverse a string without using StringBuilder.reverse().",
+      starterCode: `public class Main {
     public static String reverse(String str) {
-        // Tu código aquí
+        // Your code here
         return "";
     }
     
@@ -331,7 +1566,8 @@ console.log(factorial(5)); // Usa cache`,
         System.out.println(reverse("Java"));  // avaJ
     }
 }`,
-        solution: `public class Main {
+      solution: `// Solution using two pointers technique
+public class Main {
     public static String reverse(String str) {
         char[] chars = str.toCharArray();
         int left = 0, right = chars.length - 1;
@@ -352,15 +1588,668 @@ console.log(factorial(5)); // Usa cache`,
         System.out.println(reverse("Java"));  // avaJ
     }
 }`,
-        hints: ["Usa dos punteros", "Intercambia caracteres desde los extremos"]
-      },
-      {
-        id: 2,
-        title: "Singleton Pattern",
-        difficulty: "Medio",
-        description: "Implementa el patrón Singleton de forma thread-safe.",
-        starterCode: `public class Singleton {
-    // Tu código aquí
+      hints: ["Convert string to char array", "Use two pointers", "Swap characters from both ends"]
+    },
+
+    {
+      id: 2,
+      title: "Find Maximum in Array",
+      difficulty: "Easy",
+      description: "Find the maximum value in an array of integers.",
+      starterCode: `public class Main {
+    public static int findMax(int[] arr) {
+        // Your code here
+        return 0;
+    }
+    
+    public static void main(String[] args) {
+        int[] arr = {5, 3, 9, 1, 7};
+        System.out.println(findMax(arr)); // 9
+    }
+}`,
+      solution: `// Simple iterative approach
+public class Main {
+    public static int findMax(int[] arr) {
+        if (arr == null || arr.length == 0) {
+            throw new IllegalArgumentException("Array cannot be empty");
+        }
+        
+        int max = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+        }
+        return max;
+    }
+    
+    public static void main(String[] args) {
+        int[] arr = {5, 3, 9, 1, 7};
+        System.out.println(findMax(arr)); // 9
+    }
+}`,
+      hints: ["Initialize max with first element", "Loop through array", "Update max when finding larger value"]
+    },
+
+    {
+      id: 3,
+      title: "Check Palindrome",
+      difficulty: "Easy",
+      description: "Check if a string is a palindrome.",
+      starterCode: `public class Main {
+    public static boolean isPalindrome(String str) {
+        // Your code here
+        return false;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(isPalindrome("racecar")); // true
+        System.out.println(isPalindrome("hello"));   // false
+        System.out.println(isPalindrome("A man a plan a canal Panama")); // true
+    }
+}`,
+      solution: `// Check palindrome by comparing characters from both ends
+public class Main {
+    public static boolean isPalindrome(String str) {
+        String cleanStr = str.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+        int left = 0, right = cleanStr.length() - 1;
+        
+        while (left < right) {
+            if (cleanStr.charAt(left) != cleanStr.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(isPalindrome("racecar")); // true
+        System.out.println(isPalindrome("hello"));   // false
+        System.out.println(isPalindrome("A man a plan a canal Panama")); // true
+    }
+}`,
+      hints: ["Remove non-alphanumeric characters", "Convert to lowercase", "Compare characters from both ends"]
+    },
+
+    {
+      id: 4,
+      title: "Count Vowels",
+      difficulty: "Easy",
+      description: "Count the number of vowels in a string.",
+      starterCode: `public class Main {
+    public static int countVowels(String str) {
+        // Your code here
+        return 0;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(countVowels("Hello World")); // 3
+        System.out.println(countVowels("Java Programming")); // 5
+    }
+}`,
+      solution: `// Count vowels using enhanced for loop
+public class Main {
+    public static int countVowels(String str) {
+        int count = 0;
+        String vowels = "aeiouAEIOU";
+        
+        for (char c : str.toCharArray()) {
+            if (vowels.indexOf(c) != -1) {
+                count++;
+            }
+        }
+        return count;
+    }
+    
+    // Alternative using regex
+    public static int countVowelsRegex(String str) {
+        return str.replaceAll("[^aeiouAEIOU]", "").length();
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(countVowels("Hello World")); // 3
+        System.out.println(countVowels("Java Programming")); // 5
+    }
+}`,
+      hints: ["Define string with all vowels", "Check each character", "Case insensitive counting"]
+    },
+
+    {
+      id: 5,
+      title: "Factorial Calculation",
+      difficulty: "Easy",
+      description: "Calculate the factorial of a non-negative integer.",
+      starterCode: `public class Main {
+    public static int factorial(int n) {
+        // Your code here
+        return 0;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(factorial(5)); // 120
+        System.out.println(factorial(0)); // 1
+    }
+}`,
+      solution: `// Iterative factorial calculation
+public class Main {
+    public static int factorial(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("Factorial not defined for negative numbers");
+        }
+        
+        int result = 1;
+        for (int i = 2; i <= n; i++) {
+            result *= i;
+        }
+        return result;
+    }
+    
+    // Recursive version (also common in interviews)
+    public static int factorialRecursive(int n) {
+        if (n < 0) throw new IllegalArgumentException("Negative number");
+        if (n <= 1) return 1;
+        return n * factorialRecursive(n - 1);
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(factorial(5)); // 120
+        System.out.println(factorial(0)); // 1
+    }
+}`,
+      hints: ["Handle edge cases (0, 1, negative)", "Start result from 1", "Multiply sequentially"]
+    },
+
+    {
+      id: 6,
+      title: "Sum of Array",
+      difficulty: "Easy",
+      description: "Calculate the sum of all elements in an array.",
+      starterCode: `public class Main {
+    public static int sumArray(int[] arr) {
+        // Your code here
+        return 0;
+    }
+    
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5};
+        System.out.println(sumArray(arr)); // 15
+    }
+}`,
+      solution: `// Sum array elements using enhanced for loop
+public class Main {
+    public static int sumArray(int[] arr) {
+        int sum = 0;
+        for (int num : arr) {
+            sum += num;
+        }
+        return sum;
+    }
+    
+    // Using traditional for loop
+    public static int sumArrayTraditional(int[] arr) {
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];
+        }
+        return sum;
+    }
+    
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5};
+        System.out.println(sumArray(arr)); // 15
+    }
+}`,
+      hints: ["Initialize sum to 0", "Add each element to sum", "Use enhanced for loop for simplicity"]
+    },
+
+    {
+      id: 7,
+      title: "Find Duplicates",
+      difficulty: "Easy",
+      description: "Find all duplicate elements in an array.",
+      starterCode: `import java.util.*;
+
+public class Main {
+    public static List<Integer> findDuplicates(int[] arr) {
+        // Your code here
+        return new ArrayList<>();
+    }
+    
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 2, 1, 4, 5, 4};
+        System.out.println(findDuplicates(arr)); // [1, 2, 4]
+    }
+}`,
+      solution: `// Find duplicates using HashSet
+import java.util.*;
+
+public class Main {
+    public static List<Integer> findDuplicates(int[] arr) {
+        Set<Integer> seen = new HashSet<>();
+        Set<Integer> duplicates = new LinkedHashSet<>();
+        
+        for (int num : arr) {
+            if (!seen.add(num)) {
+                duplicates.add(num);
+            }
+        }
+        return new ArrayList<>(duplicates);
+    }
+    
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 2, 1, 4, 5, 4};
+        System.out.println(findDuplicates(arr)); // [1, 2, 4]
+    }
+}`,
+      hints: ["HashSet.add() returns false if element exists", "Use two sets", "Maintain insertion order if needed"]
+    },
+
+    {
+      id: 8,
+      title: "Check Prime Number",
+      difficulty: "Easy",
+      description: "Check if a number is prime.",
+      starterCode: `public class Main {
+    public static boolean isPrime(int n) {
+        // Your code here
+        return false;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(isPrime(7));  // true
+        System.out.println(isPrime(10)); // false
+        System.out.println(isPrime(2));  // true
+    }
+}`,
+      solution: `// Efficient prime checking
+public class Main {
+    public static boolean isPrime(int n) {
+        if (n <= 1) return false;
+        if (n <= 3) return true;
+        if (n % 2 == 0 || n % 3 == 0) return false;
+        
+        // Check divisibility up to sqrt(n)
+        for (int i = 5; i * i <= n; i += 6) {
+            if (n % i == 0 || n % (i + 2) == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(isPrime(7));  // true
+        System.out.println(isPrime(10)); // false
+        System.out.println(isPrime(2));  // true
+    }
+}`,
+      hints: ["Numbers <= 1 are not prime", "Check divisibility by 2 and 3 first", "Only check up to sqrt(n)"]
+    },
+
+    {
+      id: 9,
+      title: "Remove Duplicates from Array",
+      difficulty: "Easy",
+      description: "Remove duplicates from an array while preserving order.",
+      starterCode: `import java.util.*;
+
+public class Main {
+    public static int[] removeDuplicates(int[] arr) {
+        // Your code here
+        return new int[0];
+    }
+    
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 2, 3, 4, 4, 5};
+        System.out.println(Arrays.toString(removeDuplicates(arr))); // [1, 2, 3, 4, 5]
+    }
+}`,
+      solution: `// Remove duplicates using LinkedHashSet to preserve order
+import java.util.*;
+
+public class Main {
+    public static int[] removeDuplicates(int[] arr) {
+        Set<Integer> set = new LinkedHashSet<>();
+        for (int num : arr) {
+            set.add(num);
+        }
+        
+        // Convert back to array
+        int[] result = new int[set.size()];
+        int index = 0;
+        for (int num : set) {
+            result[index++] = num;
+        }
+        return result;
+    }
+    
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 2, 3, 4, 4, 5};
+        System.out.println(Arrays.toString(removeDuplicates(arr))); // [1, 2, 3, 4, 5]
+    }
+}`,
+      hints: ["Use LinkedHashSet to preserve order", "Add all elements to set", "Convert set back to array"]
+    },
+
+    {
+      id: 10,
+      title: "Fibonacci Sequence",
+      difficulty: "Easy",
+      description: "Generate the first n numbers of the Fibonacci sequence.",
+      starterCode: `import java.util.Arrays;
+
+public class Main {
+    public static int[] fibonacci(int n) {
+        // Your code here
+        return new int[0];
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(Arrays.toString(fibonacci(10)));
+        // [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+    }
+}`,
+      solution: `// Generate Fibonacci sequence iteratively
+import java.util.Arrays;
+
+public class Main {
+    public static int[] fibonacci(int n) {
+        if (n <= 0) return new int[0];
+        if (n == 1) return new int[]{0};
+        
+        int[] result = new int[n];
+        result[0] = 0;
+        result[1] = 1;
+        
+        for (int i = 2; i < n; i++) {
+            result[i] = result[i-1] + result[i-2];
+        }
+        return result;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(Arrays.toString(fibonacci(10)));
+        // [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+    }
+}`,
+      hints: ["Handle base cases (0, 1)", "Initialize first two numbers", "Each number is sum of previous two"]
+    },
+
+    // =========================
+    // 🟡 MEDIUM
+    // =========================
+
+    {
+      id: 11,
+      title: "Valid Parentheses",
+      difficulty: "Medium",
+      description: "Check if a string containing parentheses, brackets, and braces is valid.",
+      starterCode: `import java.util.*;
+
+public class Main {
+    public static boolean isValid(String s) {
+        // Your code here
+        return false;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(isValid("()"));     // true
+        System.out.println(isValid("()[]{}")); // true
+        System.out.println(isValid("(]"));     // false
+        System.out.println(isValid("([)]"));   // false
+    }
+}`,
+      solution: `// Classic stack problem for matching parentheses
+import java.util.*;
+
+public class Main {
+    public static boolean isValid(String s) {
+        Stack<Character> stack = new Stack<>();
+        Map<Character, Character> pairs = new HashMap<>();
+        pairs.put(')', '(');
+        pairs.put(']', '[');
+        pairs.put('}', '{');
+        
+        for (char c : s.toCharArray()) {
+            if (pairs.containsValue(c)) {
+                stack.push(c);
+            } else if (pairs.containsKey(c)) {
+                if (stack.isEmpty() || stack.pop() != pairs.get(c)) {
+                    return false;
+                }
+            }
+        }
+        return stack.isEmpty();
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(isValid("()"));     // true
+        System.out.println(isValid("()[]{}")); // true
+        System.out.println(isValid("(]"));     // false
+        System.out.println(isValid("([)]"));   // false
+    }
+}`,
+      hints: ["Use Stack data structure", "Map closing to opening brackets", "Check if stack is empty at end"]
+    },
+
+    {
+      id: 12,
+      title: "Two Sum",
+      difficulty: "Medium",
+      description: "Given an array of integers and a target, find two numbers that sum to target and return their indices.",
+      starterCode: `import java.util.*;
+
+public class Main {
+    public static int[] twoSum(int[] nums, int target) {
+        // Your code here
+        return new int[0];
+    }
+    
+    public static void main(String[] args) {
+        int[] nums = {2, 7, 11, 15};
+        int target = 9;
+        System.out.println(Arrays.toString(twoSum(nums, target))); // [0, 1]
+    }
+}`,
+      solution: `// Two Sum using HashMap for O(n) time complexity
+import java.util.*;
+
+public class Main {
+    public static int[] twoSum(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        
+        for (int i = 0; i < nums.length; i++) {
+            int complement = target - nums[i];
+            if (map.containsKey(complement)) {
+                return new int[]{map.get(complement), i};
+            }
+            map.put(nums[i], i);
+        }
+        return new int[]{};
+    }
+    
+    public static void main(String[] args) {
+        int[] nums = {2, 7, 11, 15};
+        int target = 9;
+        System.out.println(Arrays.toString(twoSum(nums, target))); // [0, 1]
+    }
+}`,
+      hints: ["Use HashMap to store numbers and indices", "Look for complement", "One-pass solution"]
+    },
+
+    {
+      id: 13,
+      title: "Merge Two Sorted Arrays",
+      difficulty: "Medium",
+      description: "Merge two sorted arrays into one sorted array.",
+      starterCode: `import java.util.Arrays;
+
+public class Main {
+    public static int[] mergeSortedArrays(int[] arr1, int[] arr2) {
+        // Your code here
+        return new int[0];
+    }
+    
+    public static void main(String[] args) {
+        int[] arr1 = {1, 3, 5};
+        int[] arr2 = {2, 4, 6};
+        System.out.println(Arrays.toString(mergeSortedArrays(arr1, arr2))); // [1, 2, 3, 4, 5, 6]
+    }
+}`,
+      solution: `// Merge two sorted arrays using two pointers
+import java.util.Arrays;
+
+public class Main {
+    public static int[] mergeSortedArrays(int[] arr1, int[] arr2) {
+        int[] result = new int[arr1.length + arr2.length];
+        int i = 0, j = 0, k = 0;
+        
+        while (i < arr1.length && j < arr2.length) {
+            if (arr1[i] < arr2[j]) {
+                result[k++] = arr1[i++];
+            } else {
+                result[k++] = arr2[j++];
+            }
+        }
+        
+        while (i < arr1.length) result[k++] = arr1[i++];
+        while (j < arr2.length) result[k++] = arr2[j++];
+        
+        return result;
+    }
+    
+    public static void main(String[] args) {
+        int[] arr1 = {1, 3, 5};
+        int[] arr2 = {2, 4, 6};
+        System.out.println(Arrays.toString(mergeSortedArrays(arr1, arr2))); // [1, 2, 3, 4, 5, 6]
+    }
+}`,
+      hints: ["Use three pointers", "Compare elements from both arrays", "Handle remaining elements"]
+    },
+
+    {
+      id: 14,
+      title: "Anagram Check",
+      difficulty: "Medium",
+      description: "Check if two strings are anagrams of each other.",
+      starterCode: `import java.util.*;
+
+public class Main {
+    public static boolean areAnagrams(String str1, String str2) {
+        // Your code here
+        return false;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(areAnagrams("listen", "silent")); // true
+        System.out.println(areAnagrams("hello", "world"));   // false
+    }
+}`,
+      solution: `// Check anagrams using character count
+import java.util.*;
+
+public class Main {
+    public static boolean areAnagrams(String str1, String str2) {
+        if (str1.length() != str2.length()) return false;
+        
+        char[] chars1 = str1.toCharArray();
+        char[] chars2 = str2.toCharArray();
+        Arrays.sort(chars1);
+        Arrays.sort(chars2);
+        
+        return Arrays.equals(chars1, chars2);
+    }
+    
+    // Alternative using frequency map
+    public static boolean areAnagramsMap(String str1, String str2) {
+        if (str1.length() != str2.length()) return false;
+        
+        Map<Character, Integer> freq = new HashMap<>();
+        for (char c : str1.toCharArray()) {
+            freq.put(c, freq.getOrDefault(c, 0) + 1);
+        }
+        
+        for (char c : str2.toCharArray()) {
+            if (!freq.containsKey(c) || freq.get(c) == 0) {
+                return false;
+            }
+            freq.put(c, freq.get(c) - 1);
+        }
+        return true;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(areAnagrams("listen", "silent")); // true
+        System.out.println(areAnagrams("hello", "world"));   // false
+    }
+}`,
+      hints: ["Check lengths first", "Sort both strings and compare", "Use HashMap for character counting"]
+    },
+
+    {
+      id: 15,
+      title: "Find Missing Number",
+      difficulty: "Medium",
+      description: "Find the missing number in an array containing numbers from 1 to n.",
+      starterCode: `public class Main {
+    public static int findMissingNumber(int[] arr, int n) {
+        // Your code here
+        return 0;
+    }
+    
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 4, 5}; // Missing 3
+        System.out.println(findMissingNumber(arr, 5)); // 3
+    }
+}`,
+      solution: `// Find missing number using mathematical formula
+public class Main {
+    public static int findMissingNumber(int[] arr, int n) {
+        // Calculate expected sum of 1 to n
+        int expectedSum = n * (n + 1) / 2;
+        
+        // Calculate actual sum
+        int actualSum = 0;
+        for (int num : arr) {
+            actualSum += num;
+        }
+        
+        // Missing number is the difference
+        return expectedSum - actualSum;
+    }
+    
+    // Alternative using XOR (no overflow risk)
+    public static int findMissingNumberXOR(int[] arr, int n) {
+        int xor1 = 0, xor2 = 0;
+        
+        for (int i = 1; i <= n; i++) {
+            xor1 ^= i;
+        }
+        
+        for (int num : arr) {
+            xor2 ^= num;
+        }
+        
+        return xor1 ^ xor2;
+    }
+    
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 4, 5}; // Missing 3
+        System.out.println(findMissingNumber(arr, 5)); // 3
+    }
+}`,
+      hints: ["Use formula for sum of 1 to n", "Calculate expected vs actual sum", "XOR approach avoids overflow"]
+    },
+
+    {
+      id: 16,
+      title: "Singleton Pattern",
+      difficulty: "Medium",
+      description: "Implement the Singleton design pattern thread-safe.",
+      starterCode: `public class Singleton {
+    // Your code here
     
     public void showMessage() {
         System.out.println("Singleton instance!");
@@ -374,10 +2263,13 @@ public class Main {
         System.out.println(obj1 == obj2); // true
     }
 }`,
-        solution: `public class Singleton {
+      solution: `// Thread-safe Singleton with double-checked locking
+public class Singleton {
     private static volatile Singleton instance;
     
-    private Singleton() {}
+    private Singleton() {
+        // Private constructor to prevent instantiation
+    }
     
     public static Singleton getInstance() {
         if (instance == null) {
@@ -402,59 +2294,390 @@ public class Main {
         System.out.println(obj1 == obj2); // true
     }
 }`,
-        hints: ["Usa double-checked locking", "Marca instance como volatile"]
-      },
-      {
-        id: 3,
-        title: "Encontrar Duplicados",
-        difficulty: "Fácil",
-        description: "Encuentra todos los elementos duplicados en un array.",
-        starterCode: `import java.util.*;
+      hints: ["Private constructor", "volatile keyword for thread safety", "Double-checked locking"]
+    },
 
-public class Main {
-    public static List<Integer> findDuplicates(int[] nums) {
-        // Tu código aquí
-        return new ArrayList<>();
+    {
+      id: 17,
+      title: "Binary Search",
+      difficulty: "Medium",
+      description: "Implement binary search algorithm on a sorted array.",
+      starterCode: `public class Main {
+    public static int binarySearch(int[] arr, int target) {
+        // Your code here
+        return -1;
     }
     
     public static void main(String[] args) {
-        int[] nums = {1, 2, 3, 2, 1, 4, 5, 4};
-        System.out.println(findDuplicates(nums)); // [1, 2, 4]
+        int[] arr = {1, 3, 5, 7, 9, 11};
+        System.out.println(binarySearch(arr, 7));  // 3
+        System.out.println(binarySearch(arr, 12)); // -1
     }
 }`,
-        solution: `import java.util.*;
-
+      solution: `// Classic binary search implementation
 public class Main {
-    public static List<Integer> findDuplicates(int[] nums) {
-        Set<Integer> seen = new HashSet<>();
-        Set<Integer> duplicates = new LinkedHashSet<>();
+    public static int binarySearch(int[] arr, int target) {
+        int left = 0, right = arr.length - 1;
         
-        for (int num : nums) {
-            if (!seen.add(num)) {
-                duplicates.add(num);
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            
+            if (arr[mid] == target) {
+                return mid;
+            } else if (arr[mid] < target) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
             }
         }
+        return -1;
+    }
+    
+    // Recursive version
+    public static int binarySearchRecursive(int[] arr, int target, int left, int right) {
+        if (left > right) return -1;
         
-        return new ArrayList<>(duplicates);
+        int mid = left + (right - left) / 2;
+        if (arr[mid] == target) return mid;
+        if (arr[mid] < target) return binarySearchRecursive(arr, target, mid + 1, right);
+        return binarySearchRecursive(arr, target, left, mid - 1);
     }
     
     public static void main(String[] args) {
-        int[] nums = {1, 2, 3, 2, 1, 4, 5, 4};
-        System.out.println(findDuplicates(nums)); // [1, 2, 4]
+        int[] arr = {1, 3, 5, 7, 9, 11};
+        System.out.println(binarySearch(arr, 7));  // 3
+        System.out.println(binarySearch(arr, 12)); // -1
     }
 }`,
-        hints: ["HashSet.add() retorna false si el elemento ya existe", "Usa dos Sets"]
-      },
-      {
-        id: 4,
-        title: "Merge Sort",
-        difficulty: "Medio",
-        description: "Implementa el algoritmo Merge Sort.",
-        starterCode: `import java.util.Arrays;
+      hints: ["Array must be sorted", "Calculate mid without overflow", "Adjust left/right pointers"]
+    },
+
+    {
+      id: 18,
+      title: "Bubble Sort",
+      difficulty: "Medium",
+      description: "Implement bubble sort algorithm.",
+      starterCode: `import java.util.Arrays;
+
+public class Main {
+    public static void bubbleSort(int[] arr) {
+        // Your code here
+    }
+    
+    public static void main(String[] args) {
+        int[] arr = {64, 34, 25, 12, 22, 11, 90};
+        bubbleSort(arr);
+        System.out.println(Arrays.toString(arr));
+        // [11, 12, 22, 25, 34, 64, 90]
+    }
+}`,
+      solution: `// Bubble sort implementation with optimization
+import java.util.Arrays;
+
+public class Main {
+    public static void bubbleSort(int[] arr) {
+        int n = arr.length;
+        boolean swapped;
+        
+        for (int i = 0; i < n - 1; i++) {
+            swapped = false;
+            for (int j = 0; j < n - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    // Swap arr[j] and arr[j+1]
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                    swapped = true;
+                }
+            }
+            // If no swapping occurred, array is sorted
+            if (!swapped) break;
+        }
+    }
+    
+    public static void main(String[] args) {
+        int[] arr = {64, 34, 25, 12, 22, 11, 90};
+        bubbleSort(arr);
+        System.out.println(Arrays.toString(arr));
+    }
+}`,
+      hints: ["Outer loop for passes", "Inner loop for comparisons", "Swap adjacent elements if in wrong order"]
+    },
+
+    {
+      id: 19,
+      title: "Find First Non-Repeating Character",
+      difficulty: "Medium",
+      description: "Find the first non-repeating character in a string.",
+      starterCode: `import java.util.*;
+
+public class Main {
+    public static Character firstNonRepeating(String str) {
+        // Your code here
+        return null;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(firstNonRepeating("swiss")); // w
+        System.out.println(firstNonRepeating("hello")); // h
+        System.out.println(firstNonRepeating("aabb"));  // null
+    }
+}`,
+      solution: `// Find first non-repeating character using LinkedHashMap
+import java.util.*;
+
+public class Main {
+    public static Character firstNonRepeating(String str) {
+        Map<Character, Integer> freq = new LinkedHashMap<>();
+        
+        // Count frequency
+        for (char c : str.toCharArray()) {
+            freq.put(c, freq.getOrDefault(c, 0) + 1);
+        }
+        
+        // Find first character with frequency 1
+        for (Map.Entry<Character, Integer> entry : freq.entrySet()) {
+            if (entry.getValue() == 1) {
+                return entry.getKey();
+            }
+        }
+        return null;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(firstNonRepeating("swiss")); // w
+        System.out.println(firstNonRepeating("hello")); // h
+        System.out.println(firstNonRepeating("aabb"));  // null
+    }
+}`,
+      hints: ["Use LinkedHashMap to preserve insertion order", "Two-pass approach", "Count frequency first"]
+    },
+
+    {
+      id: 20,
+      title: "Implement Queue using Stack",
+      difficulty: "Medium",
+      description: "Implement a queue data structure using two stacks.",
+      starterCode: `import java.util.Stack;
+
+class MyQueue {
+    // Your code here
+    
+    public void enqueue(int x) {
+    }
+    
+    public int dequeue() {
+        return 0;
+    }
+    
+    public boolean isEmpty() {
+        return false;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyQueue queue = new MyQueue();
+        queue.enqueue(1);
+        queue.enqueue(2);
+        System.out.println(queue.dequeue()); // 1
+        System.out.println(queue.dequeue()); // 2
+    }
+}`,
+      solution: `// Queue implementation using two stacks
+import java.util.Stack;
+
+class MyQueue {
+    private Stack<Integer> stack1; // For enqueue
+    private Stack<Integer> stack2; // For dequeue
+    
+    public MyQueue() {
+        stack1 = new Stack<>();
+        stack2 = new Stack<>();
+    }
+    
+    public void enqueue(int x) {
+        stack1.push(x);
+    }
+    
+    public int dequeue() {
+        if (isEmpty()) {
+            throw new RuntimeException("Queue is empty");
+        }
+        
+        if (stack2.isEmpty()) {
+            // Move all elements from stack1 to stack2
+            while (!stack1.isEmpty()) {
+                stack2.push(stack1.pop());
+            }
+        }
+        return stack2.pop();
+    }
+    
+    public boolean isEmpty() {
+        return stack1.isEmpty() && stack2.isEmpty();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyQueue queue = new MyQueue();
+        queue.enqueue(1);
+        queue.enqueue(2);
+        System.out.println(queue.dequeue()); // 1
+        System.out.println(queue.dequeue()); // 2
+    }
+}`,
+      hints: ["Use two stacks", "Push to stack1 for enqueue", "Pop from stack2 for dequeue", "Transfer when stack2 empty"]
+    },
+
+    // =========================
+    // 🔴 HARD
+    // =========================
+
+    {
+      id: 21,
+      title: "LRU Cache",
+      difficulty: "Hard",
+      description: "Design and implement an LRU (Least Recently Used) cache.",
+      starterCode: `import java.util.*;
+
+class LRUCache {
+    // Your code here
+    
+    public LRUCache(int capacity) {
+    }
+    
+    public int get(int key) {
+        return -1;
+    }
+    
+    public void put(int key, int value) {
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        LRUCache cache = new LRUCache(2);
+        cache.put(1, 1);
+        cache.put(2, 2);
+        System.out.println(cache.get(1)); // 1
+        cache.put(3, 3); // Evicts key 2
+        System.out.println(cache.get(2)); // -1
+    }
+}`,
+      solution: `// LRU Cache implementation using LinkedHashMap
+import java.util.*;
+
+class LRUCache {
+    private LinkedHashMap<Integer, Integer> cache;
+    private final int capacity;
+    
+    public LRUCache(int capacity) {
+        this.capacity = capacity;
+        this.cache = new LinkedHashMap<>(capacity, 0.75f, true) {
+            @Override
+            protected boolean removeEldestEntry(Map.Entry<Integer, Integer> eldest) {
+                return size() > capacity;
+            }
+        };
+    }
+    
+    public int get(int key) {
+        return cache.getOrDefault(key, -1);
+    }
+    
+    public void put(int key, int value) {
+        cache.put(key, value);
+    }
+}
+
+// Alternative manual implementation with HashMap and Doubly Linked List
+class LRUCacheManual {
+    class Node {
+        int key, value;
+        Node prev, next;
+        Node(int key, int value) {
+            this.key = key;
+            this.value = value;
+        }
+    }
+    
+    private Map<Integer, Node> map;
+    private Node head, tail;
+    private int capacity;
+    
+    public LRUCacheManual(int capacity) {
+        this.capacity = capacity;
+        map = new HashMap<>();
+        head = new Node(0, 0);
+        tail = new Node(0, 0);
+        head.next = tail;
+        tail.prev = head;
+    }
+    
+    private void addToFront(Node node) {
+        node.next = head.next;
+        node.prev = head;
+        head.next.prev = node;
+        head.next = node;
+    }
+    
+    private void removeNode(Node node) {
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
+    }
+    
+    public int get(int key) {
+        if (!map.containsKey(key)) return -1;
+        Node node = map.get(key);
+        removeNode(node);
+        addToFront(node);
+        return node.value;
+    }
+    
+    public void put(int key, int value) {
+        if (map.containsKey(key)) {
+            Node node = map.get(key);
+            node.value = value;
+            removeNode(node);
+            addToFront(node);
+        } else {
+            if (map.size() == capacity) {
+                Node lru = tail.prev;
+                removeNode(lru);
+                map.remove(lru.key);
+            }
+            Node newNode = new Node(key, value);
+            map.put(key, newNode);
+            addToFront(newNode);
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        LRUCache cache = new LRUCache(2);
+        cache.put(1, 1);
+        cache.put(2, 2);
+        System.out.println(cache.get(1)); // 1
+        cache.put(3, 3); // Evicts key 2
+        System.out.println(cache.get(2)); // -1
+    }
+}`,
+      hints: ["Use LinkedHashMap with access order", "Override removeEldestEntry", "For manual: HashMap + Doubly Linked List"]
+    },
+
+    {
+      id: 22,
+      title: "Merge Sort",
+      difficulty: "Hard",
+      description: "Implement the merge sort algorithm.",
+      starterCode: `import java.util.Arrays;
 
 public class Main {
     public static void mergeSort(int[] arr) {
-        // Tu código aquí
+        // Your code here
     }
     
     public static void main(String[] args) {
@@ -464,7 +2687,8 @@ public class Main {
         // [11, 12, 22, 25, 34, 64, 90]
     }
 }`,
-        solution: `import java.util.Arrays;
+      solution: `// Merge sort implementation (divide and conquer)
+import java.util.Arrays;
 
 public class Main {
     public static void mergeSort(int[] arr) {
@@ -500,762 +2724,4464 @@ public class Main {
         System.out.println(Arrays.toString(arr));
     }
 }`,
-        hints: ["Divide y vencerás", "Crea un método auxiliar merge()"]
-      },
-      {
-        id: 5,
-        title: "Validar Paréntesis",
-        difficulty: "Fácil",
-        description: "Verifica si una cadena con paréntesis, corchetes y llaves está balanceada.",
-        starterCode: `import java.util.*;
+      hints: ["Divide array into halves", "Recursively sort halves", "Merge sorted halves"]
+    },
+
+    {
+      id: 23,
+      title: "Producer-Consumer Problem",
+      difficulty: "Hard",
+      description: "Implement the producer-consumer pattern using threads.",
+      starterCode: `import java.util.concurrent.*;
+
+class SharedBuffer {
+    // Your code here
+}
+
+class Producer implements Runnable {
+    // Your code here
+}
+
+class Consumer implements Runnable {
+    // Your code here
+}
 
 public class Main {
-    public static boolean isValid(String s) {
-        // Tu código aquí
-        return false;
-    }
-    
     public static void main(String[] args) {
-        System.out.println(isValid("()"));     // true
-        System.out.println(isValid("()[]{}"));  // true
-        System.out.println(isValid("(]"));      // false
-        System.out.println(isValid("([)]"));    // false
+        // Test your implementation
     }
 }`,
-        solution: `import java.util.*;
+      solution: `// Producer-Consumer using BlockingQueue (simplest)
+import java.util.concurrent.*;
 
-public class Main {
-    public static boolean isValid(String s) {
-        Stack<Character> stack = new Stack<>();
-        Map<Character, Character> pairs = Map.of(
-            ')', '(',
-            ']', '[',
-            '}', '{'
-        );
-        
-        for (char c : s.toCharArray()) {
-            if (pairs.containsValue(c)) {
-                stack.push(c);
-            } else if (pairs.containsKey(c)) {
-                if (stack.isEmpty() || stack.pop() != pairs.get(c)) {
-                    return false;
-                }
+class SharedBuffer {
+    private BlockingQueue<Integer> queue;
+    private final int capacity;
+    
+    public SharedBuffer(int capacity) {
+        this.capacity = capacity;
+        this.queue = new LinkedBlockingQueue<>(capacity);
+    }
+    
+    public void produce(int item) throws InterruptedException {
+        queue.put(item);
+        System.out.println("Produced: " + item);
+    }
+    
+    public int consume() throws InterruptedException {
+        int item = queue.take();
+        System.out.println("Consumed: " + item);
+        return item;
+    }
+}
+
+class Producer implements Runnable {
+    private SharedBuffer buffer;
+    
+    public Producer(SharedBuffer buffer) {
+        this.buffer = buffer;
+    }
+    
+    @Override
+    public void run() {
+        try {
+            for (int i = 1; i <= 10; i++) {
+                buffer.produce(i);
+                Thread.sleep(100); // Simulate work
             }
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
         }
-        
-        return stack.isEmpty();
+    }
+}
+
+class Consumer implements Runnable {
+    private SharedBuffer buffer;
+    
+    public Consumer(SharedBuffer buffer) {
+        this.buffer = buffer;
     }
     
+    @Override
+    public void run() {
+        try {
+            for (int i = 1; i <= 10; i++) {
+                buffer.consume();
+                Thread.sleep(150); // Simulate work
+            }
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+}
+
+public class Main {
     public static void main(String[] args) {
-        System.out.println(isValid("()"));     // true
-        System.out.println(isValid("()[]{}"));  // true
-        System.out.println(isValid("(]"));      // false
-        System.out.println(isValid("([)]"));    // false
-    }
-}`,
-        hints: ["Usa una Stack", "Mapea cada cierre con su apertura"]
-      }
-    ]
-  },
-  csharp: {
-    name: "C#",
-    icon: csharpLogo,
-    color: "#68217a",
-    exercises: [
-      {
-        id: 1,
-        title: "LINQ Básico",
-        difficulty: "Fácil",
-        description: "Usa LINQ para filtrar y transformar una lista de números.",
-        starterCode: `using System;
-using System.Linq;
-using System.Collections.Generic;
-
-class Program {
-    static void Main() {
-        List<int> numbers = new List<int> {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        SharedBuffer buffer = new SharedBuffer(5);
         
-        // 1. Obtén los números pares
-        // 2. Multiplícalos por 2
-        // 3. Ordénalos de mayor a menor
+        Thread producerThread = new Thread(new Producer(buffer));
+        Thread consumerThread = new Thread(new Consumer(buffer));
         
-        // Tu código aquí
+        producerThread.start();
+        consumerThread.start();
         
-        Console.WriteLine(string.Join(", ", result));
-        // Esperado: 20, 16, 12, 8, 4
-    }
-}`,
-        solution: `using System;
-using System.Linq;
-using System.Collections.Generic;
-
-class Program {
-    static void Main() {
-        List<int> numbers = new List<int> {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-        
-        var result = numbers
-            .Where(n => n % 2 == 0)
-            .Select(n => n * 2)
-            .OrderByDescending(n => n);
-        
-        Console.WriteLine(string.Join(", ", result));
-        // Output: 20, 16, 12, 8, 4
-    }
-}`,
-        hints: ["Where() filtra elementos", "Select() transforma elementos", "OrderByDescending() ordena"]
-      },
-      {
-        id: 2,
-        title: "Async/Await",
-        difficulty: "Medio",
-        description: "Implementa un método asíncrono que simule descargas paralelas.",
-        starterCode: `using System;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-
-class Program {
-    static async Task<string> DownloadAsync(string url) {
-        await Task.Delay(1000); // Simula descarga
-        return $"Contenido de {url}";
-    }
-    
-    static async Task Main() {
-        string[] urls = { "url1.com", "url2.com", "url3.com" };
-        
-        // Descarga todas las URLs en paralelo
-        // Tu código aquí
-        
-        // Imprime todos los resultados
-    }
-}`,
-        solution: `using System;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-
-class Program {
-    static async Task<string> DownloadAsync(string url) {
-        await Task.Delay(1000); // Simula descarga
-        return $"Contenido de {url}";
-    }
-    
-    static async Task Main() {
-        string[] urls = { "url1.com", "url2.com", "url3.com" };
-        
-        // Descarga todas las URLs en paralelo
-        var tasks = urls.Select(url => DownloadAsync(url));
-        string[] results = await Task.WhenAll(tasks);
-        
-        // Imprime todos los resultados
-        foreach (var result in results) {
-            Console.WriteLine(result);
+        try {
+            producerThread.join();
+            consumerThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-    }
-}`,
-        hints: ["Task.WhenAll ejecuta tareas en paralelo", "Select puede crear tareas"]
-      },
-      {
-        id: 3,
-        title: "Extensiones de Método",
-        difficulty: "Medio",
-        description: "Crea métodos de extensión útiles para strings.",
-        starterCode: `using System;
-
-public static class StringExtensions {
-    // 1. Método que cuente las palabras
-    // 2. Método que convierta a Title Case
-    // Tu código aquí
-}
-
-class Program {
-    static void Main() {
-        string text = "hello world from csharp";
         
-        Console.WriteLine(text.WordCount());    // 4
-        Console.WriteLine(text.ToTitleCase());  // Hello World From Csharp
+        System.out.println("Producer-Consumer completed.");
     }
 }`,
-        solution: `using System;
-using System.Globalization;
+      hints: ["Use BlockingQueue for simplicity", "put() blocks when queue is full", "take() blocks when queue is empty"]
+    },
 
-public static class StringExtensions {
-    public static int WordCount(this string str) {
-        if (string.IsNullOrWhiteSpace(str))
-            return 0;
-        return str.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Length;
+    {
+      id: 24,
+      title: "Implement HashMap",
+      difficulty: "Hard",
+      description: "Implement a simple HashMap from scratch.",
+      starterCode: `class MyHashMap<K, V> {
+    // Your code here
+    
+    public void put(K key, V value) {
     }
     
-    public static string ToTitleCase(this string str) {
-        if (string.IsNullOrEmpty(str))
-            return str;
-        return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(str.ToLower());
-    }
-}
-
-class Program {
-    static void Main() {
-        string text = "hello world from csharp";
-        
-        Console.WriteLine(text.WordCount());    // 4
-        Console.WriteLine(text.ToTitleCase());  // Hello World From Csharp
-    }
-}`,
-        hints: ["Usa 'this' como primer parámetro", "La clase debe ser static"]
-      },
-      {
-        id: 4,
-        title: "Diccionario Inverso",
-        difficulty: "Fácil",
-        description: "Invierte un diccionario (las claves se vuelven valores y viceversa).",
-        starterCode: `using System;
-using System.Collections.Generic;
-
-class Program {
-    static Dictionary<V, K> InvertDictionary<K, V>(Dictionary<K, V> dict) {
-        // Tu código aquí
+    public V get(K key) {
         return null;
     }
     
-    static void Main() {
-        var original = new Dictionary<string, int> {
-            {"uno", 1}, {"dos", 2}, {"tres", 3}
-        };
-        
-        var inverted = InvertDictionary(original);
-        
-        foreach (var kvp in inverted) {
-            Console.WriteLine($"{kvp.Key}: {kvp.Value}");
-        }
-        // 1: uno, 2: dos, 3: tres
+    public void remove(K key) {
+    }
+    
+    public boolean containsKey(K key) {
+        return false;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyHashMap<String, Integer> map = new MyHashMap<>();
+        map.put("one", 1);
+        map.put("two", 2);
+        System.out.println(map.get("one")); // 1
+        map.remove("one");
+        System.out.println(map.containsKey("one")); // false
     }
 }`,
-        solution: `using System;
+      solution: `// Simple HashMap implementation using array of linked lists
+class MyHashMap<K, V> {
+    private static class Entry<K, V> {
+        K key;
+        V value;
+        Entry<K, V> next;
+        
+        Entry(K key, V value) {
+            this.key = key;
+            this.value = value;
+        }
+    }
+    
+    private Entry<K, V>[] buckets;
+    private int capacity;
+    private int size;
+    
+    @SuppressWarnings("unchecked")
+    public MyHashMap() {
+        this.capacity = 16; // Initial capacity
+        this.buckets = new Entry[capacity];
+        this.size = 0;
+    }
+    
+    private int hash(K key) {
+        return key == null ? 0 : Math.abs(key.hashCode() % capacity);
+    }
+    
+    public void put(K key, V value) {
+        int index = hash(key);
+        Entry<K, V> current = buckets[index];
+        
+        // Check if key already exists
+        while (current != null) {
+            if ((key == null && current.key == null) || 
+                (key != null && key.equals(current.key))) {
+                current.value = value; // Update existing
+                return;
+            }
+            current = current.next;
+        }
+        
+        // Add new entry at beginning of bucket
+        Entry<K, V> newEntry = new Entry<>(key, value);
+        newEntry.next = buckets[index];
+        buckets[index] = newEntry;
+        size++;
+        
+        // Resize if needed (simplified)
+        if (size > capacity * 0.75) {
+            resize();
+        }
+    }
+    
+    public V get(K key) {
+        int index = hash(key);
+        Entry<K, V> current = buckets[index];
+        
+        while (current != null) {
+            if ((key == null && current.key == null) || 
+                (key != null && key.equals(current.key))) {
+                return current.value;
+            }
+            current = current.next;
+        }
+        return null;
+    }
+    
+    public void remove(K key) {
+        int index = hash(key);
+        Entry<K, V> current = buckets[index];
+        Entry<K, V> prev = null;
+        
+        while (current != null) {
+            if ((key == null && current.key == null) || 
+                (key != null && key.equals(current.key))) {
+                if (prev == null) {
+                    buckets[index] = current.next;
+                } else {
+                    prev.next = current.next;
+                }
+                size--;
+                return;
+            }
+            prev = current;
+            current = current.next;
+        }
+    }
+    
+    public boolean containsKey(K key) {
+        return get(key) != null;
+    }
+    
+    @SuppressWarnings("unchecked")
+    private void resize() {
+        capacity *= 2;
+        Entry<K, V>[] oldBuckets = buckets;
+        buckets = new Entry[capacity];
+        size = 0;
+        
+        for (Entry<K, V> head : oldBuckets) {
+            Entry<K, V> current = head;
+            while (current != null) {
+                put(current.key, current.value);
+                current = current.next;
+            }
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyHashMap<String, Integer> map = new MyHashMap<>();
+        map.put("one", 1);
+        map.put("two", 2);
+        System.out.println(map.get("one")); // 1
+        map.remove("one");
+        System.out.println(map.containsKey("one")); // false
+    }
+}`,
+      hints: ["Array of linked lists (buckets)", "Hash function to determine bucket", "Handle collisions with chaining"]
+    },
+
+    {
+      id: 25,
+      title: "Serialize and Deserialize Binary Tree",
+      difficulty: "Hard",
+      description: "Serialize a binary tree to string and deserialize it back.",
+      starterCode: `import java.util.*;
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int x) { val = x; }
+}
+
+public class Main {
+    // Encodes a tree to a single string.
+    public String serialize(TreeNode root) {
+        return "";
+    }
+    
+    // Decodes your encoded data to tree.
+    public TreeNode deserialize(String data) {
+        return null;
+    }
+    
+    public static void main(String[] args) {
+        // Test your implementation
+    }
+}`,
+      solution: `// Serialize and deserialize binary tree using preorder traversal
+import java.util.*;
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int x) { val = x; }
+}
+
+public class Main {
+    // Encodes a tree to a single string.
+    public String serialize(TreeNode root) {
+        StringBuilder sb = new StringBuilder();
+        serializeHelper(root, sb);
+        return sb.toString();
+    }
+    
+    private void serializeHelper(TreeNode node, StringBuilder sb) {
+        if (node == null) {
+            sb.append("null,");
+            return;
+        }
+        sb.append(node.val).append(",");
+        serializeHelper(node.left, sb);
+        serializeHelper(node.right, sb);
+    }
+    
+    // Decodes your encoded data to tree.
+    public TreeNode deserialize(String data) {
+        Queue<String> nodes = new LinkedList<>(Arrays.asList(data.split(",")));
+        return deserializeHelper(nodes);
+    }
+    
+    private TreeNode deserializeHelper(Queue<String> nodes) {
+        String val = nodes.poll();
+        if (val.equals("null")) {
+            return null;
+        }
+        TreeNode node = new TreeNode(Integer.parseInt(val));
+        node.left = deserializeHelper(nodes);
+        node.right = deserializeHelper(nodes);
+        return node;
+    }
+    
+    public static void main(String[] args) {
+        Main codec = new Main();
+        
+        // Create a sample tree
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.right.left = new TreeNode(4);
+        root.right.right = new TreeNode(5);
+        
+        // Test serialization and deserialization
+        String serialized = codec.serialize(root);
+        System.out.println("Serialized: " + serialized);
+        
+        TreeNode deserialized = codec.deserialize(serialized);
+        String reserialized = codec.serialize(deserialized);
+        System.out.println("Reserialized: " + reserialized);
+        System.out.println("Match: " + serialized.equals(reserialized)); // true
+    }
+}`,
+      hints: ["Use preorder traversal", "Represent null nodes with marker", "Use queue for deserialization"]
+    }
+
+  ]
+}, 
+
+
+
+
+csharp: {
+  name: "C#",
+  icon: csharpLogo,
+  color: "#68217a",
+  exercises: [
+
+    // =========================
+    // 🟢 EASY
+    // =========================
+
+    {
+      id: 1,
+      title: "Reverse String",
+      difficulty: "Easy",
+      description: "Reverse a string without using Array.Reverse().",
+      starterCode: `using System;
+
+class Program
+{
+    static string ReverseString(string input)
+    {
+        // Your code here
+        return "";
+    }
+
+    static void Main()
+    {
+        Console.WriteLine(ReverseString("hello")); // "olleh"
+        Console.WriteLine(ReverseString("C#"));    // "#C"
+    }
+}`,
+      solution: `// Solution using char array and two pointers
+using System;
+
+class Program
+{
+    static string ReverseString(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+            return input;
+        
+        char[] chars = input.ToCharArray();
+        int left = 0;
+        int right = chars.Length - 1;
+        
+        while (left < right)
+        {
+            char temp = chars[left];
+            chars[left] = chars[right];
+            chars[right] = temp;
+            left++;
+            right--;
+        }
+        
+        return new string(chars);
+    }
+
+    static void Main()
+    {
+        Console.WriteLine(ReverseString("hello")); // "olleh"
+        Console.WriteLine(ReverseString("C#"));    // "#C"
+    }
+}`,
+      hints: ["Convert string to char array", "Use two pointers approach", "Swap characters from both ends"]
+    },
+
+    {
+      id: 2,
+      title: "Find Maximum in Array",
+      difficulty: "Easy",
+      description: "Find the maximum value in an integer array.",
+      starterCode: `using System;
+
+class Program
+{
+    static int FindMax(int[] numbers)
+    {
+        // Your code here
+        return 0;
+    }
+
+    static void Main()
+    {
+        int[] numbers = { 5, 3, 9, 1, 7 };
+        Console.WriteLine(FindMax(numbers)); // 9
+    }
+}`,
+      solution: `// Iterative approach to find maximum
+using System;
+
+class Program
+{
+    static int FindMax(int[] numbers)
+    {
+        if (numbers == null || numbers.Length == 0)
+            throw new ArgumentException("Array cannot be null or empty");
+        
+        int max = numbers[0];
+        for (int i = 1; i < numbers.Length; i++)
+        {
+            if (numbers[i] > max)
+                max = numbers[i];
+        }
+        return max;
+    }
+
+    static void Main()
+    {
+        int[] numbers = { 5, 3, 9, 1, 7 };
+        Console.WriteLine(FindMax(numbers)); // 9
+    }
+}`,
+      hints: ["Initialize with first element", "Loop through array", "Update max when finding larger value"]
+    },
+
+    {
+      id: 3,
+      title: "Check Palindrome",
+      difficulty: "Easy",
+      description: "Check if a string is a palindrome (reads the same forwards and backwards).",
+      starterCode: `using System;
+using System.Text.RegularExpressions;
+
+class Program
+{
+    static bool IsPalindrome(string input)
+    {
+        // Your code here
+        return false;
+    }
+
+    static void Main()
+    {
+        Console.WriteLine(IsPalindrome("racecar")); // true
+        Console.WriteLine(IsPalindrome("hello"));   // false
+        Console.WriteLine(IsPalindrome("A man a plan a canal Panama")); // true
+    }
+}`,
+      solution: `// Check palindrome by comparing characters from both ends
+using System;
+using System.Text.RegularExpressions;
+
+class Program
+{
+    static bool IsPalindrome(string input)
+    {
+        // Remove non-alphanumeric characters and convert to lowercase
+        string cleanInput = Regex.Replace(input, @"[^a-zA-Z0-9]", "").ToLower();
+        
+        int left = 0;
+        int right = cleanInput.Length - 1;
+        
+        while (left < right)
+        {
+            if (cleanInput[left] != cleanInput[right])
+                return false;
+            left++;
+            right--;
+        }
+        return true;
+    }
+
+    static void Main()
+    {
+        Console.WriteLine(IsPalindrome("racecar")); // true
+        Console.WriteLine(IsPalindrome("hello"));   // false
+        Console.WriteLine(IsPalindrome("A man a plan a canal Panama")); // true
+    }
+}`,
+      hints: ["Remove non-alphanumeric characters", "Convert to lowercase", "Compare characters from both ends"]
+    },
+
+    {
+      id: 4,
+      title: "Count Vowels",
+      difficulty: "Easy",
+      description: "Count the number of vowels in a string.",
+      starterCode: `using System;
+
+class Program
+{
+    static int CountVowels(string input)
+    {
+        // Your code here
+        return 0;
+    }
+
+    static void Main()
+    {
+        Console.WriteLine(CountVowels("Hello World")); // 3
+        Console.WriteLine(CountVowels("C# Programming")); // 4
+    }
+}`,
+      solution: `// Count vowels using LINQ or loop
+using System;
+using System.Linq;
+
+class Program
+{
+    static int CountVowels(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+            return 0;
+        
+        char[] vowels = { 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U' };
+        return input.Count(c => vowels.Contains(c));
+    }
+    
+    // Alternative using foreach loop
+    static int CountVowelsLoop(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+            return 0;
+        
+        char[] vowels = { 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U' };
+        int count = 0;
+        foreach (char c in input)
+        {
+            if (Array.IndexOf(vowels, c) != -1)
+                count++;
+        }
+        return count;
+    }
+
+    static void Main()
+    {
+        Console.WriteLine(CountVowels("Hello World")); // 3
+        Console.WriteLine(CountVowels("C# Programming")); // 4
+    }
+}`,
+      hints: ["Define array of vowels", "Use LINQ Count method", "Case insensitive counting"]
+    },
+
+    {
+      id: 5,
+      title: "Factorial Calculation",
+      difficulty: "Easy",
+      description: "Calculate the factorial of a non-negative integer.",
+      starterCode: `using System;
+
+class Program
+{
+    static int Factorial(int n)
+    {
+        // Your code here
+        return 0;
+    }
+
+    static void Main()
+    {
+        Console.WriteLine(Factorial(5)); // 120
+        Console.WriteLine(Factorial(0)); // 1
+    }
+}`,
+      solution: `// Iterative factorial calculation
+using System;
+
+class Program
+{
+    static int Factorial(int n)
+    {
+        if (n < 0)
+            throw new ArgumentException("Factorial not defined for negative numbers");
+        
+        if (n == 0 || n == 1)
+            return 1;
+        
+        int result = 1;
+        for (int i = 2; i <= n; i++)
+        {
+            result *= i;
+        }
+        return result;
+    }
+    
+    // Recursive version
+    static int FactorialRecursive(int n)
+    {
+        if (n < 0)
+            throw new ArgumentException("Negative number");
+        if (n <= 1)
+            return 1;
+        return n * FactorialRecursive(n - 1);
+    }
+
+    static void Main()
+    {
+        Console.WriteLine(Factorial(5)); // 120
+        Console.WriteLine(Factorial(0)); // 1
+    }
+}`,
+      hints: ["Handle edge cases (0, 1, negative)", "Start result from 1", "Multiply sequentially"]
+    },
+
+    {
+      id: 6,
+      title: "Sum of Array Elements",
+      difficulty: "Easy",
+      description: "Calculate the sum of all elements in an integer array.",
+      starterCode: `using System;
+
+class Program
+{
+    static int SumArray(int[] numbers)
+    {
+        // Your code here
+        return 0;
+    }
+
+    static void Main()
+    {
+        int[] numbers = { 1, 2, 3, 4, 5 };
+        Console.WriteLine(SumArray(numbers)); // 15
+    }
+}`,
+      solution: `// Sum array elements using loop
+using System;
+using System.Linq;
+
+class Program
+{
+    static int SumArray(int[] numbers)
+    {
+        if (numbers == null)
+            throw new ArgumentNullException(nameof(numbers));
+        
+        int sum = 0;
+        foreach (int num in numbers)
+        {
+            sum += num;
+        }
+        return sum;
+    }
+    
+    // Alternative using LINQ
+    static int SumArrayLinq(int[] numbers)
+    {
+        return numbers?.Sum() ?? 0;
+    }
+
+    static void Main()
+    {
+        int[] numbers = { 1, 2, 3, 4, 5 };
+        Console.WriteLine(SumArray(numbers)); // 15
+    }
+}`,
+      hints: ["Initialize sum to 0", "Use foreach loop", "Check for null array"]
+    },
+
+    {
+      id: 7,
+      title: "Find Duplicates",
+      difficulty: "Easy",
+      description: "Find all duplicate elements in an array.",
+      starterCode: `using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static List<int> FindDuplicates(int[] numbers)
+    {
+        // Your code here
+        return new List<int>();
+    }
+
+    static void Main()
+    {
+        int[] numbers = { 1, 2, 3, 2, 1, 4, 5, 4 };
+        var duplicates = FindDuplicates(numbers);
+        Console.WriteLine(string.Join(", ", duplicates)); // 1, 2, 4
+    }
+}`,
+      solution: `// Find duplicates using HashSet
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
-class Program {
-    static Dictionary<V, K> InvertDictionary<K, V>(Dictionary<K, V> dict) {
-        return dict.ToDictionary(kvp => kvp.Value, kvp => kvp.Key);
+class Program
+{
+    static List<int> FindDuplicates(int[] numbers)
+    {
+        if (numbers == null || numbers.Length == 0)
+            return new List<int>();
+        
+        HashSet<int> seen = new HashSet<int>();
+        HashSet<int> duplicates = new HashSet<int>();
+        
+        foreach (int num in numbers)
+        {
+            if (!seen.Add(num))
+            {
+                duplicates.Add(num);
+            }
+        }
+        
+        return duplicates.ToList();
     }
     
-    static void Main() {
-        var original = new Dictionary<string, int> {
-            {"uno", 1}, {"dos", 2}, {"tres", 3}
+    // Alternative using LINQ
+    static List<int> FindDuplicatesLinq(int[] numbers)
+    {
+        return numbers?.GroupBy(x => x)
+                      .Where(g => g.Count() > 1)
+                      .Select(g => g.Key)
+                      .ToList() ?? new List<int>();
+    }
+
+    static void Main()
+    {
+        int[] numbers = { 1, 2, 3, 2, 1, 4, 5, 4 };
+        var duplicates = FindDuplicates(numbers);
+        Console.WriteLine(string.Join(", ", duplicates)); // 1, 2, 4
+    }
+}`,
+      hints: ["Use two HashSets", "HashSet.Add returns false if element exists", "Group by element with LINQ"]
+    },
+
+    {
+      id: 8,
+      title: "Check Prime Number",
+      difficulty: "Easy",
+      description: "Check if a number is prime.",
+      starterCode: `using System;
+
+class Program
+{
+    static bool IsPrime(int n)
+    {
+        // Your code here
+        return false;
+    }
+
+    static void Main()
+    {
+        Console.WriteLine(IsPrime(7));  // true
+        Console.WriteLine(IsPrime(10)); // false
+        Console.WriteLine(IsPrime(2));  // true
+    }
+}`,
+      solution: `// Efficient prime checking
+using System;
+
+class Program
+{
+    static bool IsPrime(int n)
+    {
+        if (n <= 1) return false;
+        if (n <= 3) return true;
+        if (n % 2 == 0 || n % 3 == 0) return false;
+        
+        // Check divisibility up to sqrt(n)
+        for (int i = 5; i * i <= n; i += 6)
+        {
+            if (n % i == 0 || n % (i + 2) == 0)
+                return false;
+        }
+        return true;
+    }
+
+    static void Main()
+    {
+        Console.WriteLine(IsPrime(7));  // true
+        Console.WriteLine(IsPrime(10)); // false
+        Console.WriteLine(IsPrime(2));  // true
+    }
+}`,
+      hints: ["Numbers <= 1 are not prime", "Check divisibility by 2 and 3 first", "Only check up to sqrt(n)"]
+    },
+
+    {
+      id: 9,
+      title: "Remove Duplicates from Array",
+      difficulty: "Easy",
+      description: "Remove duplicates from an array while preserving order.",
+      starterCode: `using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static int[] RemoveDuplicates(int[] numbers)
+    {
+        // Your code here
+        return new int[0];
+    }
+
+    static void Main()
+    {
+        int[] numbers = { 1, 2, 2, 3, 4, 4, 5 };
+        var result = RemoveDuplicates(numbers);
+        Console.WriteLine(string.Join(", ", result)); // 1, 2, 3, 4, 5
+    }
+}`,
+      solution: `// Remove duplicates using HashSet
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class Program
+{
+    static int[] RemoveDuplicates(int[] numbers)
+    {
+        if (numbers == null || numbers.Length == 0)
+            return Array.Empty<int>();
+        
+        HashSet<int> seen = new HashSet<int>();
+        List<int> result = new List<int>();
+        
+        foreach (int num in numbers)
+        {
+            if (seen.Add(num))
+            {
+                result.Add(num);
+            }
+        }
+        
+        return result.ToArray();
+    }
+    
+    // Alternative using LINQ and Distinct
+    static int[] RemoveDuplicatesLinq(int[] numbers)
+    {
+        return numbers?.Distinct().ToArray() ?? Array.Empty<int>();
+    }
+
+    static void Main()
+    {
+        int[] numbers = { 1, 2, 2, 3, 4, 4, 5 };
+        var result = RemoveDuplicates(numbers);
+        Console.WriteLine(string.Join(", ", result)); // 1, 2, 3, 4, 5
+    }
+}`,
+      hints: ["Use HashSet to track seen elements", "Add to result only if new", "LINQ Distinct() for simple solution"]
+    },
+
+    {
+      id: 10,
+      title: "Fibonacci Sequence",
+      difficulty: "Easy",
+      description: "Generate the first n numbers of the Fibonacci sequence.",
+      starterCode: `using System;
+
+class Program
+{
+    static int[] Fibonacci(int n)
+    {
+        // Your code here
+        return new int[0];
+    }
+
+    static void Main()
+    {
+        var result = Fibonacci(10);
+        Console.WriteLine(string.Join(", ", result)); // 0, 1, 1, 2, 3, 5, 8, 13, 21, 34
+    }
+}`,
+      solution: `// Generate Fibonacci sequence iteratively
+using System;
+
+class Program
+{
+    static int[] Fibonacci(int n)
+    {
+        if (n <= 0)
+            return Array.Empty<int>();
+        
+        if (n == 1)
+            return new int[] { 0 };
+        
+        int[] result = new int[n];
+        result[0] = 0;
+        result[1] = 1;
+        
+        for (int i = 2; i < n; i++)
+        {
+            result[i] = result[i - 1] + result[i - 2];
+        }
+        
+        return result;
+    }
+
+    static void Main()
+    {
+        var result = Fibonacci(10);
+        Console.WriteLine(string.Join(", ", result)); // 0, 1, 1, 2, 3, 5, 8, 13, 21, 34
+    }
+}`,
+      hints: ["Handle base cases (0, 1)", "Initialize first two numbers", "Each number is sum of previous two"]
+    },
+
+    // =========================
+    // 🟡 MEDIUM
+    // =========================
+
+    {
+      id: 11,
+      title: "Valid Parentheses",
+      difficulty: "Medium",
+      description: "Check if a string containing parentheses, brackets, and braces is valid.",
+      starterCode: `using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static bool IsValid(string s)
+    {
+        // Your code here
+        return false;
+    }
+
+    static void Main()
+    {
+        Console.WriteLine(IsValid("()"));     // true
+        Console.WriteLine(IsValid("()[]{}")); // true
+        Console.WriteLine(IsValid("(]"));     // false
+        Console.WriteLine(IsValid("([)]"));   // false
+    }
+}`,
+      solution: `// Classic stack problem for matching parentheses
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static bool IsValid(string s)
+    {
+        if (string.IsNullOrEmpty(s))
+            return true;
+        
+        Stack<char> stack = new Stack<char>();
+        Dictionary<char, char> pairs = new Dictionary<char, char>
+        {
+            { ')', '(' },
+            { ']', '[' },
+            { '}', '{' }
         };
         
-        var inverted = InvertDictionary(original);
-        
-        foreach (var kvp in inverted) {
-            Console.WriteLine($"{kvp.Key}: {kvp.Value}");
+        foreach (char c in s)
+        {
+            // If it's an opening bracket, push to stack
+            if (c == '(' || c == '[' || c == '{')
+            {
+                stack.Push(c);
+            }
+            // If it's a closing bracket
+            else if (pairs.ContainsKey(c))
+            {
+                if (stack.Count == 0 || stack.Pop() != pairs[c])
+                    return false;
+            }
         }
+        
+        return stack.Count == 0;
+    }
+
+    static void Main()
+    {
+        Console.WriteLine(IsValid("()"));     // true
+        Console.WriteLine(IsValid("()[]{}")); // true
+        Console.WriteLine(IsValid("(]"));     // false
+        Console.WriteLine(IsValid("([)]"));   // false
     }
 }`,
-        hints: ["ToDictionary() con LINQ", "Intercambia Key y Value"]
-      },
-      {
-        id: 5,
-        title: "Eventos y Delegados",
-        difficulty: "Medio",
-        description: "Implementa un sistema simple de publicador-suscriptor.",
-        starterCode: `using System;
+      hints: ["Use Stack<char> data structure", "Map closing to opening brackets", "Check if stack is empty at end"]
+    },
 
-// Crea un publicador que notifique cuando el precio cambie
-public class StockPrice {
-    private decimal _price;
+    {
+      id: 12,
+      title: "Two Sum",
+      difficulty: "Medium",
+      description: "Given an array of integers and a target, find two numbers that sum to target and return their indices.",
+      starterCode: `using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static int[] TwoSum(int[] nums, int target)
+    {
+        // Your code here
+        return new int[0];
+    }
+
+    static void Main()
+    {
+        int[] nums = { 2, 7, 11, 15 };
+        int target = 9;
+        var result = TwoSum(nums, target);
+        Console.WriteLine($"[{result[0]}, {result[1]}]"); // [0, 1]
+    }
+}`,
+      solution: `// Two Sum using Dictionary for O(n) time complexity
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static int[] TwoSum(int[] nums, int target)
+    {
+        if (nums == null || nums.Length < 2)
+            return Array.Empty<int>();
+        
+        Dictionary<int, int> map = new Dictionary<int, int>();
+        
+        for (int i = 0; i < nums.Length; i++)
+        {
+            int complement = target - nums[i];
+            
+            if (map.TryGetValue(complement, out int index))
+            {
+                return new int[] { index, i };
+            }
+            
+            map[nums[i]] = i;
+        }
+        
+        return Array.Empty<int>();
+    }
+
+    static void Main()
+    {
+        int[] nums = { 2, 7, 11, 15 };
+        int target = 9;
+        var result = TwoSum(nums, target);
+        Console.WriteLine($"[{result[0]}, {result[1]}]"); // [0, 1]
+    }
+}`,
+      hints: ["Use Dictionary to store numbers and indices", "Look for complement", "One-pass solution"]
+    },
+
+    {
+      id: 13,
+      title: "Merge Two Sorted Arrays",
+      difficulty: "Medium",
+      description: "Merge two sorted arrays into one sorted array.",
+      starterCode: `using System;
+
+class Program
+{
+    static int[] MergeSortedArrays(int[] arr1, int[] arr2)
+    {
+        // Your code here
+        return new int[0];
+    }
+
+    static void Main()
+    {
+        int[] arr1 = { 1, 3, 5 };
+        int[] arr2 = { 2, 4, 6 };
+        var result = MergeSortedArrays(arr1, arr2);
+        Console.WriteLine(string.Join(", ", result)); // 1, 2, 3, 4, 5, 6
+    }
+}`,
+      solution: `// Merge two sorted arrays using three pointers
+using System;
+
+class Program
+{
+    static int[] MergeSortedArrays(int[] arr1, int[] arr2)
+    {
+        if (arr1 == null) return arr2 ?? Array.Empty<int>();
+        if (arr2 == null) return arr1 ?? Array.Empty<int>();
+        
+        int[] result = new int[arr1.Length + arr2.Length];
+        int i = 0, j = 0, k = 0;
+        
+        while (i < arr1.Length && j < arr2.Length)
+        {
+            if (arr1[i] < arr2[j])
+            {
+                result[k++] = arr1[i++];
+            }
+            else
+            {
+                result[k++] = arr2[j++];
+            }
+        }
+        
+        // Copy remaining elements
+        while (i < arr1.Length) result[k++] = arr1[i++];
+        while (j < arr2.Length) result[k++] = arr2[j++];
+        
+        return result;
+    }
+
+    static void Main()
+    {
+        int[] arr1 = { 1, 3, 5 };
+        int[] arr2 = { 2, 4, 6 };
+        var result = MergeSortedArrays(arr1, arr2);
+        Console.WriteLine(string.Join(", ", result)); // 1, 2, 3, 4, 5, 6
+    }
+}`,
+      hints: ["Use three pointers", "Compare elements from both arrays", "Handle remaining elements"]
+    },
+
+    {
+      id: 14,
+      title: "Anagram Check",
+      difficulty: "Medium",
+      description: "Check if two strings are anagrams of each other.",
+      starterCode: `using System;
+
+class Program
+{
+    static bool AreAnagrams(string str1, string str2)
+    {
+        // Your code here
+        return false;
+    }
+
+    static void Main()
+    {
+        Console.WriteLine(AreAnagrams("listen", "silent")); // true
+        Console.WriteLine(AreAnagrams("hello", "world"));   // false
+    }
+}`,
+      solution: `// Check anagrams using character frequency
+using System;
+using System.Linq;
+
+class Program
+{
+    static bool AreAnagrams(string str1, string str2)
+    {
+        if (str1 == null || str2 == null)
+            return false;
+        
+        if (str1.Length != str2.Length)
+            return false;
+        
+        // Sort and compare
+        char[] chars1 = str1.ToLower().ToCharArray();
+        char[] chars2 = str2.ToLower().ToCharArray();
+        Array.Sort(chars1);
+        Array.Sort(chars2);
+        
+        return chars1.SequenceEqual(chars2);
+    }
     
-    // Declara el evento aquí
+    // Alternative using character count
+    static bool AreAnagramsCount(string str1, string str2)
+    {
+        if (str1 == null || str2 == null || str1.Length != str2.Length)
+            return false;
+        
+        int[] count = new int[256]; // Assuming ASCII
+        
+        foreach (char c in str1.ToLower())
+            count[c]++;
+        
+        foreach (char c in str2.ToLower())
+        {
+            if (--count[c] < 0)
+                return false;
+        }
+        
+        return true;
+    }
+
+    static void Main()
+    {
+        Console.WriteLine(AreAnagrams("listen", "silent")); // true
+        Console.WriteLine(AreAnagrams("hello", "world"));   // false
+    }
+}`,
+      hints: ["Check lengths first", "Sort both strings and compare", "Use character frequency array"]
+    },
+
+    {
+      id: 15,
+      title: "Find Missing Number",
+      difficulty: "Medium",
+      description: "Find the missing number in an array containing numbers from 1 to n.",
+      starterCode: `using System;
+
+class Program
+{
+    static int FindMissingNumber(int[] numbers, int n)
+    {
+        // Your code here
+        return 0;
+    }
+
+    static void Main()
+    {
+        int[] numbers = { 1, 2, 4, 5 }; // Missing 3
+        Console.WriteLine(FindMissingNumber(numbers, 5)); // 3
+    }
+}`,
+      solution: `// Find missing number using mathematical formula
+using System;
+using System.Linq;
+
+class Program
+{
+    static int FindMissingNumber(int[] numbers, int n)
+    {
+        if (numbers == null || numbers.Length == 0)
+            return 1;
+        
+        // Calculate expected sum of 1 to n
+        int expectedSum = n * (n + 1) / 2;
+        
+        // Calculate actual sum
+        int actualSum = numbers.Sum();
+        
+        // Missing number is the difference
+        return expectedSum - actualSum;
+    }
     
-    public decimal Price {
-        get => _price;
-        set {
-            // Notifica a los suscriptores
+    // Alternative using XOR
+    static int FindMissingNumberXor(int[] numbers, int n)
+    {
+        int xor1 = 0;
+        for (int i = 1; i <= n; i++)
+            xor1 ^= i;
+        
+        int xor2 = 0;
+        foreach (int num in numbers)
+            xor2 ^= num;
+        
+        return xor1 ^ xor2;
+    }
+
+    static void Main()
+    {
+        int[] numbers = { 1, 2, 4, 5 }; // Missing 3
+        Console.WriteLine(FindMissingNumber(numbers, 5)); // 3
+    }
+}`,
+      hints: ["Use formula for sum of 1 to n", "Calculate expected vs actual sum", "XOR approach avoids overflow"]
+    },
+
+    {
+      id: 16,
+      title: "Singleton Pattern",
+      difficulty: "Medium",
+      description: "Implement the Singleton design pattern thread-safe.",
+      starterCode: `using System;
+
+public class Singleton
+{
+    // Your code here
+    
+    public void ShowMessage()
+    {
+        Console.WriteLine("Singleton instance!");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Singleton obj1 = Singleton.Instance;
+        Singleton obj2 = Singleton.Instance;
+        Console.WriteLine(obj1 == obj2); // true
+    }
+}`,
+      solution: `// Thread-safe Singleton using Lazy<T>
+using System;
+
+public sealed class Singleton
+{
+    private static readonly Lazy<Singleton> lazy = 
+        new Lazy<Singleton>(() => new Singleton());
+    
+    public static Singleton Instance => lazy.Value;
+    
+    private Singleton()
+    {
+        // Private constructor
+    }
+    
+    public void ShowMessage()
+    {
+        Console.WriteLine("Singleton instance!");
+    }
+}
+
+// Alternative using lock (for older .NET versions)
+public sealed class SingletonLock
+{
+    private static SingletonLock instance = null;
+    private static readonly object lockObject = new object();
+    
+    public static SingletonLock Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                lock (lockObject)
+                {
+                    if (instance == null)
+                    {
+                        instance = new SingletonLock();
+                    }
+                }
+            }
+            return instance;
+        }
+    }
+    
+    private SingletonLock() { }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Singleton obj1 = Singleton.Instance;
+        Singleton obj2 = Singleton.Instance;
+        Console.WriteLine(obj1 == obj2); // true
+    }
+}`,
+      hints: ["Use Lazy<T> for thread safety", "Private constructor", "Sealed class to prevent inheritance"]
+    },
+
+    {
+      id: 17,
+      title: "Binary Search",
+      difficulty: "Medium",
+      description: "Implement binary search algorithm on a sorted array.",
+      starterCode: `using System;
+
+class Program
+{
+    static int BinarySearch(int[] arr, int target)
+    {
+        // Your code here
+        return -1;
+    }
+
+    static void Main()
+    {
+        int[] arr = { 1, 3, 5, 7, 9, 11 };
+        Console.WriteLine(BinarySearch(arr, 7));  // 3
+        Console.WriteLine(BinarySearch(arr, 12)); // -1
+    }
+}`,
+      solution: `// Classic binary search implementation
+using System;
+
+class Program
+{
+    static int BinarySearch(int[] arr, int target)
+    {
+        if (arr == null || arr.Length == 0)
+            return -1;
+        
+        int left = 0;
+        int right = arr.Length - 1;
+        
+        while (left <= right)
+        {
+            int mid = left + (right - left) / 2; // Avoid overflow
+            
+            if (arr[mid] == target)
+                return mid;
+            else if (arr[mid] < target)
+                left = mid + 1;
+            else
+                right = mid - 1;
+        }
+        
+        return -1;
+    }
+    
+    // Recursive version
+    static int BinarySearchRecursive(int[] arr, int target, int left, int right)
+    {
+        if (left > right)
+            return -1;
+        
+        int mid = left + (right - left) / 2;
+        
+        if (arr[mid] == target)
+            return mid;
+        else if (arr[mid] < target)
+            return BinarySearchRecursive(arr, target, mid + 1, right);
+        else
+            return BinarySearchRecursive(arr, target, left, mid - 1);
+    }
+
+    static void Main()
+    {
+        int[] arr = { 1, 3, 5, 7, 9, 11 };
+        Console.WriteLine(BinarySearch(arr, 7));  // 3
+        Console.WriteLine(BinarySearch(arr, 12)); // -1
+    }
+}`,
+      hints: ["Array must be sorted", "Calculate mid without overflow", "Adjust left/right pointers"]
+    },
+
+    {
+      id: 18,
+      title: "Bubble Sort",
+      difficulty: "Medium",
+      description: "Implement bubble sort algorithm.",
+      starterCode: `using System;
+
+class Program
+{
+    static void BubbleSort(int[] arr)
+    {
+        // Your code here
+    }
+
+    static void Main()
+    {
+        int[] arr = { 64, 34, 25, 12, 22, 11, 90 };
+        BubbleSort(arr);
+        Console.WriteLine(string.Join(", ", arr)); // 11, 12, 22, 25, 34, 64, 90
+    }
+}`,
+      solution: `// Bubble sort implementation with optimization
+using System;
+
+class Program
+{
+    static void BubbleSort(int[] arr)
+    {
+        if (arr == null || arr.Length <= 1)
+            return;
+        
+        int n = arr.Length;
+        bool swapped;
+        
+        for (int i = 0; i < n - 1; i++)
+        {
+            swapped = false;
+            for (int j = 0; j < n - i - 1; j++)
+            {
+                if (arr[j] > arr[j + 1])
+                {
+                    // Swap arr[j] and arr[j+1]
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                    swapped = true;
+                }
+            }
+            
+            // If no swapping occurred, array is sorted
+            if (!swapped)
+                break;
+        }
+    }
+
+    static void Main()
+    {
+        int[] arr = { 64, 34, 25, 12, 22, 11, 90 };
+        BubbleSort(arr);
+        Console.WriteLine(string.Join(", ", arr)); // 11, 12, 22, 25, 34, 64, 90
+    }
+}`,
+      hints: ["Outer loop for passes", "Inner loop for comparisons", "Swap adjacent elements if in wrong order"]
+    },
+
+    {
+      id: 19,
+      title: "Find First Non-Repeating Character",
+      difficulty: "Medium",
+      description: "Find the first non-repeating character in a string.",
+      starterCode: `using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static char? FirstNonRepeating(string input)
+    {
+        // Your code here
+        return null;
+    }
+
+    static void Main()
+    {
+        Console.WriteLine(FirstNonRepeating("swiss")); // w
+        Console.WriteLine(FirstNonRepeating("hello")); // h
+        Console.WriteLine(FirstNonRepeating("aabb"));  // null
+    }
+}`,
+      solution: `// Find first non-repeating character using Dictionary
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class Program
+{
+    static char? FirstNonRepeating(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+            return null;
+        
+        Dictionary<char, int> frequency = new Dictionary<char, int>();
+        
+        // Count frequency of each character
+        foreach (char c in input)
+        {
+            if (frequency.ContainsKey(c))
+                frequency[c]++;
+            else
+                frequency[c] = 1;
+        }
+        
+        // Find first character with frequency 1
+        foreach (char c in input)
+        {
+            if (frequency[c] == 1)
+                return c;
+        }
+        
+        return null;
+    }
+    
+    // Alternative using LINQ
+    static char? FirstNonRepeatingLinq(string input)
+    {
+        return input?.GroupBy(c => c)
+                    .FirstOrDefault(g => g.Count() == 1)?
+                    .Key;
+    }
+
+    static void Main()
+    {
+        Console.WriteLine(FirstNonRepeating("swiss")); // w
+        Console.WriteLine(FirstNonRepeating("hello")); // h
+        Console.WriteLine(FirstNonRepeating("aabb"));  // null
+    }
+}`,
+      hints: ["Count frequency of each character", "Two-pass approach", "Use Dictionary for O(1) lookups"]
+    },
+
+    {
+      id: 20,
+      title: "Implement Queue using Stack",
+      difficulty: "Medium",
+      description: "Implement a queue data structure using two stacks.",
+      starterCode: `using System;
+using System.Collections.Generic;
+
+public class QueueUsingStack
+{
+    // Your code here
+    
+    public void Enqueue(int item)
+    {
+    }
+    
+    public int Dequeue()
+    {
+        return 0;
+    }
+    
+    public bool IsEmpty()
+    {
+        return false;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        QueueUsingStack queue = new QueueUsingStack();
+        queue.Enqueue(1);
+        queue.Enqueue(2);
+        Console.WriteLine(queue.Dequeue()); // 1
+        Console.WriteLine(queue.Dequeue()); // 2
+    }
+}`,
+      solution: `// Queue implementation using two stacks
+using System;
+using System.Collections.Generic;
+
+public class QueueUsingStack
+{
+    private Stack<int> stack1; // For enqueue
+    private Stack<int> stack2; // For dequeue
+    
+    public QueueUsingStack()
+    {
+        stack1 = new Stack<int>();
+        stack2 = new Stack<int>();
+    }
+    
+    public void Enqueue(int item)
+    {
+        stack1.Push(item);
+    }
+    
+    public int Dequeue()
+    {
+        if (IsEmpty())
+            throw new InvalidOperationException("Queue is empty");
+        
+        if (stack2.Count == 0)
+        {
+            // Move all elements from stack1 to stack2
+            while (stack1.Count > 0)
+            {
+                stack2.Push(stack1.Pop());
+            }
+        }
+        
+        return stack2.Pop();
+    }
+    
+    public bool IsEmpty()
+    {
+        return stack1.Count == 0 && stack2.Count == 0;
+    }
+    
+    public int Peek()
+    {
+        if (IsEmpty())
+            throw new InvalidOperationException("Queue is empty");
+        
+        if (stack2.Count == 0)
+        {
+            while (stack1.Count > 0)
+            {
+                stack2.Push(stack1.Pop());
+            }
+        }
+        
+        return stack2.Peek();
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        QueueUsingStack queue = new QueueUsingStack();
+        queue.Enqueue(1);
+        queue.Enqueue(2);
+        Console.WriteLine(queue.Dequeue()); // 1
+        Console.WriteLine(queue.Dequeue()); // 2
+    }
+}`,
+      hints: ["Use two stacks", "Push to stack1 for enqueue", "Pop from stack2 for dequeue", "Transfer when stack2 empty"]
+    },
+
+    // =========================
+    // 🔴 HARD
+    // =========================
+
+    {
+      id: 21,
+      title: "LRU Cache",
+      difficulty: "Hard",
+      description: "Design and implement an LRU (Least Recently Used) cache.",
+      starterCode: `using System;
+using System.Collections.Generic;
+
+public class LRUCache
+{
+    // Your code here
+    
+    public LRUCache(int capacity)
+    {
+    }
+    
+    public int Get(int key)
+    {
+        return -1;
+    }
+    
+    public void Put(int key, int value)
+    {
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        LRUCache cache = new LRUCache(2);
+        cache.Put(1, 1);
+        cache.Put(2, 2);
+        Console.WriteLine(cache.Get(1)); // 1
+        cache.Put(3, 3); // Evicts key 2
+        Console.WriteLine(cache.Get(2)); // -1
+    }
+}`,
+      solution: `// LRU Cache implementation using Dictionary and LinkedList
+using System;
+using System.Collections.Generic;
+
+public class LRUCache
+{
+    private class Node
+    {
+        public int Key { get; set; }
+        public int Value { get; set; }
+        public Node Previous { get; set; }
+        public Node Next { get; set; }
+        
+        public Node(int key, int value)
+        {
+            Key = key;
+            Value = value;
+        }
+    }
+    
+    private readonly int capacity;
+    private readonly Dictionary<int, Node> cache;
+    private readonly Node head;
+    private readonly Node tail;
+    
+    public LRUCache(int capacity)
+    {
+        if (capacity <= 0)
+            throw new ArgumentException("Capacity must be positive", nameof(capacity));
+        
+        this.capacity = capacity;
+        cache = new Dictionary<int, Node>(capacity);
+        
+        // Initialize dummy head and tail nodes
+        head = new Node(0, 0);
+        tail = new Node(0, 0);
+        head.Next = tail;
+        tail.Previous = head;
+    }
+    
+    private void AddToFront(Node node)
+    {
+        node.Next = head.Next;
+        node.Previous = head;
+        head.Next.Previous = node;
+        head.Next = node;
+    }
+    
+    private void RemoveNode(Node node)
+    {
+        node.Previous.Next = node.Next;
+        node.Next.Previous = node.Previous;
+    }
+    
+    private void MoveToFront(Node node)
+    {
+        RemoveNode(node);
+        AddToFront(node);
+    }
+    
+    private Node RemoveLRU()
+    {
+        Node lru = tail.Previous;
+        RemoveNode(lru);
+        return lru;
+    }
+    
+    public int Get(int key)
+    {
+        if (cache.TryGetValue(key, out Node node))
+        {
+            MoveToFront(node);
+            return node.Value;
+        }
+        return -1;
+    }
+    
+    public void Put(int key, int value)
+    {
+        if (cache.TryGetValue(key, out Node node))
+        {
+            // Update existing node
+            node.Value = value;
+            MoveToFront(node);
+        }
+        else
+        {
+            // Create new node
+            Node newNode = new Node(key, value);
+            
+            if (cache.Count >= capacity)
+            {
+                // Remove least recently used
+                Node lru = RemoveLRU();
+                cache.Remove(lru.Key);
+            }
+            
+            // Add new node
+            AddToFront(newNode);
+            cache[key] = newNode;
         }
     }
 }
 
-class Program {
-    static void Main() {
-        var stock = new StockPrice();
-        
-        // Suscríbete al evento
-        
-        stock.Price = 100.50m;
-        stock.Price = 105.75m;
+class Program
+{
+    static void Main()
+    {
+        LRUCache cache = new LRUCache(2);
+        cache.Put(1, 1);
+        cache.Put(2, 2);
+        Console.WriteLine(cache.Get(1)); // 1
+        cache.Put(3, 3); // Evicts key 2
+        Console.WriteLine(cache.Get(2)); // -1
     }
 }`,
-        solution: `using System;
+      hints: ["Use Dictionary for O(1) lookups", "Use doubly linked list for ordering", "Move accessed nodes to front"]
+    },
 
-public class PriceChangedEventArgs : EventArgs {
-    public decimal OldPrice { get; }
-    public decimal NewPrice { get; }
+    {
+      id: 22,
+      title: "Merge Sort",
+      difficulty: "Hard",
+      description: "Implement the merge sort algorithm.",
+      starterCode: `using System;
+
+class Program
+{
+    static void MergeSort(int[] arr)
+    {
+        // Your code here
+    }
+
+    static void Main()
+    {
+        int[] arr = { 64, 34, 25, 12, 22, 11, 90 };
+        MergeSort(arr);
+        Console.WriteLine(string.Join(", ", arr)); // 11, 12, 22, 25, 34, 64, 90
+    }
+}`,
+      solution: `// Merge sort implementation (divide and conquer)
+using System;
+
+class Program
+{
+    static void MergeSort(int[] arr)
+    {
+        if (arr == null || arr.Length <= 1)
+            return;
+        
+        MergeSort(arr, 0, arr.Length - 1);
+    }
     
-    public PriceChangedEventArgs(decimal oldPrice, decimal newPrice) {
-        OldPrice = oldPrice;
-        NewPrice = newPrice;
+    static void MergeSort(int[] arr, int left, int right)
+    {
+        if (left < right)
+        {
+            int mid = left + (right - left) / 2;
+            
+            // Sort first and second halves
+            MergeSort(arr, left, mid);
+            MergeSort(arr, mid + 1, right);
+            
+            // Merge the sorted halves
+            Merge(arr, left, mid, right);
+        }
+    }
+    
+    static void Merge(int[] arr, int left, int mid, int right)
+    {
+        int n1 = mid - left + 1;
+        int n2 = right - mid;
+        
+        // Create temporary arrays
+        int[] leftArr = new int[n1];
+        int[] rightArr = new int[n2];
+        
+        // Copy data to temporary arrays
+        for (int i = 0; i < n1; i++)
+            leftArr[i] = arr[left + i];
+        for (int j = 0; j < n2; j++)
+            rightArr[j] = arr[mid + 1 + j];
+        
+        // Merge the temporary arrays
+        int k = left;
+        int iLeft = 0, iRight = 0;
+        
+        while (iLeft < n1 && iRight < n2)
+        {
+            if (leftArr[iLeft] <= rightArr[iRight])
+            {
+                arr[k] = leftArr[iLeft];
+                iLeft++;
+            }
+            else
+            {
+                arr[k] = rightArr[iRight];
+                iRight++;
+            }
+            k++;
+        }
+        
+        // Copy remaining elements
+        while (iLeft < n1)
+        {
+            arr[k] = leftArr[iLeft];
+            iLeft++;
+            k++;
+        }
+        
+        while (iRight < n2)
+        {
+            arr[k] = rightArr[iRight];
+            iRight++;
+            k++;
+        }
+    }
+
+    static void Main()
+    {
+        int[] arr = { 64, 34, 25, 12, 22, 11, 90 };
+        MergeSort(arr);
+        Console.WriteLine(string.Join(", ", arr)); // 11, 12, 22, 25, 34, 64, 90
+    }
+}`,
+      hints: ["Divide array into halves", "Recursively sort halves", "Merge sorted halves"]
+    },
+
+    {
+      id: 23,
+      title: "Producer-Consumer Problem",
+      difficulty: "Hard",
+      description: "Implement the producer-consumer pattern using threads.",
+      starterCode: `using System;
+using System.Collections.Concurrent;
+using System.Threading;
+using System.Threading.Tasks;
+
+class Program
+{
+    // Your code here
+    
+    static void Main()
+    {
+        // Test your implementation
+    }
+}`,
+      solution: `// Producer-Consumer using BlockingCollection (simplest and recommended)
+using System;
+using System.Collections.Concurrent;
+using System.Threading;
+using System.Threading.Tasks;
+
+class ProducerConsumer
+{
+    private BlockingCollection<int> buffer;
+    private CancellationTokenSource cts;
+    
+    public ProducerConsumer(int bufferSize)
+    {
+        buffer = new BlockingCollection<int>(bufferSize);
+        cts = new CancellationTokenSource();
+    }
+    
+    public void Start(int producerCount, int consumerCount)
+    {
+        // Start producers
+        for (int i = 0; i < producerCount; i++)
+        {
+            Task.Run(() => Producer(i + 1));
+        }
+        
+        // Start consumers
+        for (int i = 0; i < consumerCount; i++)
+        {
+            Task.Run(() => Consumer(i + 1));
+        }
+    }
+    
+    public void Stop()
+    {
+        cts.Cancel();
+        buffer.CompleteAdding();
+    }
+    
+    private void Producer(int id)
+    {
+        try
+        {
+            int item = 1;
+            while (!cts.Token.IsCancellationRequested)
+            {
+                buffer.Add(item, cts.Token);
+                Console.WriteLine($"Producer {id} produced: {item}");
+                item++;
+                Thread.Sleep(100); // Simulate work
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            Console.WriteLine($"Producer {id} stopped.");
+        }
+    }
+    
+    private void Consumer(int id)
+    {
+        try
+        {
+            foreach (var item in buffer.GetConsumingEnumerable(cts.Token))
+            {
+                Console.WriteLine($"Consumer {id} consumed: {item}");
+                Thread.Sleep(150); // Simulate work
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            Console.WriteLine($"Consumer {id} stopped.");
+        }
     }
 }
 
-public class StockPrice {
-    private decimal _price;
+class Program
+{
+    static void Main()
+    {
+        ProducerConsumer pc = new ProducerConsumer(5);
+        pc.Start(2, 2);
+        
+        // Run for 3 seconds then stop
+        Thread.Sleep(3000);
+        pc.Stop();
+        
+        Console.WriteLine("Producer-Consumer completed.");
+    }
+}`,
+      hints: ["Use BlockingCollection for thread safety", "CompleteAdding() signals no more items", "GetConsumingEnumerable() for consumers"]
+    },
+
+    {
+      id: 24,
+      title: "Implement Dictionary",
+      difficulty: "Hard",
+      description: "Implement a simple Dictionary (hash table) from scratch.",
+      starterCode: `using System;
+using System.Collections;
+using System.Collections.Generic;
+
+public class MyDictionary<TKey, TValue> : IEnumerable<KeyValuePair<TKey, TValue>>
+{
+    // Your code here
     
-    public event EventHandler<PriceChangedEventArgs> PriceChanged;
+    public void Add(TKey key, TValue value)
+    {
+    }
     
-    public decimal Price {
-        get => _price;
-        set {
-            if (_price != value) {
-                var oldPrice = _price;
-                _price = value;
-                OnPriceChanged(new PriceChangedEventArgs(oldPrice, value));
+    public bool TryGetValue(TKey key, out TValue value)
+    {
+        value = default;
+        return false;
+    }
+    
+    public bool Remove(TKey key)
+    {
+        return false;
+    }
+    
+    public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
+    {
+        yield break;
+    }
+    
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        MyDictionary<string, int> dict = new MyDictionary<string, int>();
+        dict.Add("one", 1);
+        dict.Add("two", 2);
+        
+        if (dict.TryGetValue("one", out int value))
+            Console.WriteLine(value); // 1
+    }
+}`,
+      solution: `// Simple Dictionary implementation using array of linked lists
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+public class MyDictionary<TKey, TValue> : IEnumerable<KeyValuePair<TKey, TValue>>
+{
+    private class Entry
+    {
+        public TKey Key { get; set; }
+        public TValue Value { get; set; }
+        public Entry Next { get; set; }
+        public int HashCode { get; set; }
+        
+        public Entry(TKey key, TValue value, int hashCode)
+        {
+            Key = key;
+            Value = value;
+            HashCode = hashCode;
+        }
+    }
+    
+    private Entry[] buckets;
+    private int count;
+    private readonly IEqualityComparer<TKey> comparer;
+    private const int InitialCapacity = 16;
+    private const double LoadFactor = 0.75;
+    
+    public MyDictionary() : this(InitialCapacity, EqualityComparer<TKey>.Default) { }
+    
+    public MyDictionary(int capacity) : this(capacity, EqualityComparer<TKey>.Default) { }
+    
+    public MyDictionary(int capacity, IEqualityComparer<TKey> comparer)
+    {
+        if (capacity <= 0)
+            throw new ArgumentException("Capacity must be positive", nameof(capacity));
+        
+        this.comparer = comparer ?? throw new ArgumentNullException(nameof(comparer));
+        buckets = new Entry[GetPrime(capacity)];
+    }
+    
+    public int Count => count;
+    
+    private int GetHashCode(TKey key)
+    {
+        return key == null ? 0 : comparer.GetHashCode(key) & 0x7FFFFFFF;
+    }
+    
+    private int GetBucketIndex(int hashCode, int bucketCount)
+    {
+        return hashCode % bucketCount;
+    }
+    
+    public void Add(TKey key, TValue value)
+    {
+        if (key == null)
+            throw new ArgumentNullException(nameof(key));
+        
+        int hashCode = GetHashCode(key);
+        int bucketIndex = GetBucketIndex(hashCode, buckets.Length);
+        
+        // Check if key already exists
+        Entry current = buckets[bucketIndex];
+        while (current != null)
+        {
+            if (current.HashCode == hashCode && comparer.Equals(current.Key, key))
+                throw new ArgumentException("An element with the same key already exists");
+            
+            current = current.Next;
+        }
+        
+        // Add new entry at beginning of bucket
+        Entry newEntry = new Entry(key, value, hashCode);
+        newEntry.Next = buckets[bucketIndex];
+        buckets[bucketIndex] = newEntry;
+        count++;
+        
+        // Resize if needed
+        if (count > buckets.Length * LoadFactor)
+        {
+            Resize();
+        }
+    }
+    
+    public bool TryGetValue(TKey key, out TValue value)
+    {
+        if (key == null)
+            throw new ArgumentNullException(nameof(key));
+        
+        int hashCode = GetHashCode(key);
+        int bucketIndex = GetBucketIndex(hashCode, buckets.Length);
+        
+        Entry current = buckets[bucketIndex];
+        while (current != null)
+        {
+            if (current.HashCode == hashCode && comparer.Equals(current.Key, key))
+            {
+                value = current.Value;
+                return true;
+            }
+            current = current.Next;
+        }
+        
+        value = default;
+        return false;
+    }
+    
+    public bool Remove(TKey key)
+    {
+        if (key == null)
+            throw new ArgumentNullException(nameof(key));
+        
+        int hashCode = GetHashCode(key);
+        int bucketIndex = GetBucketIndex(hashCode, buckets.Length);
+        
+        Entry current = buckets[bucketIndex];
+        Entry previous = null;
+        
+        while (current != null)
+        {
+            if (current.HashCode == hashCode && comparer.Equals(current.Key, key))
+            {
+                if (previous == null)
+                {
+                    buckets[bucketIndex] = current.Next;
+                }
+                else
+                {
+                    previous.Next = current.Next;
+                }
+                count--;
+                return true;
+            }
+            previous = current;
+            current = current.Next;
+        }
+        
+        return false;
+    }
+    
+    private void Resize()
+    {
+        int newSize = GetPrime(buckets.Length * 2);
+        Entry[] newBuckets = new Entry[newSize];
+        
+        // Rehash all entries
+        for (int i = 0; i < buckets.Length; i++)
+        {
+            Entry current = buckets[i];
+            while (current != null)
+            {
+                Entry next = current.Next;
+                int newBucketIndex = GetBucketIndex(current.HashCode, newSize);
+                current.Next = newBuckets[newBucketIndex];
+                newBuckets[newBucketIndex] = current;
+                current = next;
+            }
+        }
+        
+        buckets = newBuckets;
+    }
+    
+    private static int GetPrime(int min)
+    {
+        // Simple prime numbers for demonstration
+        int[] primes = { 3, 7, 11, 17, 23, 29, 37, 47, 59, 71, 89, 107, 131, 163, 197, 239, 293, 353, 431, 521, 631, 761, 919 };
+        
+        foreach (int prime in primes)
+        {
+            if (prime >= min)
+                return prime;
+        }
+        
+        return min;
+    }
+    
+    public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
+    {
+        for (int i = 0; i < buckets.Length; i++)
+        {
+            Entry current = buckets[i];
+            while (current != null)
+            {
+                yield return new KeyValuePair<TKey, TValue>(current.Key, current.Value);
+                current = current.Next;
             }
         }
     }
     
-    protected virtual void OnPriceChanged(PriceChangedEventArgs e) {
-        PriceChanged?.Invoke(this, e);
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
     }
 }
 
-class Program {
-    static void Main() {
-        var stock = new StockPrice();
-        
-        stock.PriceChanged += (sender, e) => {
-            Console.WriteLine($"Precio cambió de {e.OldPrice:C} a {e.NewPrice:C}");
-        };
-        
-        stock.Price = 100.50m;
-        stock.Price = 105.75m;
-    }
-}`,
-        hints: ["Usa EventHandler<T>", "Crea una clase para los argumentos del evento"]
-      }
-    ]
-  },
-  cpp: {
-    name: "C++",
-    icon: cppLogo,
-    color: "#00599c",
-    exercises: [
-      {
-        id: 1,
-        title: "Smart Pointers",
-        difficulty: "Medio",
-        description: "Implementa una clase que use smart pointers correctamente.",
-        starterCode: `#include <iostream>
-#include <memory>
-#include <string>
-
-class Person {
-public:
-    std::string name;
-    Person(const std::string& n) : name(n) {
-        std::cout << name << " created\\n";
-    }
-    ~Person() {
-        std::cout << name << " destroyed\\n";
-    }
-};
-
-int main() {
-    // Crea un unique_ptr a Person
-    // Crea un shared_ptr y demuestra el contador de referencias
-    // Tu código aquí
-    
-    return 0;
-}`,
-        solution: `#include <iostream>
-#include <memory>
-#include <string>
-
-class Person {
-public:
-    std::string name;
-    Person(const std::string& n) : name(n) {
-        std::cout << name << " created\\n";
-    }
-    ~Person() {
-        std::cout << name << " destroyed\\n";
-    }
-};
-
-int main() {
-    // unique_ptr - propiedad única
-    std::unique_ptr<Person> p1 = std::make_unique<Person>("Alice");
-    std::cout << "unique_ptr name: " << p1->name << "\\n";
-    
-    // shared_ptr - propiedad compartida
-    std::shared_ptr<Person> p2 = std::make_shared<Person>("Bob");
-    std::cout << "Reference count: " << p2.use_count() << "\\n";
-    
+class Program
+{
+    static void Main()
     {
-        std::shared_ptr<Person> p3 = p2; // Comparte propiedad
-        std::cout << "Reference count: " << p2.use_count() << "\\n";
-    } // p3 se destruye, pero Bob sigue vivo
-    
-    std::cout << "Reference count: " << p2.use_count() << "\\n";
-    
-    return 0;
+        MyDictionary<string, int> dict = new MyDictionary<string, int>();
+        dict.Add("one", 1);
+        dict.Add("two", 2);
+        
+        if (dict.TryGetValue("one", out int value))
+            Console.WriteLine(value); // 1
+    }
 }`,
-        hints: ["make_unique y make_shared son más seguros", "use_count() muestra referencias"]
-      },
-      {
-        id: 2,
-        title: "Templates",
-        difficulty: "Medio",
-        description: "Crea una función template que encuentre el máximo en un array.",
-        starterCode: `#include <iostream>
-#include <vector>
+      hints: ["Array of linked lists (buckets)", "Hash function to determine bucket", "Handle collisions with chaining"]
+    },
 
-// Escribe una función template findMax
-// Tu código aquí
+    {
+      id: 25,
+      title: "Serialize and Deserialize Binary Tree",
+      difficulty: "Hard",
+      description: "Serialize a binary tree to string and deserialize it back.",
+      starterCode: `using System;
+using System.Collections.Generic;
 
-int main() {
-    std::vector<int> ints = {3, 1, 4, 1, 5, 9};
-    std::vector<double> doubles = {2.7, 1.4, 3.14, 1.6};
-    std::vector<std::string> strings = {"apple", "zebra", "mango"};
-    
-    std::cout << findMax(ints) << std::endl;     // 9
-    std::cout << findMax(doubles) << std::endl;  // 3.14
-    std::cout << findMax(strings) << std::endl;  // zebra
-    
-    return 0;
-}`,
-        solution: `#include <iostream>
-#include <vector>
-#include <stdexcept>
+public class TreeNode
+{
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
+    public TreeNode(int x) { val = x; }
+}
 
-template<typename T>
-T findMax(const std::vector<T>& vec) {
-    if (vec.empty()) {
-        throw std::invalid_argument("Vector vacío");
+public class Codec
+{
+    // Encodes a tree to a single string.
+    public string Serialize(TreeNode root)
+    {
+        return "";
     }
     
-    T maxVal = vec[0];
-    for (const auto& item : vec) {
-        if (item > maxVal) {
-            maxVal = item;
+    // Decodes your encoded data to tree.
+    public TreeNode Deserialize(string data)
+    {
+        return null;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        // Test your implementation
+    }
+}`,
+      solution: `// Serialize and deserialize binary tree using preorder traversal
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+public class TreeNode
+{
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
+    public TreeNode(int x) { val = x; }
+}
+
+public class Codec
+{
+    // Encodes a tree to a single string.
+    public string Serialize(TreeNode root)
+    {
+        StringBuilder sb = new StringBuilder();
+        SerializeHelper(root, sb);
+        return sb.ToString();
+    }
+    
+    private void SerializeHelper(TreeNode node, StringBuilder sb)
+    {
+        if (node == null)
+        {
+            sb.Append("null,");
+            return;
+        }
+        
+        sb.Append(node.val).Append(",");
+        SerializeHelper(node.left, sb);
+        SerializeHelper(node.right, sb);
+    }
+    
+    // Decodes your encoded data to tree.
+    public TreeNode Deserialize(string data)
+    {
+        if (string.IsNullOrEmpty(data))
+            return null;
+        
+        string[] values = data.Split(',', StringSplitOptions.RemoveEmptyEntries);
+        Queue<string> queue = new Queue<string>(values);
+        return DeserializeHelper(queue);
+    }
+    
+    private TreeNode DeserializeHelper(Queue<string> queue)
+    {
+        if (queue.Count == 0)
+            return null;
+        
+        string value = queue.Dequeue();
+        if (value == "null")
+            return null;
+        
+        TreeNode node = new TreeNode(int.Parse(value));
+        node.left = DeserializeHelper(queue);
+        node.right = DeserializeHelper(queue);
+        return node;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Codec codec = new Codec();
+        
+        // Create a sample tree
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.right.left = new TreeNode(4);
+        root.right.right = new TreeNode(5);
+        
+        // Test serialization and deserialization
+        string serialized = codec.Serialize(root);
+        Console.WriteLine("Serialized: " + serialized);
+        
+        TreeNode deserialized = codec.Deserialize(serialized);
+        string reserialized = codec.Serialize(deserialized);
+        Console.WriteLine("Reserialized: " + reserialized);
+        Console.WriteLine("Match: " + serialized.Equals(reserialized)); // true
+    }
+}`,
+      hints: ["Use preorder traversal", "Represent null nodes with marker", "Use queue for deserialization"]
+    }
+
+  ]
+},
+
+
+
+cpp: {
+  name: "C++",
+  icon: cppLogo,
+  color: "#00599C",
+  exercises: [
+
+    // =========================
+    // 🟢 EASY
+    // =========================
+
+    {
+      id: 1,
+      title: "Reverse String",
+      difficulty: "Easy",
+      description: "Reverse a string without using built-in reverse functions.",
+      starterCode: `#include <iostream>
+#include <string>
+using namespace std;
+
+string reverseString(const string& str) {
+    // Your code here
+    return "";
+}
+
+int main() {
+    cout << reverseString("hello") << endl; // "olleh"
+    cout << reverseString("C++") << endl;   // "++C"
+    return 0;
+}`,
+      solution: `// Solution using two pointers technique
+#include <iostream>
+#include <string>
+using namespace std;
+
+string reverseString(const string& str) {
+    if (str.empty()) return "";
+    
+    string result = str;
+    int left = 0;
+    int right = result.length() - 1;
+    
+    while (left < right) {
+        swap(result[left], result[right]);
+        left++;
+        right--;
+    }
+    
+    return result;
+}
+
+// Alternative using constructor with reverse iterators
+string reverseStringAlt(const string& str) {
+    return string(str.rbegin(), str.rend());
+}
+
+int main() {
+    cout << reverseString("hello") << endl; // "olleh"
+    cout << reverseString("C++") << endl;   // "++C"
+    return 0;
+}`,
+      hints: ["Use two pointers approach", "Swap characters from both ends", "Consider using swap() function"]
+    },
+
+    {
+      id: 2,
+      title: "Find Maximum in Vector",
+      difficulty: "Easy",
+      description: "Find the maximum value in a vector of integers.",
+      starterCode: `#include <iostream>
+#include <vector>
+#include <climits>
+using namespace std;
+
+int findMax(const vector<int>& nums) {
+    // Your code here
+    return INT_MIN;
+}
+
+int main() {
+    vector<int> nums = {5, 3, 9, 1, 7};
+    cout << findMax(nums) << endl; // 9
+    return 0;
+}`,
+      solution: `// Iterative approach to find maximum
+#include <iostream>
+#include <vector>
+#include <climits>
+using namespace std;
+
+int findMax(const vector<int>& nums) {
+    if (nums.empty()) {
+        throw runtime_error("Vector cannot be empty");
+    }
+    
+    int maxVal = nums[0];
+    for (size_t i = 1; i < nums.size(); i++) {
+        if (nums[i] > maxVal) {
+            maxVal = nums[i];
+        }
+    }
+    return maxVal;
+}
+
+// Using iterator
+int findMaxIterator(const vector<int>& nums) {
+    if (nums.empty()) throw runtime_error("Empty vector");
+    
+    int maxVal = nums[0];
+    for (auto it = nums.begin() + 1; it != nums.end(); ++it) {
+        if (*it > maxVal) {
+            maxVal = *it;
         }
     }
     return maxVal;
 }
 
 int main() {
-    std::vector<int> ints = {3, 1, 4, 1, 5, 9};
-    std::vector<double> doubles = {2.7, 1.4, 3.14, 1.6};
-    std::vector<std::string> strings = {"apple", "zebra", "mango"};
-    
-    std::cout << findMax(ints) << std::endl;     // 9
-    std::cout << findMax(doubles) << std::endl;  // 3.14
-    std::cout << findMax(strings) << std::endl;  // zebra
-    
+    vector<int> nums = {5, 3, 9, 1, 7};
+    cout << findMax(nums) << endl; // 9
     return 0;
 }`,
-        hints: ["template<typename T>", "Usa const reference para eficiencia"]
-      },
-      {
-        id: 3,
-        title: "Move Semantics",
-        difficulty: "Difícil",
-        description: "Implementa una clase con constructor de movimiento y operador de asignación por movimiento.",
-        starterCode: `#include <iostream>
-#include <cstring>
+      hints: ["Initialize max with first element", "Loop through vector", "Update max when finding larger value"]
+    },
 
-class MyString {
-private:
-    char* data;
-    size_t length;
+    {
+      id: 3,
+      title: "Check Palindrome",
+      difficulty: "Easy",
+      description: "Check if a string is a palindrome (reads the same forwards and backwards).",
+      starterCode: `#include <iostream>
+#include <string>
+#include <cctype>
+#include <algorithm>
+using namespace std;
+
+bool isPalindrome(const string& str) {
+    // Your code here
+    return false;
+}
+
+int main() {
+    cout << boolalpha;
+    cout << isPalindrome("racecar") << endl; // true
+    cout << isPalindrome("hello") << endl;   // false
+    cout << isPalindrome("A man a plan a canal Panama") << endl; // true
+    return 0;
+}`,
+      solution: `// Check palindrome by comparing characters from both ends
+#include <iostream>
+#include <string>
+#include <cctype>
+#include <algorithm>
+using namespace std;
+
+bool isPalindrome(const string& str) {
+    // Create a cleaned version without spaces and punctuation
+    string cleaned;
+    for (char c : str) {
+        if (isalnum(c)) {
+            cleaned += tolower(c);
+        }
+    }
+    
+    int left = 0;
+    int right = cleaned.length() - 1;
+    
+    while (left < right) {
+        if (cleaned[left] != cleaned[right]) {
+            return false;
+        }
+        left++;
+        right--;
+    }
+    return true;
+}
+
+int main() {
+    cout << boolalpha;
+    cout << isPalindrome("racecar") << endl; // true
+    cout << isPalindrome("hello") << endl;   // false
+    cout << isPalindrome("A man a plan a canal Panama") << endl; // true
+    return 0;
+}`,
+      hints: ["Remove non-alphanumeric characters", "Convert to lowercase", "Compare characters from both ends"]
+    },
+
+    {
+      id: 4,
+      title: "Count Vowels",
+      difficulty: "Easy",
+      description: "Count the number of vowels in a string.",
+      starterCode: `#include <iostream>
+#include <string>
+#include <cctype>
+using namespace std;
+
+int countVowels(const string& str) {
+    // Your code here
+    return 0;
+}
+
+int main() {
+    cout << countVowels("Hello World") << endl; // 3
+    cout << countVowels("C++ Programming") << endl; // 4
+    return 0;
+}`,
+      solution: `// Count vowels using loop
+#include <iostream>
+#include <string>
+#include <cctype>
+#include <unordered_set>
+using namespace std;
+
+int countVowels(const string& str) {
+    unordered_set<char> vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
+    int count = 0;
+    
+    for (char c : str) {
+        if (vowels.find(c) != vowels.end()) {
+            count++;
+        }
+    }
+    return count;
+}
+
+// Using C++ algorithm
+int countVowelsAlgorithm(const string& str) {
+    unordered_set<char> vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
+    return count_if(str.begin(), str.end(), 
+                   [&vowels](char c) { return vowels.find(c) != vowels.end(); });
+}
+
+int main() {
+    cout << countVowels("Hello World") << endl; // 3
+    cout << countVowels("C++ Programming") << endl; // 4
+    return 0;
+}`,
+      hints: ["Define set of vowels", "Check each character", "Case insensitive counting"]
+    },
+
+    {
+      id: 5,
+      title: "Factorial Calculation",
+      difficulty: "Easy",
+      description: "Calculate the factorial of a non-negative integer.",
+      starterCode: `#include <iostream>
+#include <stdexcept>
+using namespace std;
+
+long long factorial(int n) {
+    // Your code here
+    return 0;
+}
+
+int main() {
+    cout << factorial(5) << endl; // 120
+    cout << factorial(0) << endl; // 1
+    return 0;
+}`,
+      solution: `// Iterative factorial calculation
+#include <iostream>
+#include <stdexcept>
+using namespace std;
+
+long long factorial(int n) {
+    if (n < 0) {
+        throw invalid_argument("Factorial not defined for negative numbers");
+    }
+    
+    if (n == 0 || n == 1) {
+        return 1;
+    }
+    
+    long long result = 1;
+    for (int i = 2; i <= n; i++) {
+        result *= i;
+    }
+    return result;
+}
+
+// Recursive version
+long long factorialRecursive(int n) {
+    if (n < 0) throw invalid_argument("Negative number");
+    if (n <= 1) return 1;
+    return n * factorialRecursive(n - 1);
+}
+
+int main() {
+    cout << factorial(5) << endl; // 120
+    cout << factorial(0) << endl; // 1
+    return 0;
+}`,
+      hints: ["Handle edge cases (0, 1, negative)", "Start result from 1", "Use long long to prevent overflow"]
+    },
+
+    {
+      id: 6,
+      title: "Sum of Vector Elements",
+      difficulty: "Easy",
+      description: "Calculate the sum of all elements in a vector.",
+      starterCode: `#include <iostream>
+#include <vector>
+#include <numeric>
+using namespace std;
+
+int sumVector(const vector<int>& nums) {
+    // Your code here
+    return 0;
+}
+
+int main() {
+    vector<int> nums = {1, 2, 3, 4, 5};
+    cout << sumVector(nums) << endl; // 15
+    return 0;
+}`,
+      solution: `// Sum vector elements using loop
+#include <iostream>
+#include <vector>
+#include <numeric>
+using namespace std;
+
+int sumVector(const vector<int>& nums) {
+    int sum = 0;
+    for (int num : nums) {
+        sum += num;
+    }
+    return sum;
+}
+
+// Using accumulate from numeric
+int sumVectorAccumulate(const vector<int>& nums) {
+    return accumulate(nums.begin(), nums.end(), 0);
+}
+
+int main() {
+    vector<int> nums = {1, 2, 3, 4, 5};
+    cout << sumVector(nums) << endl; // 15
+    return 0;
+}`,
+      hints: ["Initialize sum to 0", "Use range-based for loop", "Consider using std::accumulate"]
+    },
+
+    {
+      id: 7,
+      title: "Find Duplicates",
+      difficulty: "Easy",
+      description: "Find all duplicate elements in an array/vector.",
+      starterCode: `#include <iostream>
+#include <vector>
+#include <unordered_set>
+using namespace std;
+
+vector<int> findDuplicates(const vector<int>& nums) {
+    // Your code here
+    return {};
+}
+
+int main() {
+    vector<int> nums = {1, 2, 3, 2, 1, 4, 5, 4};
+    vector<int> duplicates = findDuplicates(nums);
+    for (int num : duplicates) {
+        cout << num << " ";
+    }
+    cout << endl; // 1 2 4 (order may vary)
+    return 0;
+}`,
+      solution: `// Find duplicates using unordered_set
+#include <iostream>
+#include <vector>
+#include <unordered_set>
+using namespace std;
+
+vector<int> findDuplicates(const vector<int>& nums) {
+    unordered_set<int> seen;
+    unordered_set<int> duplicates;
+    
+    for (int num : nums) {
+        if (!seen.insert(num).second) { // insert returns pair<iterator, bool>
+            duplicates.insert(num);
+        }
+    }
+    
+    return vector<int>(duplicates.begin(), duplicates.end());
+}
+
+int main() {
+    vector<int> nums = {1, 2, 3, 2, 1, 4, 5, 4};
+    vector<int> duplicates = findDuplicates(nums);
+    for (int num : duplicates) {
+        cout << num << " ";
+    }
+    cout << endl; // 1 2 4 (order may vary)
+    return 0;
+}`,
+      hints: ["Use unordered_set for O(1) lookups", "set.insert() returns pair indicating success", "Track seen and duplicate sets"]
+    },
+
+    {
+      id: 8,
+      title: "Check Prime Number",
+      difficulty: "Easy",
+      description: "Check if a number is prime.",
+      starterCode: `#include <iostream>
+#include <cmath>
+using namespace std;
+
+bool isPrime(int n) {
+    // Your code here
+    return false;
+}
+
+int main() {
+    cout << boolalpha;
+    cout << isPrime(7) << endl;  // true
+    cout << isPrime(10) << endl; // false
+    cout << isPrime(2) << endl;  // true
+    return 0;
+}`,
+      solution: `// Efficient prime checking
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+bool isPrime(int n) {
+    if (n <= 1) return false;
+    if (n <= 3) return true;
+    if (n % 2 == 0 || n % 3 == 0) return false;
+    
+    // Check divisibility up to sqrt(n)
+    for (int i = 5; i * i <= n; i += 6) {
+        if (n % i == 0 || n % (i + 2) == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int main() {
+    cout << boolalpha;
+    cout << isPrime(7) << endl;  // true
+    cout << isPrime(10) << endl; // false
+    cout << isPrime(2) << endl;  // true
+    return 0;
+}`,
+      hints: ["Numbers <= 1 are not prime", "Check divisibility by 2 and 3 first", "Only check up to sqrt(n)"]
+    },
+
+    {
+      id: 9,
+      title: "Remove Duplicates from Vector",
+      difficulty: "Easy",
+      description: "Remove duplicates from a vector while preserving order.",
+      starterCode: `#include <iostream>
+#include <vector>
+#include <unordered_set>
+using namespace std;
+
+vector<int> removeDuplicates(const vector<int>& nums) {
+    // Your code here
+    return {};
+}
+
+int main() {
+    vector<int> nums = {1, 2, 2, 3, 4, 4, 5};
+    vector<int> result = removeDuplicates(nums);
+    for (int num : result) {
+        cout << num << " ";
+    }
+    cout << endl; // 1 2 3 4 5
+    return 0;
+}`,
+      solution: `// Remove duplicates using unordered_set
+#include <iostream>
+#include <vector>
+#include <unordered_set>
+using namespace std;
+
+vector<int> removeDuplicates(const vector<int>& nums) {
+    unordered_set<int> seen;
+    vector<int> result;
+    
+    for (int num : nums) {
+        if (seen.find(num) == seen.end()) {
+            seen.insert(num);
+            result.push_back(num);
+        }
+    }
+    
+    return result;
+}
+
+int main() {
+    vector<int> nums = {1, 2, 2, 3, 4, 4, 5};
+    vector<int> result = removeDuplicates(nums);
+    for (int num : result) {
+        cout << num << " ";
+    }
+    cout << endl; // 1 2 3 4 5
+    return 0;
+}`,
+      hints: ["Use unordered_set to track seen elements", "Add to result only if not seen", "Preserve original order"]
+    },
+
+    {
+      id: 10,
+      title: "Fibonacci Sequence",
+      difficulty: "Easy",
+      description: "Generate the first n numbers of the Fibonacci sequence.",
+      starterCode: `#include <iostream>
+#include <vector>
+using namespace std;
+
+vector<int> fibonacci(int n) {
+    // Your code here
+    return {};
+}
+
+int main() {
+    vector<int> result = fibonacci(10);
+    for (int num : result) {
+        cout << num << " ";
+    }
+    cout << endl; // 0 1 1 2 3 5 8 13 21 34
+    return 0;
+}`,
+      solution: `// Generate Fibonacci sequence iteratively
+#include <iostream>
+#include <vector>
+using namespace std;
+
+vector<int> fibonacci(int n) {
+    vector<int> result;
+    if (n <= 0) return result;
+    
+    result.reserve(n);
+    
+    if (n >= 1) result.push_back(0);
+    if (n >= 2) result.push_back(1);
+    
+    for (int i = 2; i < n; i++) {
+        result.push_back(result[i-1] + result[i-2]);
+    }
+    
+    return result;
+}
+
+int main() {
+    vector<int> result = fibonacci(10);
+    for (int num : result) {
+        cout << num << " ";
+    }
+    cout << endl; // 0 1 1 2 3 5 8 13 21 34
+    return 0;
+}`,
+      hints: ["Handle base cases (0, 1)", "Initialize first two numbers", "Each number is sum of previous two"]
+    },
+
+    // =========================
+    // 🟡 MEDIUM
+    // =========================
+
+    {
+      id: 11,
+      title: "Valid Parentheses",
+      difficulty: "Medium",
+      description: "Check if a string containing parentheses, brackets, and braces is valid.",
+      starterCode: `#include <iostream>
+#include <stack>
+#include <unordered_map>
+#include <string>
+using namespace std;
+
+bool isValid(const string& s) {
+    // Your code here
+    return false;
+}
+
+int main() {
+    cout << boolalpha;
+    cout << isValid("()") << endl;     // true
+    cout << isValid("()[]{}") << endl; // true
+    cout << isValid("(]") << endl;     // false
+    cout << isValid("([)]") << endl;   // false
+    return 0;
+}`,
+      solution: `// Classic stack problem for matching parentheses
+#include <iostream>
+#include <stack>
+#include <unordered_map>
+#include <string>
+using namespace std;
+
+bool isValid(const string& s) {
+    stack<char> st;
+    unordered_map<char, char> pairs = {
+        {')', '('},
+        {']', '['},
+        {'}', '{'}
+    };
+    
+    for (char c : s) {
+        // If it's an opening bracket, push to stack
+        if (c == '(' || c == '[' || c == '{') {
+            st.push(c);
+        }
+        // If it's a closing bracket
+        else if (pairs.find(c) != pairs.end()) {
+            if (st.empty() || st.top() != pairs[c]) {
+                return false;
+            }
+            st.pop();
+        }
+    }
+    
+    return st.empty();
+}
+
+int main() {
+    cout << boolalpha;
+    cout << isValid("()") << endl;     // true
+    cout << isValid("()[]{}") << endl; // true
+    cout << isValid("(]") << endl;     // false
+    cout << isValid("([)]") << endl;   // false
+    return 0;
+}`,
+      hints: ["Use stack<char> data structure", "Map closing to opening brackets", "Check if stack is empty at end"]
+    },
+
+    {
+      id: 12,
+      title: "Two Sum",
+      difficulty: "Medium",
+      description: "Given an array of integers and a target, find two numbers that sum to target and return their indices.",
+      starterCode: `#include <iostream>
+#include <vector>
+#include <unordered_map>
+using namespace std;
+
+vector<int> twoSum(const vector<int>& nums, int target) {
+    // Your code here
+    return {};
+}
+
+int main() {
+    vector<int> nums = {2, 7, 11, 15};
+    int target = 9;
+    vector<int> result = twoSum(nums, target);
+    cout << "[" << result[0] << ", " << result[1] << "]" << endl; // [0, 1]
+    return 0;
+}`,
+      solution: `// Two Sum using unordered_map for O(n) time complexity
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+using namespace std;
+
+vector<int> twoSum(const vector<int>& nums, int target) {
+    unordered_map<int, int> numToIndex;
+    
+    for (int i = 0; i < nums.size(); i++) {
+        int complement = target - nums[i];
+        
+        if (numToIndex.find(complement) != numToIndex.end()) {
+            return {numToIndex[complement], i};
+        }
+        
+        numToIndex[nums[i]] = i;
+    }
+    
+    return {}; // No solution found
+}
+
+int main() {
+    vector<int> nums = {2, 7, 11, 15};
+    int target = 9;
+    vector<int> result = twoSum(nums, target);
+    cout << "[" << result[0] << ", " << result[1] << "]" << endl; // [0, 1]
+    return 0;
+}`,
+      hints: ["Use unordered_map to store numbers and indices", "Look for complement", "One-pass solution"]
+    },
+
+    {
+      id: 13,
+      title: "Merge Two Sorted Vectors",
+      difficulty: "Medium",
+      description: "Merge two sorted vectors into one sorted vector.",
+      starterCode: `#include <iostream>
+#include <vector>
+using namespace std;
+
+vector<int> mergeSortedVectors(const vector<int>& vec1, const vector<int>& vec2) {
+    // Your code here
+    return {};
+}
+
+int main() {
+    vector<int> vec1 = {1, 3, 5};
+    vector<int> vec2 = {2, 4, 6};
+    vector<int> result = mergeSortedVectors(vec1, vec2);
+    for (int num : result) {
+        cout << num << " ";
+    }
+    cout << endl; // 1 2 3 4 5 6
+    return 0;
+}`,
+      solution: `// Merge two sorted vectors using three pointers
+#include <iostream>
+#include <vector>
+using namespace std;
+
+vector<int> mergeSortedVectors(const vector<int>& vec1, const vector<int>& vec2) {
+    vector<int> result;
+    result.reserve(vec1.size() + vec2.size());
+    
+    size_t i = 0, j = 0;
+    
+    while (i < vec1.size() && j < vec2.size()) {
+        if (vec1[i] < vec2[j]) {
+            result.push_back(vec1[i]);
+            i++;
+        } else {
+            result.push_back(vec2[j]);
+            j++;
+        }
+    }
+    
+    // Copy remaining elements
+    while (i < vec1.size()) {
+        result.push_back(vec1[i]);
+        i++;
+    }
+    
+    while (j < vec2.size()) {
+        result.push_back(vec2[j]);
+        j++;
+    }
+    
+    return result;
+}
+
+int main() {
+    vector<int> vec1 = {1, 3, 5};
+    vector<int> vec2 = {2, 4, 6};
+    vector<int> result = mergeSortedVectors(vec1, vec2);
+    for (int num : result) {
+        cout << num << " ";
+    }
+    cout << endl; // 1 2 3 4 5 6
+    return 0;
+}`,
+      hints: ["Use three pointers/indices", "Compare elements from both vectors", "Handle remaining elements"]
+    },
+
+    {
+      id: 14,
+      title: "Anagram Check",
+      difficulty: "Medium",
+      description: "Check if two strings are anagrams of each other.",
+      starterCode: `#include <iostream>
+#include <string>
+#include <algorithm>
+#include <unordered_map>
+using namespace std;
+
+bool areAnagrams(const string& str1, const string& str2) {
+    // Your code here
+    return false;
+}
+
+int main() {
+    cout << boolalpha;
+    cout << areAnagrams("listen", "silent") << endl; // true
+    cout << areAnagrams("hello", "world") << endl;   // false
+    return 0;
+}`,
+      solution: `// Check anagrams using character frequency
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include <unordered_map>
+using namespace std;
+
+bool areAnagrams(const string& str1, const string& str2) {
+    if (str1.length() != str2.length()) {
+        return false;
+    }
+    
+    // Sort and compare
+    string sorted1 = str1;
+    string sorted2 = str2;
+    sort(sorted1.begin(), sorted1.end());
+    sort(sorted2.begin(), sorted2.end());
+    
+    return sorted1 == sorted2;
+}
+
+// Alternative using character count
+bool areAnagramsCount(const string& str1, const string& str2) {
+    if (str1.length() != str2.length()) return false;
+    
+    unordered_map<char, int> charCount;
+    
+    for (char c : str1) {
+        charCount[c]++;
+    }
+    
+    for (char c : str2) {
+        if (--charCount[c] < 0) {
+            return false;
+        }
+    }
+    
+    return true;
+}
+
+int main() {
+    cout << boolalpha;
+    cout << areAnagrams("listen", "silent") << endl; // true
+    cout << areAnagrams("hello", "world") << endl;   // false
+    return 0;
+}`,
+      hints: ["Check lengths first", "Sort both strings and compare", "Use unordered_map for character counting"]
+    },
+
+    {
+      id: 15,
+      title: "Find Missing Number",
+      difficulty: "Medium",
+      description: "Find the missing number in a vector containing numbers from 1 to n.",
+      starterCode: `#include <iostream>
+#include <vector>
+#include <numeric>
+using namespace std;
+
+int findMissingNumber(const vector<int>& nums, int n) {
+    // Your code here
+    return 0;
+}
+
+int main() {
+    vector<int> nums = {1, 2, 4, 5}; // Missing 3
+    cout << findMissingNumber(nums, 5) << endl; // 3
+    return 0;
+}`,
+      solution: `// Find missing number using mathematical formula
+#include <iostream>
+#include <vector>
+#include <numeric>
+using namespace std;
+
+int findMissingNumber(const vector<int>& nums, int n) {
+    // Calculate expected sum of 1 to n
+    int expectedSum = n * (n + 1) / 2;
+    
+    // Calculate actual sum
+    int actualSum = accumulate(nums.begin(), nums.end(), 0);
+    
+    // Missing number is the difference
+    return expectedSum - actualSum;
+}
+
+// Alternative using XOR
+int findMissingNumberXOR(const vector<int>& nums, int n) {
+    int xor1 = 0;
+    for (int i = 1; i <= n; i++) {
+        xor1 ^= i;
+    }
+    
+    int xor2 = 0;
+    for (int num : nums) {
+        xor2 ^= num;
+    }
+    
+    return xor1 ^ xor2;
+}
+
+int main() {
+    vector<int> nums = {1, 2, 4, 5}; // Missing 3
+    cout << findMissingNumber(nums, 5) << endl; // 3
+    return 0;
+}`,
+      hints: ["Use formula for sum of 1 to n", "Calculate expected vs actual sum", "XOR approach avoids overflow"]
+    },
+
+    {
+      id: 16,
+      title: "Singleton Pattern",
+      difficulty: "Medium",
+      description: "Implement the Singleton design pattern thread-safe in C++.",
+      starterCode: `#include <iostream>
+#include <mutex>
+using namespace std;
+
+class Singleton {
+    // Your code here
     
 public:
-    // Constructor
-    MyString(const char* str) {
-        length = strlen(str);
-        data = new char[length + 1];
-        strcpy(data, str);
-        std::cout << "Constructed: " << data << "\\n";
-    }
-    
-    // Destructor
-    ~MyString() {
-        delete[] data;
-    }
-    
-    // Constructor de copia
-    MyString(const MyString& other) {
-        length = other.length;
-        data = new char[length + 1];
-        strcpy(data, other.data);
-        std::cout << "Copied: " << data << "\\n";
-    }
-    
-    // TODO: Implementa constructor de movimiento
-    
-    // TODO: Implementa operador de asignación por movimiento
-    
-    void print() const {
-        std::cout << (data ? data : "null") << "\\n";
+    void showMessage() {
+        cout << "Singleton instance!" << endl;
     }
 };
 
 int main() {
-    MyString s1("Hello");
-    MyString s2 = std::move(s1);  // Move constructor
-    s2.print();
-    
-    MyString s3("World");
-    s3 = std::move(s2);  // Move assignment
-    s3.print();
-    
+    Singleton& obj1 = Singleton::getInstance();
+    Singleton& obj2 = Singleton::getInstance();
+    cout << (&obj1 == &obj2) << endl; // true
     return 0;
 }`,
-        solution: `#include <iostream>
-#include <cstring>
-#include <utility>
+      solution: `// Thread-safe Singleton using Meyer's Singleton (C++11 guaranteed)
+#include <iostream>
+#include <mutex>
+using namespace std;
 
-class MyString {
+class Singleton {
 private:
-    char* data;
-    size_t length;
+    Singleton() = default;
+    ~Singleton() = default;
+    Singleton(const Singleton&) = delete;
+    Singleton& operator=(const Singleton&) = delete;
     
 public:
-    MyString(const char* str) {
-        length = strlen(str);
-        data = new char[length + 1];
-        strcpy(data, str);
-        std::cout << "Constructed: " << data << "\\n";
+    static Singleton& getInstance() {
+        static Singleton instance; // Thread-safe in C++11
+        return instance;
     }
     
-    ~MyString() {
-        delete[] data;
+    void showMessage() {
+        cout << "Singleton instance!" << endl;
+    }
+};
+
+// Alternative with double-checked locking (for older C++)
+class SingletonLock {
+private:
+    static SingletonLock* instance;
+    static mutex mtx;
+    
+    SingletonLock() = default;
+    ~SingletonLock() = default;
+    SingletonLock(const SingletonLock&) = delete;
+    SingletonLock& operator=(const SingletonLock&) = delete;
+    
+public:
+    static SingletonLock* getInstance() {
+        if (instance == nullptr) {
+            lock_guard<mutex> lock(mtx);
+            if (instance == nullptr) {
+                instance = new SingletonLock();
+            }
+        }
+        return instance;
     }
     
-    MyString(const MyString& other) {
-        length = other.length;
-        data = new char[length + 1];
-        strcpy(data, other.data);
-        std::cout << "Copied: " << data << "\\n";
+    static void destroy() {
+        lock_guard<mutex> lock(mtx);
+        delete instance;
+        instance = nullptr;
     }
+};
+
+// Initialize static members
+SingletonLock* SingletonLock::instance = nullptr;
+mutex SingletonLock::mtx;
+
+int main() {
+    Singleton& obj1 = Singleton::getInstance();
+    Singleton& obj2 = Singleton::getInstance();
+    cout << (&obj1 == &obj2) << endl; // true
+    return 0;
+}`,
+      hints: ["Use static local variable (Meyer's Singleton)", "Delete copy constructor and assignment", "Make constructor private"]
+    },
+
+    {
+      id: 17,
+      title: "Binary Search",
+      difficulty: "Medium",
+      description: "Implement binary search algorithm on a sorted vector.",
+      starterCode: `#include <iostream>
+#include <vector>
+using namespace std;
+
+int binarySearch(const vector<int>& arr, int target) {
+    // Your code here
+    return -1;
+}
+
+int main() {
+    vector<int> arr = {1, 3, 5, 7, 9, 11};
+    cout << binarySearch(arr, 7) << endl;  // 3
+    cout << binarySearch(arr, 12) << endl; // -1
+    return 0;
+}`,
+      solution: `// Classic binary search implementation
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int binarySearch(const vector<int>& arr, int target) {
+    int left = 0;
+    int right = arr.size() - 1;
+    
+    while (left <= right) {
+        int mid = left + (right - left) / 2; // Avoid overflow
+        
+        if (arr[mid] == target) {
+            return mid;
+        } else if (arr[mid] < target) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+    
+    return -1; // Not found
+}
+
+// Recursive version
+int binarySearchRecursive(const vector<int>& arr, int target, int left, int right) {
+    if (left > right) return -1;
+    
+    int mid = left + (right - left) / 2;
+    
+    if (arr[mid] == target) return mid;
+    else if (arr[mid] < target) 
+        return binarySearchRecursive(arr, target, mid + 1, right);
+    else 
+        return binarySearchRecursive(arr, target, left, mid - 1);
+}
+
+int main() {
+    vector<int> arr = {1, 3, 5, 7, 9, 11};
+    cout << binarySearch(arr, 7) << endl;  // 3
+    cout << binarySearch(arr, 12) << endl; // -1
+    return 0;
+}`,
+      hints: ["Vector must be sorted", "Calculate mid without overflow", "Adjust left/right pointers"]
+    },
+
+    {
+      id: 18,
+      title: "Bubble Sort",
+      difficulty: "Medium",
+      description: "Implement bubble sort algorithm.",
+      starterCode: `#include <iostream>
+#include <vector>
+using namespace std;
+
+void bubbleSort(vector<int>& arr) {
+    // Your code here
+}
+
+int main() {
+    vector<int> arr = {64, 34, 25, 12, 22, 11, 90};
+    bubbleSort(arr);
+    for (int num : arr) {
+        cout << num << " ";
+    }
+    cout << endl; // 11 12 22 25 34 64 90
+    return 0;
+}`,
+      solution: `// Bubble sort implementation with optimization
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void bubbleSort(vector<int>& arr) {
+    int n = arr.size();
+    bool swapped;
+    
+    for (int i = 0; i < n - 1; i++) {
+        swapped = false;
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                swap(arr[j], arr[j + 1]);
+                swapped = true;
+            }
+        }
+        
+        // If no swapping occurred, array is sorted
+        if (!swapped) {
+            break;
+        }
+    }
+}
+
+int main() {
+    vector<int> arr = {64, 34, 25, 12, 22, 11, 90};
+    bubbleSort(arr);
+    for (int num : arr) {
+        cout << num << " ";
+    }
+    cout << endl; // 11 12 22 25 34 64 90
+    return 0;
+}`,
+      hints: ["Outer loop for passes", "Inner loop for comparisons", "Swap adjacent elements if in wrong order"]
+    },
+
+    {
+      id: 19,
+      title: "Find First Non-Repeating Character",
+      difficulty: "Medium",
+      description: "Find the first non-repeating character in a string.",
+      starterCode: `#include <iostream>
+#include <string>
+#include <unordered_map>
+#include <vector>
+using namespace std;
+
+char firstNonRepeating(const string& str) {
+    // Your code here
+    return '\0';
+}
+
+int main() {
+    cout << firstNonRepeating("swiss") << endl; // w
+    cout << firstNonRepeating("hello") << endl; // h
+    return 0;
+}`,
+      solution: `// Find first non-repeating character using unordered_map
+#include <iostream>
+#include <string>
+#include <unordered_map>
+#include <vector>
+using namespace std;
+
+char firstNonRepeating(const string& str) {
+    unordered_map<char, int> charCount;
+    
+    // First pass: count characters
+    for (char c : str) {
+        charCount[c]++;
+    }
+    
+    // Second pass: find first with count 1
+    for (char c : str) {
+        if (charCount[c] == 1) {
+            return c;
+        }
+    }
+    
+    return '\0'; // No non-repeating character found
+}
+
+int main() {
+    cout << firstNonRepeating("swiss") << endl; // w
+    cout << firstNonRepeating("hello") << endl; // h
+    return 0;
+}`,
+      hints: ["Count frequency of each character", "Two-pass approach", "Use unordered_map for O(1) lookups"]
+    },
+
+    {
+      id: 20,
+      title: "Implement Queue using Stack",
+      difficulty: "Medium",
+      description: "Implement a queue data structure using two stacks.",
+      starterCode: `#include <iostream>
+#include <stack>
+using namespace std;
+
+class QueueUsingStack {
+private:
+    stack<int> s1, s2;
+    
+public:
+    void enqueue(int item) {
+        // Your code here
+    }
+    
+    int dequeue() {
+        // Your code here
+        return -1;
+    }
+    
+    bool empty() {
+        // Your code here
+        return true;
+    }
+};
+
+int main() {
+    QueueUsingStack queue;
+    queue.enqueue(1);
+    queue.enqueue(2);
+    cout << queue.dequeue() << endl; // 1
+    cout << queue.dequeue() << endl; // 2
+    return 0;
+}`,
+      solution: `// Queue implementation using two stacks
+#include <iostream>
+#include <stack>
+#include <stdexcept>
+using namespace std;
+
+class QueueUsingStack {
+private:
+    stack<int> s1; // For enqueue
+    stack<int> s2; // For dequeue
+    
+    void transferIfNeeded() {
+        if (s2.empty()) {
+            // Move all elements from s1 to s2
+            while (!s1.empty()) {
+                s2.push(s1.top());
+                s1.pop();
+            }
+        }
+    }
+    
+public:
+    void enqueue(int item) {
+        s1.push(item);
+    }
+    
+    int dequeue() {
+        if (empty()) {
+            throw runtime_error("Queue is empty");
+        }
+        
+        transferIfNeeded();
+        int front = s2.top();
+        s2.pop();
+        return front;
+    }
+    
+    int front() {
+        if (empty()) {
+            throw runtime_error("Queue is empty");
+        }
+        
+        transferIfNeeded();
+        return s2.top();
+    }
+    
+    bool empty() {
+        return s1.empty() && s2.empty();
+    }
+    
+    int size() {
+        return s1.size() + s2.size();
+    }
+};
+
+int main() {
+    QueueUsingStack queue;
+    queue.enqueue(1);
+    queue.enqueue(2);
+    cout << queue.dequeue() << endl; // 1
+    cout << queue.dequeue() << endl; // 2
+    return 0;
+}`,
+      hints: ["Use two stacks", "Push to s1 for enqueue", "Pop from s2 for dequeue", "Transfer when s2 empty"]
+    },
+
+    // =========================
+    // 🔴 HARD
+    // =========================
+
+    {
+      id: 21,
+      title: "LRU Cache",
+      difficulty: "Hard",
+      description: "Design and implement an LRU (Least Recently Used) cache.",
+      starterCode: `#include <iostream>
+#include <unordered_map>
+#include <list>
+using namespace std;
+
+class LRUCache {
+private:
+    int capacity;
+    // Your code here
+    
+public:
+    LRUCache(int capacity) {
+        // Your code here
+    }
+    
+    int get(int key) {
+        // Your code here
+        return -1;
+    }
+    
+    void put(int key, int value) {
+        // Your code here
+    }
+};
+
+int main() {
+    LRUCache cache(2);
+    cache.put(1, 1);
+    cache.put(2, 2);
+    cout << cache.get(1) << endl; // 1
+    cache.put(3, 3); // Evicts key 2
+    cout << cache.get(2) << endl; // -1
+    return 0;
+}`,
+      solution: `// LRU Cache implementation using unordered_map and list
+#include <iostream>
+#include <unordered_map>
+#include <list>
+#include <utility>
+using namespace std;
+
+class LRUCache {
+private:
+    int capacity;
+    // list stores (key, value) pairs in order of use
+    list<pair<int, int>> items;
+    // map stores key -> iterator to list node
+    unordered_map<int, list<pair<int, int>>::iterator> cache;
+    
+public:
+    LRUCache(int capacity) : capacity(capacity) {
+        if (capacity <= 0) {
+            throw invalid_argument("Capacity must be positive");
+        }
+    }
+    
+    int get(int key) {
+        auto it = cache.find(key);
+        if (it == cache.end()) {
+            return -1; // Key not found
+        }
+        
+        // Move accessed item to front (most recently used)
+        items.splice(items.begin(), items, it->second);
+        return it->second->second;
+    }
+    
+    void put(int key, int value) {
+        auto it = cache.find(key);
+        
+        if (it != cache.end()) {
+            // Update existing item
+            it->second->second = value;
+            // Move to front
+            items.splice(items.begin(), items, it->second);
+        } else {
+            // Check capacity
+            if (cache.size() >= capacity) {
+                // Remove least recently used item (from back)
+                int lruKey = items.back().first;
+                cache.erase(lruKey);
+                items.pop_back();
+            }
+            
+            // Add new item to front
+            items.emplace_front(key, value);
+            cache[key] = items.begin();
+        }
+    }
+};
+
+int main() {
+    LRUCache cache(2);
+    cache.put(1, 1);
+    cache.put(2, 2);
+    cout << cache.get(1) << endl; // 1
+    cache.put(3, 3); // Evicts key 2
+    cout << cache.get(2) << endl; // -1
+    return 0;
+}`,
+      hints: ["Use unordered_map for O(1) lookups", "Use list for ordering", "Store iterators in map", "splice() to move nodes"]
+    },
+
+    {
+      id: 22,
+      title: "Merge Sort",
+      difficulty: "Hard",
+      description: "Implement the merge sort algorithm.",
+      starterCode: `#include <iostream>
+#include <vector>
+using namespace std;
+
+void mergeSort(vector<int>& arr) {
+    // Your code here
+}
+
+int main() {
+    vector<int> arr = {64, 34, 25, 12, 22, 11, 90};
+    mergeSort(arr);
+    for (int num : arr) {
+        cout << num << " ";
+    }
+    cout << endl; // 11 12 22 25 34 64 90
+    return 0;
+}`,
+      solution: `// Merge sort implementation (divide and conquer)
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void merge(vector<int>& arr, int left, int mid, int right) {
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+    
+    // Create temporary arrays
+    vector<int> leftArr(n1);
+    vector<int> rightArr(n2);
+    
+    // Copy data to temporary arrays
+    for (int i = 0; i < n1; i++) {
+        leftArr[i] = arr[left + i];
+    }
+    for (int j = 0; j < n2; j++) {
+        rightArr[j] = arr[mid + 1 + j];
+    }
+    
+    // Merge the temporary arrays
+    int i = 0, j = 0, k = left;
+    
+    while (i < n1 && j < n2) {
+        if (leftArr[i] <= rightArr[j]) {
+            arr[k] = leftArr[i];
+            i++;
+        } else {
+            arr[k] = rightArr[j];
+            j++;
+        }
+        k++;
+    }
+    
+    // Copy remaining elements
+    while (i < n1) {
+        arr[k] = leftArr[i];
+        i++;
+        k++;
+    }
+    
+    while (j < n2) {
+        arr[k] = rightArr[j];
+        j++;
+        k++;
+    }
+}
+
+void mergeSortHelper(vector<int>& arr, int left, int right) {
+    if (left < right) {
+        int mid = left + (right - left) / 2;
+        
+        // Sort first and second halves
+        mergeSortHelper(arr, left, mid);
+        mergeSortHelper(arr, mid + 1, right);
+        
+        // Merge the sorted halves
+        merge(arr, left, mid, right);
+    }
+}
+
+void mergeSort(vector<int>& arr) {
+    if (arr.size() <= 1) return;
+    mergeSortHelper(arr, 0, arr.size() - 1);
+}
+
+int main() {
+    vector<int> arr = {64, 34, 25, 12, 22, 11, 90};
+    mergeSort(arr);
+    for (int num : arr) {
+        cout << num << " ";
+    }
+    cout << endl; // 11 12 22 25 34 64 90
+    return 0;
+}`,
+      hints: ["Divide array into halves", "Recursively sort halves", "Merge sorted halves", "Use helper function"]
+    },
+
+    {
+      id: 23,
+      title: "Smart Pointer Implementation",
+      difficulty: "Hard",
+      description: "Implement a simple unique_ptr from scratch.",
+      starterCode: `#include <iostream>
+#include <utility>
+using namespace std;
+
+template<typename T>
+class UniquePtr {
+private:
+    T* ptr;
+    
+public:
+    // Your code here
+    
+    T* get() const { return ptr; }
+    T& operator*() const { return *ptr; }
+    T* operator->() const { return ptr; }
+    explicit operator bool() const { return ptr != nullptr; }
+};
+
+class TestClass {
+public:
+    int value;
+    TestClass(int v) : value(v) {
+        cout << "Constructed: " << value << endl;
+    }
+    ~TestClass() {
+        cout << "Destroyed: " << value << endl;
+    }
+};
+
+int main() {
+    UniquePtr<TestClass> ptr1(new TestClass(10));
+    cout << "Value: " << ptr1->value << endl;
+    
+    UniquePtr<TestClass> ptr2 = move(ptr1);
+    if (!ptr1) {
+        cout << "ptr1 is now null" << endl;
+    }
+    return 0;
+}`,
+      solution: `// Simple unique_ptr implementation
+#include <iostream>
+#include <utility>
+using namespace std;
+
+template<typename T>
+class UniquePtr {
+private:
+    T* ptr;
+    
+public:
+    // Constructor
+    explicit UniquePtr(T* p = nullptr) : ptr(p) {}
+    
+    // Destructor
+    ~UniquePtr() {
+        delete ptr;
+    }
+    
+    // Delete copy constructor and copy assignment
+    UniquePtr(const UniquePtr&) = delete;
+    UniquePtr& operator=(const UniquePtr&) = delete;
     
     // Move constructor
-    MyString(MyString&& other) noexcept 
-        : data(other.data), length(other.length) {
-        other.data = nullptr;
-        other.length = 0;
-        std::cout << "Moved (constructor)\\n";
+    UniquePtr(UniquePtr&& other) noexcept : ptr(other.ptr) {
+        other.ptr = nullptr;
     }
     
-    // Move assignment operator
-    MyString& operator=(MyString&& other) noexcept {
+    // Move assignment
+    UniquePtr& operator=(UniquePtr&& other) noexcept {
         if (this != &other) {
-            delete[] data;
-            data = other.data;
-            length = other.length;
-            other.data = nullptr;
-            other.length = 0;
-            std::cout << "Moved (assignment)\\n";
+            delete ptr;
+            ptr = other.ptr;
+            other.ptr = nullptr;
         }
         return *this;
     }
     
-    void print() const {
-        std::cout << (data ? data : "null") << "\\n";
+    // Reset
+    void reset(T* p = nullptr) {
+        delete ptr;
+        ptr = p;
+    }
+    
+    // Release
+    T* release() {
+        T* temp = ptr;
+        ptr = nullptr;
+        return temp;
+    }
+    
+    // Getters and operators
+    T* get() const { return ptr; }
+    T& operator*() const { return *ptr; }
+    T* operator->() const { return ptr; }
+    explicit operator bool() const { return ptr != nullptr; }
+    
+    // Swap
+    void swap(UniquePtr& other) noexcept {
+        std::swap(ptr, other.ptr);
+    }
+};
+
+class TestClass {
+public:
+    int value;
+    TestClass(int v) : value(v) {
+        cout << "Constructed: " << value << endl;
+    }
+    ~TestClass() {
+        cout << "Destroyed: " << value << endl;
     }
 };
 
 int main() {
-    MyString s1("Hello");
-    MyString s2 = std::move(s1);
-    s2.print();
+    UniquePtr<TestClass> ptr1(new TestClass(10));
+    cout << "Value: " << ptr1->value << endl;
     
-    MyString s3("World");
-    s3 = std::move(s2);
-    s3.print();
-    
+    UniquePtr<TestClass> ptr2 = move(ptr1);
+    if (!ptr1) {
+        cout << "ptr1 is now null" << endl;
+    }
     return 0;
 }`,
-        hints: ["&& indica rvalue reference", "Pon el puntero original en nullptr", "Usa noexcept"]
-      },
-      {
-        id: 4,
-        title: "Lambda y STL",
-        difficulty: "Fácil",
-        description: "Usa lambdas con algoritmos STL para filtrar y transformar datos.",
-        starterCode: `#include <iostream>
+      hints: ["Delete copy operations", "Implement move semantics", "Manage ownership transfer", "Use noexcept for move operations"]
+    },
+
+    {
+      id: 24,
+      title: "Implement Hash Map",
+      difficulty: "Hard",
+      description: "Implement a simple hash map (unordered_map) from scratch.",
+      starterCode: `#include <iostream>
 #include <vector>
-#include <algorithm>
+#include <list>
+#include <utility>
+using namespace std;
 
-int main() {
-    std::vector<int> numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    
-    // 1. Usa std::count_if para contar números pares
-    
-    // 2. Usa std::transform para duplicar cada número
-    
-    // 3. Usa std::sort con lambda para ordenar de mayor a menor
-    
-    // Tu código aquí
-    
-    return 0;
-}`,
-        solution: `#include <iostream>
-#include <vector>
-#include <algorithm>
-
-int main() {
-    std::vector<int> numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    
-    // 1. Contar números pares
-    int evenCount = std::count_if(numbers.begin(), numbers.end(),
-        [](int n) { return n % 2 == 0; });
-    std::cout << "Pares: " << evenCount << "\\n";
-    
-    // 2. Duplicar cada número
-    std::vector<int> doubled(numbers.size());
-    std::transform(numbers.begin(), numbers.end(), doubled.begin(),
-        [](int n) { return n * 2; });
-    
-    std::cout << "Duplicados: ";
-    for (int n : doubled) std::cout << n << " ";
-    std::cout << "\\n";
-    
-    // 3. Ordenar de mayor a menor
-    std::sort(numbers.begin(), numbers.end(),
-        [](int a, int b) { return a > b; });
-    
-    std::cout << "Ordenados desc: ";
-    for (int n : numbers) std::cout << n << " ";
-    std::cout << "\\n";
-    
-    return 0;
-}`,
-        hints: ["Lambdas: [captures](params){ body }", "std::transform necesita iterador de salida"]
-      },
-      {
-        id: 5,
-        title: "Binary Search Tree",
-        difficulty: "Difícil",
-        description: "Implementa un árbol binario de búsqueda con inserción y búsqueda.",
-        starterCode: `#include <iostream>
-#include <memory>
-
-template<typename T>
-class BST {
+template<typename K, typename V>
+class HashMap {
 private:
-    struct Node {
-        T data;
-        std::unique_ptr<Node> left;
-        std::unique_ptr<Node> right;
-        
-        Node(T val) : data(val), left(nullptr), right(nullptr) {}
-    };
-    
-    std::unique_ptr<Node> root;
-    
-    // Métodos privados auxiliares aquí
+    vector<list<pair<K, V>>> buckets;
+    size_t numBuckets;
+    size_t size;
     
 public:
-    void insert(T value) {
-        // Tu código aquí
+    HashMap(size_t bucketCount = 16) : numBuckets(bucketCount), size(0) {
+        buckets.resize(bucketCount);
     }
     
-    bool search(T value) {
-        // Tu código aquí
+    void insert(const K& key, const V& value) {
+        // Your code here
+    }
+    
+    bool find(const K& key, V& value) {
+        // Your code here
         return false;
     }
     
-    void inorder() {
-        // Tu código aquí
+    bool erase(const K& key) {
+        // Your code here
+        return false;
     }
+    
+    size_t getSize() const { return size; }
 };
 
 int main() {
-    BST<int> tree;
-    tree.insert(50);
-    tree.insert(30);
-    tree.insert(70);
-    tree.insert(20);
-    tree.insert(40);
+    HashMap<string, int> map;
+    map.insert("one", 1);
+    map.insert("two", 2);
     
-    tree.inorder();  // 20 30 40 50 70
-    
-    std::cout << "\\nSearch 30: " << (tree.search(30) ? "Found" : "Not found") << "\\n";
-    std::cout << "Search 100: " << (tree.search(100) ? "Found" : "Not found") << "\\n";
-    
+    int value;
+    if (map.find("one", value)) {
+        cout << "Found: " << value << endl; // 1
+    }
     return 0;
 }`,
-        solution: `#include <iostream>
-#include <memory>
+      solution: `// Simple HashMap implementation using separate chaining
+#include <iostream>
+#include <vector>
+#include <list>
+#include <utility>
+#include <functional>
+using namespace std;
 
-template<typename T>
-class BST {
+template<typename K, typename V>
+class HashMap {
 private:
     struct Node {
-        T data;
-        std::unique_ptr<Node> left;
-        std::unique_ptr<Node> right;
-        
-        Node(T val) : data(val), left(nullptr), right(nullptr) {}
+        K key;
+        V value;
+        Node(const K& k, const V& v) : key(k), value(v) {}
     };
     
-    std::unique_ptr<Node> root;
+    vector<list<Node>> buckets;
+    size_t numBuckets;
+    size_t numElements;
+    double loadFactorThreshold = 0.75;
     
-    void insertHelper(std::unique_ptr<Node>& node, T value) {
-        if (!node) {
-            node = std::make_unique<Node>(value);
-        } else if (value < node->data) {
-            insertHelper(node->left, value);
-        } else {
-            insertHelper(node->right, value);
-        }
+    size_t hash(const K& key) const {
+        hash<K> hasher;
+        return hasher(key) % numBuckets;
     }
     
-    bool searchHelper(const std::unique_ptr<Node>& node, T value) const {
-        if (!node) return false;
-        if (value == node->data) return true;
-        if (value < node->data) return searchHelper(node->left, value);
-        return searchHelper(node->right, value);
-    }
-    
-    void inorderHelper(const std::unique_ptr<Node>& node) const {
-        if (node) {
-            inorderHelper(node->left);
-            std::cout << node->data << " ";
-            inorderHelper(node->right);
+    void rehash() {
+        size_t newBucketCount = numBuckets * 2;
+        vector<list<Node>> newBuckets(newBucketCount);
+        
+        // Rehash all elements
+        for (auto& bucket : buckets) {
+            for (auto& node : bucket) {
+                size_t newIndex = hash<K>()(node.key) % newBucketCount;
+                newBuckets[newIndex].emplace_back(node.key, node.value);
+            }
         }
+        
+        buckets = move(newBuckets);
+        numBuckets = newBucketCount;
     }
     
 public:
-    void insert(T value) {
-        insertHelper(root, value);
+    HashMap(size_t bucketCount = 16) : numBuckets(bucketCount), numElements(0) {
+        buckets.resize(bucketCount);
     }
     
-    bool search(T value) {
-        return searchHelper(root, value);
+    void insert(const K& key, const V& value) {
+        // Check load factor
+        if ((double)numElements / numBuckets >= loadFactorThreshold) {
+            rehash();
+        }
+        
+        size_t index = hash(key);
+        
+        // Check if key already exists
+        for (auto& node : buckets[index]) {
+            if (node.key == key) {
+                node.value = value; // Update existing
+                return;
+            }
+        }
+        
+        // Insert new key-value pair
+        buckets[index].emplace_back(key, value);
+        numElements++;
     }
     
-    void inorder() {
-        inorderHelper(root);
+    bool find(const K& key, V& value) const {
+        size_t index = hash(key);
+        
+        for (const auto& node : buckets[index]) {
+            if (node.key == key) {
+                value = node.value;
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    bool erase(const K& key) {
+        size_t index = hash(key);
+        
+        auto& bucket = buckets[index];
+        for (auto it = bucket.begin(); it != bucket.end(); ++it) {
+            if (it->key == key) {
+                bucket.erase(it);
+                numElements--;
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    size_t size() const { return numElements; }
+    bool empty() const { return numElements == 0; }
+    
+    // Operator[] for convenience
+    V& operator[](const K& key) {
+        size_t index = hash(key);
+        
+        // Check if key exists
+        for (auto& node : buckets[index]) {
+            if (node.key == key) {
+                return node.value;
+            }
+        }
+        
+        // Insert new key with default value
+        buckets[index].emplace_back(key, V{});
+        numElements++;
+        return buckets[index].back().value;
     }
 };
 
 int main() {
-    BST<int> tree;
-    tree.insert(50);
-    tree.insert(30);
-    tree.insert(70);
-    tree.insert(20);
-    tree.insert(40);
+    HashMap<string, int> map;
+    map.insert("one", 1);
+    map.insert("two", 2);
     
-    tree.inorder();  // 20 30 40 50 70
+    int value;
+    if (map.find("one", value)) {
+        cout << "Found: " << value << endl; // 1
+    }
     
-    std::cout << "\\nSearch 30: " << (tree.search(30) ? "Found" : "Not found") << "\\n";
-    std::cout << "Search 100: " << (tree.search(100) ? "Found" : "Not found") << "\\n";
+    // Using operator[]
+    map["three"] = 3;
+    cout << map["three"] << endl; // 3
     
     return 0;
 }`,
-        hints: ["Usa recursión con helpers", "unique_ptr se pasa por referencia"]
-      }
-    ]
-  },
+      hints: ["Use vector of linked lists (buckets)", "Hash function to determine bucket", "Handle collisions with chaining", "Implement rehashing"]
+    },
+
+    {
+      id: 25,
+      title: "Serialize and Deserialize Binary Tree",
+      difficulty: "Hard",
+      description: "Serialize a binary tree to string and deserialize it back.",
+      starterCode: `#include <iostream>
+#include <string>
+#include <queue>
+#include <sstream>
+using namespace std;
+
+struct TreeNode {
+    int val;
+    TreeNode* left;
+    TreeNode* right;
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+};
+
+class Codec {
+public:
+    // Encodes a tree to a single string.
+    string serialize(TreeNode* root) {
+        // Your code here
+        return "";
+    }
+    
+    // Decodes your encoded data to tree.
+    TreeNode* deserialize(string data) {
+        // Your code here
+        return nullptr;
+    }
+};
+
+int main() {
+    Codec codec;
+    TreeNode* root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
+    root->right->left = new TreeNode(4);
+    root->right->right = new TreeNode(5);
+    
+    string serialized = codec.serialize(root);
+    cout << "Serialized: " << serialized << endl;
+    
+    TreeNode* deserialized = codec.deserialize(serialized);
+    // Clean up memory
+    return 0;
+}`,
+      solution: `// Serialize and deserialize binary tree using level order traversal
+#include <iostream>
+#include <string>
+#include <queue>
+#include <sstream>
+#include <vector>
+using namespace std;
+
+struct TreeNode {
+    int val;
+    TreeNode* left;
+    TreeNode* right;
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+};
+
+class Codec {
+public:
+    // Encodes a tree to a single string (level order)
+    string serialize(TreeNode* root) {
+        if (!root) return "";
+        
+        queue<TreeNode*> q;
+        q.push(root);
+        stringstream ss;
+        
+        while (!q.empty()) {
+            TreeNode* node = q.front();
+            q.pop();
+            
+            if (node) {
+                ss << node->val << ",";
+                q.push(node->left);
+                q.push(node->right);
+            } else {
+                ss << "null,";
+            }
+        }
+        
+        string result = ss.str();
+        // Remove trailing comma
+        if (!result.empty()) {
+            result.pop_back();
+        }
+        return result;
+    }
+    
+    // Decodes your encoded data to tree
+    TreeNode* deserialize(string data) {
+        if (data.empty()) return nullptr;
+        
+        vector<string> tokens;
+        stringstream ss(data);
+        string token;
+        
+        while (getline(ss, token, ',')) {
+            tokens.push_back(token);
+        }
+        
+        if (tokens.empty() || tokens[0] == "null") return nullptr;
+        
+        TreeNode* root = new TreeNode(stoi(tokens[0]));
+        queue<TreeNode*> q;
+        q.push(root);
+        
+        size_t i = 1;
+        while (!q.empty() && i < tokens.size()) {
+            TreeNode* node = q.front();
+            q.pop();
+            
+            // Left child
+            if (i < tokens.size() && tokens[i] != "null") {
+                node->left = new TreeNode(stoi(tokens[i]));
+                q.push(node->left);
+            }
+            i++;
+            
+            // Right child
+            if (i < tokens.size() && tokens[i] != "null") {
+                node->right = new TreeNode(stoi(tokens[i]));
+                q.push(node->right);
+            }
+            i++;
+        }
+        
+        return root;
+    }
+};
+
+// Helper function to delete tree (prevent memory leak)
+void deleteTree(TreeNode* root) {
+    if (!root) return;
+    deleteTree(root->left);
+    deleteTree(root->right);
+    delete root;
+}
+
+int main() {
+    Codec codec;
+    
+    // Create a sample tree
+    TreeNode* root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
+    root->right->left = new TreeNode(4);
+    root->right->right = new TreeNode(5);
+    
+    // Test serialization and deserialization
+    string serialized = codec.serialize(root);
+    cout << "Serialized: " << serialized << endl;
+    
+    TreeNode* deserialized = codec.deserialize(serialized);
+    string reserialized = codec.serialize(deserialized);
+    cout << "Reserialized: " << reserialized << endl;
+    cout << "Match: " << (serialized == reserialized) << endl;
+    
+    // Clean up
+    deleteTree(root);
+    deleteTree(deserialized);
+    
+    return 0;
+}`,
+      hints: ["Use level order traversal", "Represent null nodes with marker", "Use queue for deserialization", "Handle memory properly"]
+    }
+
+  ]
+},
+
+
+
+
+
+
+
+
   react: {
     name: "React",
     icon: reactLogo,

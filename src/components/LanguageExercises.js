@@ -17,9 +17,9 @@ function LanguageExercises() {
 
   const getDifficultyClass = (difficulty) => {
     const map = {
-      'Fácil': 'easy',
-      'Medio': 'medium',
-      'Difícil': 'hard'
+      'Easy': 'easy',
+      'Medium': 'medium',
+      'Hard': 'hard'
     };
     return map[difficulty] || 'medium';
   };
@@ -64,7 +64,7 @@ function LanguageExercises() {
       <div className="exercises-list">
         {[...language.exercises]
           .sort((a, b) => {
-            const order = { 'Fácil': 1, 'Medio': 2, 'Difícil': 3 };
+            const order = { 'Easy': 1, 'Medium': 2, 'Hard': 3 };
             return order[a.difficulty] - order[b.difficulty];
           })
           .map((exercise, idx) => (

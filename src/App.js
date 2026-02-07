@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import LanguageExercises from './components/LanguageExercises';
 import Exercise from './components/Exercise';
+import ScrollToTop from './components/ScrollToTop';
 import mainLogo from './assets/images/main-logo.png';
 import './App.css';
 
@@ -12,6 +13,7 @@ function App() {
   return (
     <div className={`app ${lightMode ? 'light' : ''}`}>
       <Router>
+        <ScrollToTop />
         <header className="app-header">
           <a href="/" className="logo">
             <img src={mainLogo} alt="CodePractice Logo" className="logo-img" />

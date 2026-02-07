@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import Editor from '@monaco-editor/react';
 import { getLanguageById } from '../data/exercises';
@@ -22,17 +22,25 @@ const pistonLanguageMap = {
   csharp: { language: 'csharp', version: '6.12.0' },
   cpp: { language: 'c++', version: '10.2.0' },
   react: { language: 'javascript', version: '18.15.0' },
-  html: null, // HTML se ejecuta en iframe
-  css: null   // CSS se ejecuta en iframe
+  html: null,
+  css: null
 };
 
 function Exercise() {
   const { languageId, exerciseId } = useParams();
   const navigate = useNavigate();
   const language = getLanguageById(languageId);
-  
-  const exercise = language?.exercises.find(e => e.id === parseInt(exerciseId));
-  
+
+  const sortedExercises = useMemo(() => {
+    if (!language?.exercises) return [];
+    return [...language.exercises].sort((a, b) => {
+      const order = { 'Fácil': 1, 'Medio': 2, 'Difícil': 3 };
+      return order[a.difficulty] - order[b.difficulty];
+    });
+  }, [language]);
+
+  const exercise = sortedExercises.find(e => e.id === parseInt(exerciseId));
+
   const [code, setCode] = useState(exercise?.starterCode || '');
   const [output, setOutput] = useState('');
   const [isRunning, setIsRunning] = useState(false);
@@ -63,7 +71,7 @@ function Exercise() {
     }
 
     const pistonConfig = pistonLanguageMap[languageId];
-    
+
     if (!pistonConfig) {
       setOutput('Este lenguaje no soporta ejecución directa.\nPuedes copiar el código y probarlo en tu IDE local.');
       setIsRunning(false);
@@ -89,7 +97,7 @@ function Exercise() {
       });
 
       const result = await response.json();
-      
+
       if (result.run) {
         const outputText = result.run.output || result.run.stderr || 'Sin salida';
         setOutput(outputText);
@@ -128,11 +136,11 @@ function Exercise() {
   };
 
   const goToExercise = (direction) => {
-    const currentIndex = language.exercises.findIndex(e => e.id === parseInt(exerciseId));
+    const currentIndex = sortedExercises.findIndex(e => e.id === parseInt(exerciseId));
     const newIndex = currentIndex + direction;
-    
-    if (newIndex >= 0 && newIndex < language.exercises.length) {
-      const newExercise = language.exercises[newIndex];
+
+    if (newIndex >= 0 && newIndex < sortedExercises.length) {
+      const newExercise = sortedExercises[newIndex];
       navigate(`/language/${languageId}/exercise/${newExercise.id}`);
       setCode(newExercise.starterCode);
       setOutput('');
@@ -150,14 +158,14 @@ function Exercise() {
     );
   }
 
-  const currentIndex = language.exercises.findIndex(e => e.id === parseInt(exerciseId));
+  const currentIndex = sortedExercises.findIndex(e => e.id === parseInt(exerciseId));
   const hasPrev = currentIndex > 0;
-  const hasNext = currentIndex < language.exercises.length - 1;
+  const hasNext = currentIndex < sortedExercises.length - 1;
 
   return (
-    <div 
+    <div
       className={`exercise-page language-${languageId}`}
-      style={{ 
+      style={{
         '--language-color': language.color,
         '--language-color-light': language.color + '33',
         '--language-color-medium': language.color + '66',
@@ -168,51 +176,29 @@ function Exercise() {
       <div className="exercise-header">
         <div className="header-top-row">
           <Link to={`/language/${languageId}`} className="back-link">
-            Volver a {language.name}
+            Volver
           </Link>
-          <div className="exercise-nav">
-            <button 
-              onClick={() => goToExercise(-1)} 
-              disabled={!hasPrev}
-              className="nav-btn"
-            >
-              ← Anterior
-            </button>
-            <span className="exercise-counter">
-              {currentIndex + 1} / {language.exercises.length}
-            </span>
-            <button 
-              onClick={() => goToExercise(1)} 
-              disabled={!hasNext}
-              className="nav-btn"
-            >
-              Siguiente →
-            </button>
-          </div>
-        </div>
-
-        <div className="exercise-info-header">
           <h1>{exercise.title}</h1>
-          <span className={`difficulty-badge ${exercise.difficulty.toLowerCase()}`}>
-            {exercise.difficulty}
-          </span>
+          <img src={language.icon} alt={language.name} className="exercise-lang-icon" />
         </div>
       </div>
 
       <div className="exercise-content">
-        {/* Columna 1: Instrucciones y pistas */}
         <div className="instruction-column">
           <div className="exercise-info">
             <div className="instructions-section">
               <h3 className="section-title">Descripción</h3>
+              <span className={`difficulty-badge ${exercise.difficulty.toLowerCase()}`}>
+                {exercise.difficulty}
+              </span>
               <div className="exercise-description">
                 {exercise.description}
               </div>
             </div>
-            
+
             <div className="hints-section">
               <h3 className="section-title">Pistas ({exercise.hints?.length || 0})</h3>
-              <button 
+              <button
                 className="hints-toggle"
                 onClick={() => setShowHints(!showHints)}
               >
@@ -226,10 +212,29 @@ function Exercise() {
                 </ul>
               )}
             </div>
+
+            <div className="exercise-nav">
+              <button
+                onClick={() => goToExercise(-1)}
+                disabled={!hasPrev}
+                className="nav-btn"
+              >
+                ← Anterior
+              </button>
+              <span className="exercise-counter">
+                {currentIndex + 1} / {sortedExercises.length}
+              </span>
+              <button
+                onClick={() => goToExercise(1)}
+                disabled={!hasNext}
+                className="nav-btn"
+              >
+                Siguiente →
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* Columna 2: Editor de código */}
         <div className="code-column">
           <div className="editor-section">
             <div className="editor-toolbar">
@@ -240,8 +245,8 @@ function Exercise() {
                 <button onClick={loadSolution} className="action-btn solution">
                   {showSolution ? 'Solución' : 'Ver Solución'}
                 </button>
-                <button 
-                  onClick={runCode} 
+                <button
+                  onClick={runCode}
                   disabled={isRunning}
                   className="action-btn run"
                 >
@@ -272,20 +277,18 @@ function Exercise() {
           </div>
         </div>
 
-        {/* Columna 3: Salida y resultados */}
         <div className="output-column">
           <div className="output-section">
             <div className="output-header">
               <h3 className="section-title">Resultados</h3>
             </div>
-            
+
             <div className="output-container">
               <div className="output-content">
                 <pre>{output || 'Ejecuta el código para ver los resultados aquí...'}</pre>
               </div>
             </div>
 
-            {/* Preview para HTML/CSS */}
             {(languageId === 'html' || languageId === 'css') && (
               <div className="preview-section">
                 <h3 className="section-title">Vista Previa</h3>

@@ -1,10 +1,7 @@
-/* ========= Fuente Pixel Art ========= */
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
 
-/* ========= Variables CSS - Estilo Codedex/Videojuego ========= */
 :root {
     scroll-behavior: smooth;
-  /* Tema retro pixel art */
   --bg-primary: #181818;
   --bg-secondary: #232323;
   --bg-tertiary: #2d2d2d;
@@ -42,7 +39,6 @@
   --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
-/* ========= Reset & Base ========= */
 * {
   margin: 0;
   padding: 0;
@@ -57,8 +53,6 @@ body {
 }
 
 
-
-/* ========= App Layout ========= */
 .app {
   min-height: 100vh;
   display: flex;
@@ -70,13 +64,13 @@ body {
   image-rendering: pixelated;
 }
 
-/* ========= Header - Estilo Codedex ========= */
 .app-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
-  background: var(--bg-secondary);
+  background: linear-gradient(rgba(26, 26, 26, 0.911), rgba(26, 26, 26, 0.336));
+  border: 2px solid var(--bg-primary);
   position: fixed;
   top: 0;
   left: 0;
@@ -103,7 +97,7 @@ body {
   height: 48px;
   object-fit: contain;
   image-rendering: pixelated;
-  background: var(--bg-card);
+  background: transparent;
 }
 
 .logo-text {
@@ -121,37 +115,118 @@ body {
 
 .header-nav a {
   font-family: 'Press Start 2P', cursive;
-  font-size: 0.7rem;
-  color: white;
+  font-size: 0.6rem;
+  color: var(--text-secondary);
   text-decoration: none;
-  padding: 10px 18px;
-  border-radius: 20px;
-  background: var(--bg-card);
-  transition: all 0.25s;
+  padding: 12px 20px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, 
+    rgba(30, 30, 30, 0.7), 
+    rgba(20, 20, 20, 0.9));
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.header-nav a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.1), 
+    transparent);
+  transition: left 0.6s;
 }
 
 .header-nav a:hover {
-  color: var(--accent-cyan);
-  transform: scale(1.05);
+  color: white;
+  border-color: var(--accent-cyan);
+  background: linear-gradient(135deg, 
+    rgba(57, 197, 207, 0.1), 
+    rgba(20, 20, 20, 0.9));
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 
+    0 8px 25px rgba(57, 197, 207, 0.3),
+    0 0 15px rgba(57, 197, 207, 0.2);
 }
 
-.theme-toggle {
-  background: var(--bg-secondary);
-  border: none;
-  padding: 10px 12px;
-  font-size: 1.2rem;
+.header-nav a:hover::before {
+  left: 100%;
+}
+
+
+.theme-toggle, .login-btn {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.7rem;
+  background: linear-gradient(135deg, 
+    rgba(30, 30, 30, 0.8), 
+    rgba(20, 20, 20, 0.9));
+  color: var(--text-secondary);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 15px;
+  border-radius: 12px;
   cursor: pointer;
-  transition: all 0.25s;
-  border-radius: 30px;
-  color: var(--accent-color);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.theme-toggle::before, .login-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.1), 
+    transparent);
+  transition: left 0.6s;
 }
 
 .theme-toggle:hover {
-  transform: scale(1.5);
   color: var(--accent-yellow);
+  border-color: var(--accent-yellow);
+  background: linear-gradient(135deg, 
+    rgba(255, 224, 102, 0.1), 
+    rgba(20, 20, 20, 0.9));
+  transform: translateY(-2px) scale(1.1);
+  box-shadow: 
+    0 8px 25px rgba(255, 224, 102, 0.2),
+    0 0 15px rgba(255, 224, 102, 0.1);
 }
 
-/* ========= Main Content ========= */
+.login-btn:hover {
+  color: var(--accent-purple);
+  border-color: var(--accent-purple);
+  background: linear-gradient(135deg, 
+    rgba(163, 113, 247, 0.1), 
+    rgba(20, 20, 20, 0.9));
+  transform: translateY(-2px) scale(1.1);
+  box-shadow: 
+    0 8px 25px rgba(163, 113, 247, 0.2),
+    0 0 15px rgba(163, 113, 247, 0.1);
+}
+
+.theme-toggle:hover::before, .login-btn:hover::before {
+  left: 100%;
+}
+
+
 .app-main {
   flex: 1;
   background: var(--bg-primary);
@@ -160,7 +235,6 @@ body {
   image-rendering: pixelated;
 }
 
-/* ========= Footer - Estilo Codedex ========= */
 .app-footer {
   text-align: center;
   padding: 25px;
@@ -178,7 +252,6 @@ body {
   text-shadow: 0 2px 0 var(--accent-color);
 }
 
-/* ========= Scrollbar - Pixel Style ========= */
 ::-webkit-scrollbar {
   width: 12px;
   height: 12px;
@@ -199,7 +272,6 @@ body {
   box-shadow: 0 0 10px var(--bg-primary);
 }
 
-/* ========= Animations ========= */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -225,13 +297,11 @@ body {
   animation: fadeIn 0.4s ease-out;
 }
 
-/* ========= Selection ========= */
 ::selection {
   background: var(--accent-purple);
   color: white;
 }
 
-/* ========= Responsive ========= */
 @media (max-width: 768px) {
   .app-header {
     padding: 12px 15px;

@@ -4,7 +4,6 @@ import Editor from '@monaco-editor/react';
 import { getLanguageById } from '../data/exercises';
 import './Exercise.css';
 
-// Mapeo de lenguajes para Monaco Editor
 const languageMap = {
   python: 'python',
   javascript: 'javascript',
@@ -16,7 +15,6 @@ const languageMap = {
   css: 'css'
 };
 
-// Mapeo para Piston API
 const pistonLanguageMap = {
   python: { language: 'python', version: '3.10.0' },
   javascript: { language: 'javascript', version: '18.15.0' },
@@ -40,7 +38,15 @@ function Exercise() {
   const [isRunning, setIsRunning] = useState(false);
   const [showSolution, setShowSolution] = useState(false);
   const [showHints, setShowHints] = useState(false);
-  const [activeTab, setActiveTab] = useState('code');
+
+  const getLanguageGradient = () => {
+    if (!language?.color) return 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0d1a24 100%)';
+    const color = language.color;
+    return `linear-gradient(135deg, 
+      ${color}10 0%, 
+      #1a1a1a 50%, 
+      ${color}05 100%)`;
+  };
 
   const handleEditorChange = useCallback((value) => {
     setCode(value || '');
@@ -49,9 +55,7 @@ function Exercise() {
   const runCode = async () => {
     setIsRunning(true);
     setOutput('Ejecutando código...\n');
-    setActiveTab('output');
 
-    // Para HTML/CSS, usar iframe
     if (languageId === 'html' || languageId === 'css') {
       setOutput('Vista previa disponible abajo');
       setIsRunning(false);
@@ -151,102 +155,102 @@ function Exercise() {
   const hasNext = currentIndex < language.exercises.length - 1;
 
   return (
-    <div className="exercise-page">
+    <div 
+      className={`exercise-page language-${languageId}`}
+      style={{ 
+        '--language-color': language.color,
+        '--language-color-light': language.color + '33',
+        '--language-color-medium': language.color + '66',
+        '--language-color-dark': language.color + '99',
+        '--language-gradient': getLanguageGradient()
+      }}
+    >
       <div className="exercise-header">
-        <Link to={`/language/${languageId}`} className="back-link">
-          ← {language.name}
-        </Link>
-        <div className="exercise-nav">
-          <button 
-            onClick={() => goToExercise(-1)} 
-            disabled={!hasPrev}
-            className="nav-btn"
-          >
-            ← Anterior
-          </button>
-          <span className="exercise-counter">
-            {currentIndex + 1} / {language.exercises.length}
+        <div className="header-top-row">
+          <Link to={`/language/${languageId}`} className="back-link">
+            Volver a {language.name}
+          </Link>
+          <div className="exercise-nav">
+            <button 
+              onClick={() => goToExercise(-1)} 
+              disabled={!hasPrev}
+              className="nav-btn"
+            >
+              ← Anterior
+            </button>
+            <span className="exercise-counter">
+              {currentIndex + 1} / {language.exercises.length}
+            </span>
+            <button 
+              onClick={() => goToExercise(1)} 
+              disabled={!hasNext}
+              className="nav-btn"
+            >
+              Siguiente →
+            </button>
+          </div>
+        </div>
+
+        <div className="exercise-info-header">
+          <h1>{exercise.title}</h1>
+          <span className={`difficulty-badge ${exercise.difficulty.toLowerCase()}`}>
+            {exercise.difficulty}
           </span>
-          <button 
-            onClick={() => goToExercise(1)} 
-            disabled={!hasNext}
-            className="nav-btn"
-          >
-            Siguiente →
-          </button>
         </div>
       </div>
 
       <div className="exercise-content">
-        <div className="exercise-info">
-          <div className="exercise-title-row">
-            <h1>{exercise.title}</h1>
-            <span className={`difficulty-badge ${exercise.difficulty.toLowerCase()}`}>
-              {exercise.difficulty}
-            </span>
-          </div>
-          <p className="exercise-description">{exercise.description}</p>
-          
-          <div className="hints-section">
-            <button 
-              className="hints-toggle"
-              onClick={() => setShowHints(!showHints)}
-            >
-               {showHints ? 'Ocultar' : 'Mostrar'} Pistas ({exercise.hints?.length || 0})
-            </button>
-            {showHints && (
-              <ul className="hints-list">
-                {exercise.hints?.map((hint, index) => (
-                  <li key={index}>{hint}</li>
-                ))}
-              </ul>
-            )}
+        {/* Columna 1: Instrucciones y pistas */}
+        <div className="instruction-column">
+          <div className="exercise-info">
+            <div className="instructions-section">
+              <h3 className="section-title">Descripción</h3>
+              <div className="exercise-description">
+                {exercise.description}
+              </div>
+            </div>
+            
+            <div className="hints-section">
+              <h3 className="section-title">Pistas ({exercise.hints?.length || 0})</h3>
+              <button 
+                className="hints-toggle"
+                onClick={() => setShowHints(!showHints)}
+              >
+                {showHints ? 'Ocultar Pistas' : 'Mostrar Pistas'}
+              </button>
+              {showHints && (
+                <ul className="hints-list">
+                  {exercise.hints?.map((hint, index) => (
+                    <li key={index}>{hint}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
           </div>
         </div>
 
-        <div className="editor-section">
-          <div className="editor-toolbar">
-            <div className="toolbar-tabs">
-              <button 
-                className={`tab ${activeTab === 'code' ? 'active' : ''}`}
-                onClick={() => setActiveTab('code')}
-              >
-                Código
-              </button>
-              <button 
-                className={`tab ${activeTab === 'output' ? 'active' : ''}`}
-                onClick={() => setActiveTab('output')}
-              >
-                Salida
-              </button>
-              {(languageId === 'html' || languageId === 'css') && (
-                <button 
-                  className={`tab ${activeTab === 'preview' ? 'active' : ''}`}
-                  onClick={() => setActiveTab('preview')}
-                >
-                  Vista Previa
+        {/* Columna 2: Editor de código */}
+        <div className="code-column">
+          <div className="editor-section">
+            <div className="editor-toolbar">
+              <div className="toolbar-actions">
+                <button onClick={resetCode} className="action-btn reset">
+                  ↺ Reiniciar
                 </button>
-              )}
+                <button onClick={loadSolution} className="action-btn solution">
+                  {showSolution ? 'Solución' : 'Ver Solución'}
+                </button>
+                <button 
+                  onClick={runCode} 
+                  disabled={isRunning}
+                  className="action-btn run"
+                >
+                  {isRunning ? 'Ejecutando...' : '▶ Ejecutar Código'}
+                </button>
+              </div>
             </div>
-            <div className="toolbar-actions">
-              <button onClick={resetCode} className="action-btn reset">
-                Reiniciar
-              </button>
-              <button onClick={loadSolution} className="action-btn solution">
-                {showSolution ? '✓ Solución Cargada' : 'Ver Solución'}
-              </button>
-              <button 
-                onClick={runCode} 
-                disabled={isRunning}
-                className="action-btn run"
-              >
-                {isRunning ? 'Ejecutando...' : '▶Ejecutar'}
-              </button>
-            </div>
-          </div>
 
-          <div className="editor-container">
-            {activeTab === 'code' && (
+            <div className="editor-container">
               <Editor
                 height="100%"
                 language={languageMap[languageId] || 'plaintext'}
@@ -264,21 +268,34 @@ function Exercise() {
                   wordWrap: 'on'
                 }}
               />
-            )}
+            </div>
+          </div>
+        </div>
+
+        {/* Columna 3: Salida y resultados */}
+        <div className="output-column">
+          <div className="output-section">
+            <div className="output-header">
+              <h3 className="section-title">Resultados</h3>
+            </div>
             
-            {activeTab === 'output' && (
-              <div className="output-panel">
-                <pre>{output || 'Ejecuta el código para ver la salida aquí...'}</pre>
+            <div className="output-container">
+              <div className="output-content">
+                <pre>{output || 'Ejecuta el código para ver los resultados aquí...'}</pre>
               </div>
-            )}
-            
-            {activeTab === 'preview' && (languageId === 'html' || languageId === 'css') && (
-              <div className="preview-panel">
-                <iframe
-                  title="Preview"
-                  srcDoc={languageId === 'html' ? code : `<style>${code}</style><div class="demo">Demo Content</div>`}
-                  sandbox="allow-scripts"
-                />
+            </div>
+
+            {/* Preview para HTML/CSS */}
+            {(languageId === 'html' || languageId === 'css') && (
+              <div className="preview-section">
+                <h3 className="section-title">Vista Previa</h3>
+                <div className="preview-container">
+                  <iframe
+                    title="Preview"
+                    srcDoc={languageId === 'html' ? code : `<style>${code}</style><div class="demo">Demo Content</div>`}
+                    sandbox="allow-scripts"
+                  />
+                </div>
               </div>
             )}
           </div>

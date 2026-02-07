@@ -17,7 +17,11 @@ function App() {
             <img src={mainLogo} alt="CodePractice Logo" className="logo-img" />
           </a>
           <nav className="header-nav">
-            <a href="/">Inicio</a>
+            <a href="/">Home</a>
+            <a href="#careers">Careers</a>
+            <a href="#languages">Languages</a>
+            <a href="#community">Community</a>
+            <a href="#help">Help</a>
             <button 
               className="theme-toggle"
               onClick={() => setLightMode(!lightMode)}
@@ -25,6 +29,12 @@ function App() {
             >
               {lightMode ? '🌙' : '☀️'}
             </button>
+            <button 
+              className="login-btn"
+              aria-label='Log In'      
+              >
+                👤
+              </button>
           </nav>
         </header>
         

@@ -9,7 +9,7 @@ function Home() {
 
     return (
         <div className="home">
-            {/* ========= HERO SECTION ========= */}
+            {/* HERO SECTION */}
             <section className="hero">
                 <img
                     className="hero-bg-video"
@@ -39,7 +39,7 @@ function Home() {
                 </div>
             </section>
 
-            {/* ========= LANGUAGES SECTION ========= */}
+            {/* LANGUAGES SECTION */}
             <section className="languages-section" id="languages">
                 <div className="section-header">
                     <span className="section-kicker">TECHNOLOGIES</span>
@@ -67,7 +67,7 @@ function Home() {
                 </div>
             </section>
 
-            {/* ========= HOW IT WORKS SECTION ========= */}
+            {/* HOW IT WORKS SECTION */}
             <section className="process-section">
                 <div className="section-header">
                     <span className="section-kicker">HOW IT WORKS</span>
@@ -120,7 +120,7 @@ function Home() {
                 </div>
             </section>
 
-            {/* ========= CTA SECTION ========= */}
+            {/* CTA SECTION */}
             <section className="cta-section">
                 <div className="cta-content">
                     <h2>Ready to Start Coding?</h2>

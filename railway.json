@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "frontend/package.json",
+      "use": "@nixpacks/nixpacks"
+    },
+    {
+      "src": "piston-api/Dockerfile",
+      "use": "dockerfile"
+    }
+  ],
+  "services": {
+    "frontend": {
+      "rootDirectory": "frontend",
+      "buildCommand": "npm install && npm run build",
+      "startCommand": "npx serve -s build"
+    },
+    "piston-api": {
+      "rootDirectory": "piston-api"
+    }
+  }
+}

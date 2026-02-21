@@ -337,7 +337,7 @@ const generatePreviewHtml = useCallback(() => {
     }
 
     try {
-      const response = await fetch('https://emkc.org/api/v2/piston/execute', {
+      const response = await fetch('piston-api.up.railway.app', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

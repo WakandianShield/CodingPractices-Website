@@ -10,37 +10,37 @@ chmod 777 /var/lib/isolate
 mkdir -p /piston/data
 chmod 777 /piston/data
 
-# IR AL DIRECTORIO CORRECTO
-cd /piston || cd /app || cd /
+cd /piston
 
 echo "📂 Directorio actual: $(pwd)"
+echo "📂 Contenido:"
 ls -la
 
-# Buscar el ejecutable de piston
-if [ -f "./piston" ]; then
-    echo "✅ Encontrado ./piston"
-    chmod +x ./piston
+# Verificar que el CLI está instalado
+if command -v piston &> /dev/null; then
+    echo "✅ CLI de piston encontrado"
     
     # Instalar lenguajes
     echo "📦 Instalando lenguajes..."
-    ./piston ppman install python
-    ./piston ppman install javascript
+    piston ppman install python
+    piston ppman install javascript
+    piston ppman install java
+    piston ppman install cpp
     
     echo "✅ Lenguajes instalados"
-    
-    # Iniciar API
-    echo "🌍 Iniciando API en puerto 2000"
-    exec node src/index.js
-elif [ -f "/piston/piston" ]; then
-    echo "✅ Encontrado /piston/piston"
-    cd /piston
-    chmod +x piston
-    ./piston ppman install python
-    ./piston ppman install javascript
-    exec node src/index.js
 else
-    echo "❌ ERROR: No se encuentra el ejecutable de piston"
-    echo "Buscando en todo el sistema..."
-    find / -name "piston" -type f 2>/dev/null
-    exit 1
+    echo "⚠️ CLI no encontrado, instalando lenguajes manualmente..."
+    
+    # Instalación manual de lenguajes
+    mkdir -p /piston/packages
+    cd /piston/packages
+    
+    curl -fsSL https://github.com/engineer-man/piston/releases/download/untagged-xxx/python.tar.gz | tar xz
+    curl -fsSL https://github.com/engineer-man/piston/releases/download/untagged-xxx/javascript.tar.gz | tar xz
+    
+    cd /piston
 fi
+
+# Iniciar la API
+echo "🌍 Iniciando API en puerto 2000"
+exec node src/index.js

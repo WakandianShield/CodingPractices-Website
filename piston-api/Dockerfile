@@ -2,7 +2,12 @@ FROM ghcr.io/engineer-man/piston:latest
 
 USER root
 
-# Crear directorios con permisos (ESTO ES CRÍTICO)
+# Instalar nodejs y npm (necesarios para el CLI)
+RUN apt-get update && \
+    apt-get install -y nodejs npm && \
+    rm -rf /var/lib/apt/lists/*
+
+# Crear directorios con permisos
 RUN mkdir -p /var/lib/isolate && \
     chmod 777 /var/lib/isolate && \
     mkdir -p /piston/data && \
@@ -10,12 +15,13 @@ RUN mkdir -p /var/lib/isolate && \
     mkdir -p /piston/packages && \
     chmod 777 /piston/packages
 
-# Puerto que expone Piston
-EXPOSE 2000
+# Instalar el CLI de piston globalmente
+RUN npm install -g @piston-cli
 
 # Copiar script de inicio
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
-# Iniciar
+EXPOSE 2000
+
 CMD ["/start.sh"]

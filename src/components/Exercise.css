@@ -717,11 +717,16 @@
 }
 
 .editor-container {
-  flex: 1;
-  min-height: 400px;
+  min-height: 600px;
   overflow: hidden;
   background: rgba(10, 10, 10, 0.9);
-  position: relative;
+  
+}
+
+.editor-container-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .output-column {

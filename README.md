@@ -1,70 +1,195 @@
-# Getting Started with Create React App
+<h1 align="center">CodingPractices — Website</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white&style=plastic" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=white&style=plastic" />
+  <img src="https://img.shields.io/badge/Node.js-339933?logo=nodedotjs&logoColor=white&style=plastic" />
+  <img src="https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=white&style=plastic" />
+  <img src="https://img.shields.io/badge/CSS3-1572B6?logo=css&logoColor=white&style=plastic" />
+</p>
 
-## Available Scripts
+<p align="center">
+  A videogame-inspired coding practice platform built with React where you can sharpen your programming skills across multiple languages.
+  Choose a language, pick a difficulty, read the instructions, write your code in the built-in editor, compile it, and unlock hints if you get stuck.
+</p>
 
-In the project directory, you can run:
+<h2 align="center">Overview</h2>
 
-### `npm start`
+<p align="center">
+  CodingPractices is an interactive web application designed to make learning and practicing programming fun and engaging.
+  Taking inspiration from videogame aesthetics, the platform offers structured exercises across 8 programming languages,
+  each categorized into Easy, Medium, and Hard difficulty levels. Every exercise comes with clear instructions,
+  an embedded IDE-style code editor where you can write and compile your solution, and a hint system to guide you
+  when you're stuck — all wrapped in a unique visual experience.
+</p>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<h2 align="center">Features</h2>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<div>
+  <ul>
+    <li><b>Videogame-inspired UI</b> — Unique visual design with a gaming aesthetic</li>
+    <li><b>8 Languages Supported</b> — Python, JavaScript, Java, C#, C++, React, HTML, and CSS</li>
+    <li><b>3 Difficulty Levels</b> — Easy, Medium, and Hard exercises per language</li>
+    <li><b>Built-in Code Editor</b> — IDE-style editor to write your solution directly in the browser</li>
+    <li><b>Code Compilation</b> — Run and test your code without leaving the page</li>
+    <li><b>Hint System</b> — Unlock hints inside each exercise when you get stuck</li>
+    <li><b>File Explorer</b> — Navigate exercises with a familiar file-tree interface</li>
+    <li><b>Scroll to Top</b> — Smooth navigation utility across all pages</li>
+  </ul>
+</div>
 
-### `npm test`
+<h2 align="center">Tech Stack</h2>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<div>
+  <ul>
+    <li><b>Framework:</b> React 18</li>
+    <li><b>Language:</b> JavaScript (ES6+)</li>
+    <li><b>Styling:</b> CSS3 (component-scoped stylesheets)</li>
+    <li><b>Code Editor:</b> Embedded IDE component (EditorIDE)</li>
+    <li><b>Routing:</b> React Router DOM</li>
+    <li><b>Package Manager:</b> npm</li>
+    <li><b>Bundler:</b> Create React App (Webpack)</li>
+  </ul>
+</div>
 
-### `npm run build`
+<h2 align="center">System Requirements</h2>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<h3 align="center">Make sure you have installed</h3>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<div>
+  <ul>
+    <li><a href="https://git-scm.com/">Git</a></li>
+    <li><a href="https://nodejs.org/">Node.js 18.0</a> or higher</li>
+    <li><a href="https://www.npmjs.com/">npm 9.0</a> or higher (comes with Node.js)</li>
+    <li>Any modern browser — Chrome, Firefox, Edge, or Safari</li>
+  </ul>
+</div>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<h3 align="center">Verify Installations</h3>
 
-### `npm run eject`
+```bash
+# Verify Node.js (Should display: 18.x or higher)
+node --version
+```
+```bash
+# Verify npm
+npm --version
+```
+```bash
+# Verify Git
+git --version
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<h2 align="center">Installation</h2>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<h3 align="center">1. Clone the Repository</h3>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+git clone https://github.com/WakandianShield/CodingPractices-Website.git
+```
+```bash
+cd CodingPractices-Website
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<h3 align="center">2. Install Dependencies</h3>
 
-## Learn More
+```bash
+npm install
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<h2 align="center">Database Configuration</h2>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<p align="center">
+  This project does not use an external database. All exercise data is managed locally through the
+  <code>src/data/exercises.js</code> file, which contains the exercise definitions, instructions, difficulty levels,
+  and hints for all supported languages. No additional configuration is required.
+</p>
 
-### Code Splitting
+<h2 align="center">How to Run</h2>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<div>
+  <ol>
+    <li>Make sure all dependencies are installed (<code>npm install</code>)</li>
+    <li>Start the development server:</li>
+  </ol>
+</div>
 
-### Analyzing the Bundle Size
+```bash
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<p align="center">
+  The app will open automatically at <b>http://localhost:3000</b> in your browser.
+</p>
 
-### Making a Progressive Web App
+<h3 align="center">Other Available Scripts</h3>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+# Build for production
+npm run build
+```
+```bash
+# Run tests
+npm test
+```
 
-### Advanced Configuration
+<h2 align="center">Project Structure</h2>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```
+CodingPractices-Website/
+│
+├── public/
+│   ├── index.html                  # App HTML entry point
+│   ├── manifest.json               # PWA manifest
+│   └── favicon.ico                 # App icon
+│
+├── src/
+│   │
+│   ├── assets/
+│   │   ├── fonts/                  # Custom videogame-style fonts
+│   │   └── images/                 # UI images and icons
+│   │
+│   ├── components/
+│   │   ├── Home.js                 # Landing / home page
+│   │   ├── Home.css                # Home page styles
+│   │   ├── LanguageExercises.js    # Language selection & exercise listing
+│   │   ├── LanguageExercises.css   # Language page styles
+│   │   ├── Exercise.js             # Individual exercise view with editor & hints
+│   │   ├── Exercise.css            # Exercise page styles
+│   │   ├── EditorIDE.js            # Embedded code editor component
+│   │   ├── FileExplorer.js         # File-tree navigation component
+│   │   ├── ScrollToTop.js          # Scroll utility component
+│   │   └── fnaf-font.css           # Videogame font stylesheet
+│   │
+│   ├── data/
+│   │   └── exercises.js            # All exercises, instructions, and hints
+│   │
+│   ├── App.js                      # Root component and routing
+│   ├── App.css                     # Global app styles
+│   ├── index.js                    # React DOM entry point
+│   └── index.css                   # Base global styles
+│
+├── package.json                    # Dependencies and scripts
+└── README.md
+```
 
-### Deployment
+<h2 align="center">Live Demo</h2>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<p align="center">
+You can visit the live website
+<a href="https://codingpracticesws.netlify.app/">
+<b>here</b>
+</a>
+</p>
 
-### `npm run build` fails to minify
+<p align="center">
+  <img width="70%" alt="image" src="https://github.com/user-attachments/assets/71eeee09-9cb7-4dfd-ae1f-1c2a9dd43797" />
+</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<h2 align="center">Contact</h2>
+
+<p align="center">
+  If you would like to provide feedback or share ideas, you can contact me through my GitHub profile or social media.
+  <br><br>
+  <b>Note:</b> Some files contain explanatory information in Spanish.
+</p>
